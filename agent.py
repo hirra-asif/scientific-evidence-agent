@@ -23,6 +23,7 @@ load_dotenv(PROJECT_DIR / ".env")
 
 MAX_ABSTRACTS = 3
 opened_documents = {}
+tool_trace = []
 
 
 class Assessment(BaseModel):
@@ -49,8 +50,21 @@ def tool_result(data, is_error=False):
     {"query": str},
 )
 async def search_tool(args):
-    print(f"\nSEARCH: {args['query']}", flush=True)
-    return tool_result(search_abstracts(args["query"]))
+    event = {"tool": "search_abstracts", "arguments": dict(args)}
+    tool_trace.append(event)
+
+    try:
+        print(f"\nSEARCH: {args['query']}", flush=True)
+        results = search_abstracts(args["query"])
+        event.update(status="ok", results=results)
+        return tool_result(results)
+
+    except Exception as error:
+        event.update(
+            status="error",
+            error=f"{type(error).__name__}: {error}",
+        )
+        raise
 
 
 @tool(
@@ -59,28 +73,45 @@ async def search_tool(args):
     {"document_id": str},
 )
 async def read_tool(args):
-    document_id = str(args["document_id"])
+    event = {"tool": "read_abstract", "arguments": dict(args)}
+    tool_trace.append(event)
 
-    # Return an already-read abstract without another corpus lookup.
-    if document_id in opened_documents:
-        return tool_result(opened_documents[document_id])
+    try:
+        document_id = str(args["document_id"])
 
-    # Enforce the limit in Python.
-    if len(opened_documents) >= MAX_ABSTRACTS:
-        return tool_result(
-            {
-                "error": (
-                    f"You have already read {MAX_ABSTRACTS} abstracts. "
-                    "Finish using the abstracts already read."
-                )
-            },
-            is_error=True,
+        if document_id in opened_documents:
+            event["status"] = "cached"
+            return tool_result(opened_documents[document_id])
+
+        if len(opened_documents) >= MAX_ABSTRACTS:
+            event["status"] = "limit_reached"
+            return tool_result(
+                {
+                    "error": (
+                        f"You have already read {MAX_ABSTRACTS} abstracts. "
+                        "Finish using the abstracts already read."
+                    )
+                },
+                is_error=True,
+            )
+
+        document = read_abstract(document_id)
+        opened_documents[document["document_id"]] = document
+
+        event.update(
+            status="ok",
+            document_id=document["document_id"],
         )
 
-    document = read_abstract(document_id)
-    opened_documents[document["document_id"]] = document
-    print(f"READ: {document_id}", flush=True)
-    return tool_result(document)
+        print(f"READ: {document_id}", flush=True)
+        return tool_result(document)
+
+    except Exception as error:
+        event.update(
+            status="error",
+            error=f"{type(error).__name__}: {error}",
+        )
+        raise
 
 
 def validate_report(report, documents):
@@ -115,6 +146,7 @@ def validate_report(report, documents):
             )
 
         sentences = documents[item.document_id]["sentences"]
+
         for sentence_id in ids:
             if not 0 <= sentence_id < len(sentences):
                 raise ValueError(
@@ -128,11 +160,20 @@ async def main(
     use_skill=True,
     run_metadata=None,
 ):
+    global tool_trace
+
     if run_metadata is None:
         run_metadata = {}
 
+    # A new list preserves traces already saved by previous runs.
+    tool_trace = []
     run_metadata.clear()
-    run_metadata["estimated_cost_usd"] = None
+    run_metadata.update({
+        "estimated_cost_usd": None,
+        "tool_trace": tool_trace,
+        "opened_document_ids": [],
+    })
+
     opened_documents.clear()
     report = None
     skill_discovered = False
@@ -181,61 +222,88 @@ async def main(
         ),
     )
 
+    run_metadata.update({
+        "model": options.model,
+        "max_turns": options.max_turns,
+        "max_abstracts": MAX_ABSTRACTS,
+        "api_timeout_ms": int(options.env["API_TIMEOUT_MS"]),
+        "max_api_retries": int(options.env["CLAUDE_CODE_MAX_RETRIES"]),
+    })
+
     mode = "on" if use_skill else "off"
     print(f"Starting agent (Skill: {mode})...", flush=True)
 
-    async for message in query(
-        prompt=f"/scientific-evidence {claim}" if use_skill else claim,
-        options=options,
-    ):
-        if isinstance(message, SystemMessage) and message.subtype == "init":
-            skill_discovered = (
-                "scientific-evidence" in message.data.get("skills", [])
-            )
+    try:
+        async for message in query(
+            prompt=f"/scientific-evidence {claim}" if use_skill else claim,
+            options=options,
+        ):
+            if (
+                isinstance(message, SystemMessage)
+                and message.subtype == "init"
+            ):
+                skill_discovered = (
+                    "scientific-evidence" in message.data.get("skills", [])
+                )
 
-        if not isinstance(message, ResultMessage):
-            continue
+            if not isinstance(message, ResultMessage):
+                continue
 
-        run_metadata.update({
-            "model": options.model,
-            "max_turns": options.max_turns,
-            "max_abstracts": MAX_ABSTRACTS,
-            "estimated_cost_usd": message.total_cost_usd,
-        })
+            # Save before schema or reference validation can fail.
+            run_metadata.update({
+                "estimated_cost_usd": message.total_cost_usd,
+                "result_subtype": message.subtype,
+                "sdk_is_error": message.is_error,
+                "stop_reason": getattr(message, "stop_reason", None),
+                "num_turns": getattr(message, "num_turns", None),
+                "terminal_reason": getattr(message, "terminal_reason", None),
+                "api_error_status": getattr(message, "api_error_status", None),
+                "sdk_errors": message.errors,
+                "result_text": message.result,
+                "raw_structured_output": message.structured_output,
+            })
 
-        if message.is_error or message.structured_output is None:
+            if message.is_error or message.structured_output is None:
+                raise RuntimeError(
+                    f"Agent failed: {message.subtype}; "
+                    f"{message.errors or message.result}"
+                )
+
+            report = AgentReport.model_validate(message.structured_output)
+            validate_report(report, opened_documents)
+
+            print("\nREPORT:")
+            print(report.model_dump_json(indent=2))
+
+            print("\nQUOTED EVIDENCE:")
+            for item in report.assessments:
+                sentences = opened_documents[item.document_id]["sentences"]
+
+                for sentence_id in item.evidence_sentence_ids:
+                    text = sentences[sentence_id]["text"]
+                    print(
+                        f"Document {item.document_id}, "
+                        f"[{sentence_id}]: {text}"
+                    )
+
+            if message.total_cost_usd is None:
+                print("\nEstimated cost: unavailable")
+            else:
+                print(f"\nEstimated cost: ${message.total_cost_usd:.4f}")
+
+        if use_skill and not skill_discovered:
             raise RuntimeError(
-                f"Agent failed: {message.subtype}; "
-                f"{message.errors or message.result}"
+                "The scientific-evidence Skill was not discovered."
             )
 
-        report = AgentReport.model_validate(message.structured_output)
-        validate_report(report, opened_documents)
+        if report is None:
+            raise RuntimeError("Agent finished without returning a report.")
 
-        print("\nREPORT:")
-        print(report.model_dump_json(indent=2))
+        return report
 
-        print("\nQUOTED EVIDENCE:")
-        for item in report.assessments:
-            sentences = opened_documents[item.document_id]["sentences"]
-            for sentence_id in item.evidence_sentence_ids:
-                text = sentences[sentence_id]["text"]
-                print(f"Document {item.document_id}, [{sentence_id}]: {text}")
-
-        if message.total_cost_usd is None:
-            print("\nEstimated cost: unavailable")
-        else:
-            print(f"\nEstimated cost: ${message.total_cost_usd:.4f}")
-
-    if use_skill and not skill_discovered:
-        raise RuntimeError(
-            "The scientific-evidence Skill was not discovered."
-        )
-
-    if report is None:
-        raise RuntimeError("Agent finished without returning a report.")
-
-    return report
+    finally:
+        # Retain this even if the SDK fails before a final result arrives.
+        run_metadata["opened_document_ids"] = list(opened_documents)
 
 
 if __name__ == "__main__":

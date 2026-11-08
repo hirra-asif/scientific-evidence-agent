@@ -1,0 +1,803 @@
+{
+  "status": "finished",
+  "started_at": "2026-11-08T23:26:20.058264+00:00",
+  "split": "dev",
+  "claim_ids": [
+    800,
+    1014
+  ],
+  "mode_order": "off/on for first claim, then alternating",
+  "package_versions": {
+    "claude-agent-sdk": "0.2.179",
+    "anthropic": "2.6.0",
+    "pydantic": "2.14.3"
+  },
+  "source_sha256": {
+    "agent.py": "f096326f7f6fc61a7c96ab171b1e817296fa6be860c9ad2540de83ee876c3fc0",
+    "corpus_tools.py": "1352e12f38a9baacd4f8d6434901e5684d170d359637a44232de863958a8bb5f",
+    "scoring.py": "0b7d77edf3b354ae38ea4b498cbc27eefe4d8d166ee631bd300d65688dacc630",
+    "compare_skills.py": "593f4e7452871d6fd9424db8974fe74e2f6db1bcd8c13372d668f6ab2d934cce",
+    ".claude/skills/scientific-evidence/SKILL.md": "8ab7fad791dd44efda96f99ec4fe670c70699d823a03480933a6d87f440c755b"
+  },
+  "claims": [
+    {
+      "id": 800,
+      "claim": "Modifying the epigenome in the brain affects the normal human aging process by affecting certain genes related to neurogenesis.",
+      "gold_evidence": {}
+    },
+    {
+      "id": 1014,
+      "claim": "Rapamycin decreases the concentration of triacylglycerols in fruit flies.",
+      "gold_evidence": {}
+    }
+  ],
+  "runs": [
+    {
+      "claim_id": 800,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.00146226,
+        "tool_trace": [
+          {
+            "tool": "search_abstracts",
+            "arguments": {
+              "query": "brain epigenome modification human aging neurogenesis genes"
+            },
+            "status": "ok",
+            "results": [
+              {
+                "document_id": "4434951",
+                "title": "Diverse interventions that extend mouse lifespan suppress shared age-associated epigenetic changes at critical gene regulatory regions",
+                "score": 17.8
+              },
+              {
+                "document_id": "25597580",
+                "title": "Quiescent and active hippocampal neural stem cells with distinct morphologies respond selectively to physiological and pathological stimuli and aging.",
+                "score": 17.301
+              },
+              {
+                "document_id": "10765888",
+                "title": "Immune cells contribute to the maintenance of neurogenesis and spatial learning abilities in adulthood",
+                "score": 15.876
+              },
+              {
+                "document_id": "22264117",
+                "title": "The Aging Epigenome.",
+                "score": 15.688
+              },
+              {
+                "document_id": "7988832",
+                "title": "Methylomic trajectories across human fetal brain development.",
+                "score": 15.438
+              }
+            ]
+          },
+          {
+            "tool": "search_abstracts",
+            "arguments": {
+              "query": "DNA methylation brain aging neurogenesis"
+            },
+            "status": "ok",
+            "results": [
+              {
+                "document_id": "4679264",
+                "title": "DNA Methylation in the Human Cerebral Cortex Is Dynamically Regulated throughout the Life Span and Involves Differentiated Neurons",
+                "score": 18.426
+              },
+              {
+                "document_id": "9291668",
+                "title": " DNA methylation and healthy human aging",
+                "score": 17.956
+              },
+              {
+                "document_id": "7988832",
+                "title": "Methylomic trajectories across human fetal brain development.",
+                "score": 17.333
+              },
+              {
+                "document_id": "25597580",
+                "title": "Quiescent and active hippocampal neural stem cells with distinct morphologies respond selectively to physiological and pathological stimuli and aging.",
+                "score": 17.301
+              },
+              {
+                "document_id": "22543403",
+                "title": "Epigenetic mechanisms in neurological disease",
+                "score": 17.193
+              }
+            ]
+          },
+          {
+            "tool": "read_abstract",
+            "arguments": {
+              "document_id": "4679264"
+            },
+            "status": "ok",
+            "document_id": "4679264"
+          },
+          {
+            "tool": "read_abstract",
+            "arguments": {
+              "document_id": "9291668"
+            },
+            "status": "ok",
+            "document_id": "9291668"
+          },
+          {
+            "tool": "read_abstract",
+            "arguments": {
+              "document_id": "25597580"
+            },
+            "status": "ok",
+            "document_id": "25597580"
+          }
+        ],
+        "opened_document_ids": [
+          "4679264",
+          "9291668",
+          "25597580"
+        ],
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3,
+        "api_timeout_ms": 120000,
+        "max_api_retries": 2,
+        "result_subtype": "success",
+        "sdk_is_error": false,
+        "stop_reason": "tool_use",
+        "num_turns": 7,
+        "terminal_reason": "completed",
+        "api_error_status": null,
+        "sdk_errors": null,
+        "result_text": "{\"assessments\":[{\"document_id\":\"4679264\",\"verdict\":\"SUPPORT\",\"evidence_sentence_ids\":[3,8],\"explanation\":\"The abstract reports that DNA methylation in human cerebral cortex changes across the lifespan, with age-related methylation increases at neurogenesis-related genes (NEUROD1, NEUROD2) that track with declining mRNA levels. This supports the link between epigenetic changes in the brain, normal aging, and neurogenesis-related genes. However, the evidence is observational: the study measures correlations and does not experimentally modify the epigenome, so it only partially supports the causal wording of the claim.\"},{\"document_id\":\"9291668\",\"verdict\":\"NOT_ENOUGH_INFO\",\"evidence_sentence_ids\":[],\"explanation\":\"This review discusses DNA methylation and healthy human aging in general terms. It does not address brain-specific epigenetic changes or genes related to neurogenesis.\"},{\"document_id\":\"25597580\",\"verdict\":\"NOT_ENOUGH_INFO\",\"evidence_sentence_ids\":[],\"explanation\":\"This paper covers hippocampal neural stem cells, Notch signaling, and reduced neurogenesis in aged mice. It does not study epigenome modification or epigenetic regulation of genes, so it cannot assess the claim.\"}]}",
+        "raw_structured_output": {
+          "assessments": [
+            {
+              "document_id": "4679264",
+              "verdict": "SUPPORT",
+              "evidence_sentence_ids": [
+                3,
+                8
+              ],
+              "explanation": "The abstract reports that DNA methylation in human cerebral cortex changes across the lifespan, with age-related methylation increases at neurogenesis-related genes (NEUROD1, NEUROD2) that track with declining mRNA levels. This supports the link between epigenetic changes in the brain, normal aging, and neurogenesis-related genes. However, the evidence is observational: the study measures correlations and does not experimentally modify the epigenome, so it only partially supports the causal wording of the claim."
+            },
+            {
+              "document_id": "9291668",
+              "verdict": "NOT_ENOUGH_INFO",
+              "evidence_sentence_ids": [],
+              "explanation": "This review discusses DNA methylation and healthy human aging in general terms. It does not address brain-specific epigenetic changes or genes related to neurogenesis."
+            },
+            {
+              "document_id": "25597580",
+              "verdict": "NOT_ENOUGH_INFO",
+              "evidence_sentence_ids": [],
+              "explanation": "This paper covers hippocampal neural stem cells, Notch signaling, and reduced neurogenesis in aged mice. It does not study epigenome modification or epigenetic regulation of genes, so it cannot assess the claim."
+            }
+          ]
+        }
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "4679264",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              3,
+              8
+            ],
+            "explanation": "The abstract reports that DNA methylation in human cerebral cortex changes across the lifespan, with age-related methylation increases at neurogenesis-related genes (NEUROD1, NEUROD2) that track with declining mRNA levels. This supports the link between epigenetic changes in the brain, normal aging, and neurogenesis-related genes. However, the evidence is observational: the study measures correlations and does not experimentally modify the epigenome, so it only partially supports the causal wording of the claim."
+          },
+          {
+            "document_id": "9291668",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This review discusses DNA methylation and healthy human aging in general terms. It does not address brain-specific epigenetic changes or genes related to neurogenesis."
+          },
+          {
+            "document_id": "25597580",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This paper covers hippocampal neural stem cells, Notch signaling, and reduced neurogenesis in aged mice. It does not study epigenome modification or epigenetic regulation of genes, so it cannot assess the claim."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 0,
+        "predicted_documents": 1,
+        "correct_document_labels": 0,
+        "correct_abstracts_with_evidence": 0,
+        "gold_sentences": 0,
+        "predicted_sentences": 2,
+        "correct_sentences": 0,
+        "nei_claims": 1,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 9.658
+    },
+    {
+      "claim_id": 800,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.001613595,
+        "tool_trace": [
+          {
+            "tool": "search_abstracts",
+            "arguments": {
+              "query": "brain epigenome modification human aging neurogenesis genes"
+            },
+            "status": "ok",
+            "results": [
+              {
+                "document_id": "4434951",
+                "title": "Diverse interventions that extend mouse lifespan suppress shared age-associated epigenetic changes at critical gene regulatory regions",
+                "score": 17.8
+              },
+              {
+                "document_id": "25597580",
+                "title": "Quiescent and active hippocampal neural stem cells with distinct morphologies respond selectively to physiological and pathological stimuli and aging.",
+                "score": 17.301
+              },
+              {
+                "document_id": "10765888",
+                "title": "Immune cells contribute to the maintenance of neurogenesis and spatial learning abilities in adulthood",
+                "score": 15.876
+              },
+              {
+                "document_id": "22264117",
+                "title": "The Aging Epigenome.",
+                "score": 15.688
+              },
+              {
+                "document_id": "7988832",
+                "title": "Methylomic trajectories across human fetal brain development.",
+                "score": 15.438
+              }
+            ]
+          },
+          {
+            "tool": "search_abstracts",
+            "arguments": {
+              "query": "DNA methylation aging brain neurogenesis"
+            },
+            "status": "ok",
+            "results": [
+              {
+                "document_id": "4679264",
+                "title": "DNA Methylation in the Human Cerebral Cortex Is Dynamically Regulated throughout the Life Span and Involves Differentiated Neurons",
+                "score": 18.426
+              },
+              {
+                "document_id": "9291668",
+                "title": " DNA methylation and healthy human aging",
+                "score": 17.956
+              },
+              {
+                "document_id": "7988832",
+                "title": "Methylomic trajectories across human fetal brain development.",
+                "score": 17.333
+              },
+              {
+                "document_id": "25597580",
+                "title": "Quiescent and active hippocampal neural stem cells with distinct morphologies respond selectively to physiological and pathological stimuli and aging.",
+                "score": 17.301
+              },
+              {
+                "document_id": "22543403",
+                "title": "Epigenetic mechanisms in neurological disease",
+                "score": 17.193
+              }
+            ]
+          },
+          {
+            "tool": "read_abstract",
+            "arguments": {
+              "document_id": "4679264"
+            },
+            "status": "ok",
+            "document_id": "4679264"
+          },
+          {
+            "tool": "read_abstract",
+            "arguments": {
+              "document_id": "22264117"
+            },
+            "status": "ok",
+            "document_id": "22264117"
+          },
+          {
+            "tool": "read_abstract",
+            "arguments": {
+              "document_id": "25597580"
+            },
+            "status": "ok",
+            "document_id": "25597580"
+          }
+        ],
+        "opened_document_ids": [
+          "4679264",
+          "22264117",
+          "25597580"
+        ],
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3,
+        "api_timeout_ms": 120000,
+        "max_api_retries": 2,
+        "result_subtype": "success",
+        "sdk_is_error": false,
+        "stop_reason": "tool_use",
+        "num_turns": 7,
+        "terminal_reason": "completed",
+        "api_error_status": null,
+        "sdk_errors": null,
+        "result_text": "{\"assessments\":[{\"document_id\":\"4679264\",\"verdict\":\"NOT_ENOUGH_INFO\",\"evidence_sentence_ids\":[],\"explanation\":\"Human temporal neocortex study (125 subjects, 17 weeks gestation to 104 years) showing age-related DNA methylation changes at 50 CNS-related loci, including neurogenesis-related NEUROD1 and NEUROD2 (sentence 3). These are correlational age-associated changes. The abstract does not test modifying the brain epigenome or show that such modification affects the aging process, so the causal part of the claim is not addressed.\"},{\"document_id\":\"22264117\",\"verdict\":\"NOT_ENOUGH_INFO\",\"evidence_sentence_ids\":[],\"explanation\":\"Review article proposing that age-dependent epigenomic and chromatin changes contribute to aging in general. It does not specify the brain, human subjects, or neurogenesis-related genes, and it reports no intervention on the brain epigenome. It is too general to support or contradict the brain-specific, neurogenesis-gene claim.\"},{\"document_id\":\"25597580\",\"verdict\":\"NOT_ENOUGH_INFO\",\"evidence_sentence_ids\":[],\"explanation\":\"Study in mice on hippocampal neural stem cells and Notch signaling. It reports reduced neurogenesis in aged mice and reversible quiescence, but it does not study the human aging process or any epigenomic modification. Animal findings do not establish the human claim.\"}]}",
+        "raw_structured_output": {
+          "assessments": [
+            {
+              "document_id": "4679264",
+              "verdict": "NOT_ENOUGH_INFO",
+              "evidence_sentence_ids": [],
+              "explanation": "Human temporal neocortex study (125 subjects, 17 weeks gestation to 104 years) showing age-related DNA methylation changes at 50 CNS-related loci, including neurogenesis-related NEUROD1 and NEUROD2 (sentence 3). These are correlational age-associated changes. The abstract does not test modifying the brain epigenome or show that such modification affects the aging process, so the causal part of the claim is not addressed."
+            },
+            {
+              "document_id": "22264117",
+              "verdict": "NOT_ENOUGH_INFO",
+              "evidence_sentence_ids": [],
+              "explanation": "Review article proposing that age-dependent epigenomic and chromatin changes contribute to aging in general. It does not specify the brain, human subjects, or neurogenesis-related genes, and it reports no intervention on the brain epigenome. It is too general to support or contradict the brain-specific, neurogenesis-gene claim."
+            },
+            {
+              "document_id": "25597580",
+              "verdict": "NOT_ENOUGH_INFO",
+              "evidence_sentence_ids": [],
+              "explanation": "Study in mice on hippocampal neural stem cells and Notch signaling. It reports reduced neurogenesis in aged mice and reversible quiescence, but it does not study the human aging process or any epigenomic modification. Animal findings do not establish the human claim."
+            }
+          ]
+        }
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "4679264",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "Human temporal neocortex study (125 subjects, 17 weeks gestation to 104 years) showing age-related DNA methylation changes at 50 CNS-related loci, including neurogenesis-related NEUROD1 and NEUROD2 (sentence 3). These are correlational age-associated changes. The abstract does not test modifying the brain epigenome or show that such modification affects the aging process, so the causal part of the claim is not addressed."
+          },
+          {
+            "document_id": "22264117",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "Review article proposing that age-dependent epigenomic and chromatin changes contribute to aging in general. It does not specify the brain, human subjects, or neurogenesis-related genes, and it reports no intervention on the brain epigenome. It is too general to support or contradict the brain-specific, neurogenesis-gene claim."
+          },
+          {
+            "document_id": "25597580",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "Study in mice on hippocampal neural stem cells and Notch signaling. It reports reduced neurogenesis in aged mice and reversible quiescence, but it does not study the human aging process or any epigenomic modification. Animal findings do not establish the human claim."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 0,
+        "predicted_documents": 0,
+        "correct_document_labels": 0,
+        "correct_abstracts_with_evidence": 0,
+        "gold_sentences": 0,
+        "predicted_sentences": 0,
+        "correct_sentences": 0,
+        "nei_claims": 1,
+        "correct_nei": 1
+      },
+      "status": "ok",
+      "elapsed_seconds": 9.608
+    },
+    {
+      "claim_id": 1014,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.00111398,
+        "tool_trace": [
+          {
+            "tool": "search_abstracts",
+            "arguments": {
+              "query": "rapamycin triacylglycerol Drosophila"
+            },
+            "status": "ok",
+            "results": [
+              {
+                "document_id": "6277638",
+                "title": "Mechanisms of Life Span Extension by Rapamycin in the Fruit Fly Drosophila melanogaster",
+                "score": 17.452
+              },
+              {
+                "document_id": "2266471",
+                "title": "MicroRNA-21 is Induced by Rapamycin in a Model of Tuberous Sclerosis (TSC) and Lymphangioleiomyomatosis (LAM)",
+                "score": 10.505
+              },
+              {
+                "document_id": "4658268",
+                "title": "Rictor, a Novel Binding Partner of mTOR, Defines a Rapamycin-Insensitive and Raptor-Independent Pathway that Regulates the Cytoskeleton",
+                "score": 10.251
+              },
+              {
+                "document_id": "1227277",
+                "title": "Rapamycin passes the torch: a new generation of mTOR inhibitors",
+                "score": 10.116
+              },
+              {
+                "document_id": "10790846",
+                "title": "A rapamycin-sensitive signaling pathway contributes to long-term synaptic plasticity in the hippocampus.",
+                "score": 9.799
+              }
+            ]
+          },
+          {
+            "tool": "search_abstracts",
+            "arguments": {
+              "query": "rapamycin fruit flies lipid levels"
+            },
+            "status": "ok",
+            "results": [
+              {
+                "document_id": "6277638",
+                "title": "Mechanisms of Life Span Extension by Rapamycin in the Fruit Fly Drosophila melanogaster",
+                "score": 24.856
+              },
+              {
+                "document_id": "15615957",
+                "title": "Original Article",
+                "score": 14.543
+              },
+              {
+                "document_id": "1227277",
+                "title": "Rapamycin passes the torch: a new generation of mTOR inhibitors",
+                "score": 12.204
+              },
+              {
+                "document_id": "34760396",
+                "title": "Human and other faeces as breeding media of the trachoma vector Musca sorbens.",
+                "score": 11.796
+              },
+              {
+                "document_id": "13162391",
+                "title": "Funnel trap for the capture of phlebotomine sand flies (Diptera: Psychodidae) from tree holes.",
+                "score": 11.75
+              }
+            ]
+          },
+          {
+            "tool": "read_abstract",
+            "arguments": {
+              "document_id": "6277638"
+            },
+            "status": "ok",
+            "document_id": "6277638"
+          },
+          {
+            "tool": "read_abstract",
+            "arguments": {
+              "document_id": "15615957"
+            },
+            "status": "ok",
+            "document_id": "15615957"
+          },
+          {
+            "tool": "search_abstracts",
+            "arguments": {
+              "query": "TOR inhibition reduces triglyceride stores in Drosophila fat body"
+            },
+            "status": "ok",
+            "results": [
+              {
+                "document_id": "6277638",
+                "title": "Mechanisms of Life Span Extension by Rapamycin in the Fruit Fly Drosophila melanogaster",
+                "score": 23.024
+              },
+              {
+                "document_id": "28845338",
+                "title": "Increased lean body mass as an early indicator of olanzapine-induced weight gain in healthy men.",
+                "score": 21.195
+              },
+              {
+                "document_id": "12994780",
+                "title": "No effect of dietary fat on short-term weight gain in mice treated with atypical antipsychotic drugs",
+                "score": 20.072
+              },
+              {
+                "document_id": "33918970",
+                "title": "Interactive effects of oligofructose and obesity predisposition on gut hormones and microbiota in diet-induced obese rats.",
+                "score": 19.236
+              },
+              {
+                "document_id": "11238784",
+                "title": "LXRS and FXR: the yin and yang of cholesterol and fat metabolism.",
+                "score": 19.195
+              }
+            ]
+          }
+        ],
+        "opened_document_ids": [
+          "6277638",
+          "15615957"
+        ],
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3,
+        "api_timeout_ms": 120000,
+        "max_api_retries": 2,
+        "result_subtype": "success",
+        "sdk_is_error": false,
+        "stop_reason": "tool_use",
+        "num_turns": 7,
+        "terminal_reason": "completed",
+        "api_error_status": null,
+        "sdk_errors": null,
+        "result_text": "{\"assessments\":[{\"document_id\":\"6277638\",\"verdict\":\"NOT_ENOUGH_INFO\",\"evidence_sentence_ids\":[],\"explanation\":\"The abstract studies rapamycin feeding in adult Drosophila and reports lifespan extension, starvation and paraquat resistance, and effects on autophagy and translation via TORC1. It does not measure or report triacylglycerol concentrations, so it neither supports nor contradicts the claim that rapamycin decreases triacylglycerols in flies.\"},{\"document_id\":\"15615957\",\"verdict\":\"NOT_ENOUGH_INFO\",\"evidence_sentence_ids\":[],\"explanation\":\"This abstract is a placebo-controlled human trial of fruit and vegetable juice concentrate supplements measuring antioxidants, folate, homocysteine and oxidative stress markers. It involves no rapamycin, no fruit flies and no triacylglycerol outcome, so it is not relevant to the claim.\"}]}",
+        "raw_structured_output": {
+          "assessments": [
+            {
+              "document_id": "6277638",
+              "verdict": "NOT_ENOUGH_INFO",
+              "evidence_sentence_ids": [],
+              "explanation": "The abstract studies rapamycin feeding in adult Drosophila and reports lifespan extension, starvation and paraquat resistance, and effects on autophagy and translation via TORC1. It does not measure or report triacylglycerol concentrations, so it neither supports nor contradicts the claim that rapamycin decreases triacylglycerols in flies."
+            },
+            {
+              "document_id": "15615957",
+              "verdict": "NOT_ENOUGH_INFO",
+              "evidence_sentence_ids": [],
+              "explanation": "This abstract is a placebo-controlled human trial of fruit and vegetable juice concentrate supplements measuring antioxidants, folate, homocysteine and oxidative stress markers. It involves no rapamycin, no fruit flies and no triacylglycerol outcome, so it is not relevant to the claim."
+            }
+          ]
+        }
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "6277638",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract studies rapamycin feeding in adult Drosophila and reports lifespan extension, starvation and paraquat resistance, and effects on autophagy and translation via TORC1. It does not measure or report triacylglycerol concentrations, so it neither supports nor contradicts the claim that rapamycin decreases triacylglycerols in flies."
+          },
+          {
+            "document_id": "15615957",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This abstract is a placebo-controlled human trial of fruit and vegetable juice concentrate supplements measuring antioxidants, folate, homocysteine and oxidative stress markers. It involves no rapamycin, no fruit flies and no triacylglycerol outcome, so it is not relevant to the claim."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 0,
+        "predicted_documents": 0,
+        "correct_document_labels": 0,
+        "correct_abstracts_with_evidence": 0,
+        "gold_sentences": 0,
+        "predicted_sentences": 0,
+        "correct_sentences": 0,
+        "nei_claims": 1,
+        "correct_nei": 1
+      },
+      "status": "ok",
+      "elapsed_seconds": 7.446
+    },
+    {
+      "claim_id": 1014,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.000737185,
+        "tool_trace": [
+          {
+            "tool": "search_abstracts",
+            "arguments": {
+              "query": "rapamycin triacylglycerol levels Drosophila"
+            },
+            "status": "ok",
+            "results": [
+              {
+                "document_id": "6277638",
+                "title": "Mechanisms of Life Span Extension by Rapamycin in the Fruit Fly Drosophila melanogaster",
+                "score": 17.452
+              },
+              {
+                "document_id": "1227277",
+                "title": "Rapamycin passes the torch: a new generation of mTOR inhibitors",
+                "score": 12.204
+              },
+              {
+                "document_id": "2266471",
+                "title": "MicroRNA-21 is Induced by Rapamycin in a Model of Tuberous Sclerosis (TSC) and Lymphangioleiomyomatosis (LAM)",
+                "score": 10.505
+              },
+              {
+                "document_id": "24632480",
+                "title": "Rapamycin treatment augments motor neuron degeneration in SOD1(G93A) mouse model of amyotrophic lateral sclerosis.",
+                "score": 10.283
+              },
+              {
+                "document_id": "4658268",
+                "title": "Rictor, a Novel Binding Partner of mTOR, Defines a Rapamycin-Insensitive and Raptor-Independent Pathway that Regulates the Cytoskeleton",
+                "score": 10.251
+              }
+            ]
+          },
+          {
+            "tool": "read_abstract",
+            "arguments": {
+              "document_id": "6277638"
+            },
+            "status": "ok",
+            "document_id": "6277638"
+          },
+          {
+            "tool": "search_abstracts",
+            "arguments": {
+              "query": "rapamycin fruit fly fat storage triglyceride"
+            },
+            "status": "ok",
+            "results": [
+              {
+                "document_id": "6277638",
+                "title": "Mechanisms of Life Span Extension by Rapamycin in the Fruit Fly Drosophila melanogaster",
+                "score": 24.856
+              },
+              {
+                "document_id": "11238784",
+                "title": "LXRS and FXR: the yin and yang of cholesterol and fat metabolism.",
+                "score": 18.42
+              },
+              {
+                "document_id": "3621011",
+                "title": "Tenomodulin promotes human adipocyte differentiation and beneficial visceral adipose tissue expansion.",
+                "score": 17.272
+              },
+              {
+                "document_id": "13794374",
+                "title": "COPI Complex Is a Regulator of Lipid Homeostasis",
+                "score": 16.298
+              },
+              {
+                "document_id": "12994780",
+                "title": "No effect of dietary fat on short-term weight gain in mice treated with atypical antipsychotic drugs",
+                "score": 12.798
+              }
+            ]
+          }
+        ],
+        "opened_document_ids": [
+          "6277638"
+        ],
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3,
+        "api_timeout_ms": 120000,
+        "max_api_retries": 2,
+        "result_subtype": "success",
+        "sdk_is_error": false,
+        "stop_reason": "tool_use",
+        "num_turns": 5,
+        "terminal_reason": "completed",
+        "api_error_status": null,
+        "sdk_errors": null,
+        "result_text": "{\"assessments\":[{\"document_id\":\"6277638\",\"verdict\":\"NOT_ENOUGH_INFO\",\"evidence_sentence_ids\":[],\"explanation\":\"The abstract shows that feeding rapamycin to adult Drosophila extends lifespan and increases resistance to starvation and paraquat, through TORC1-dependent effects on autophagy and translation. It does not measure or mention triacylglycerol levels, so it neither supports nor contradicts the claim that rapamycin decreases triacylglycerol concentration in fruit flies. Two searches did not surface any other abstract that addresses this claim.\"}]}",
+        "raw_structured_output": {
+          "assessments": [
+            {
+              "document_id": "6277638",
+              "verdict": "NOT_ENOUGH_INFO",
+              "evidence_sentence_ids": [],
+              "explanation": "The abstract shows that feeding rapamycin to adult Drosophila extends lifespan and increases resistance to starvation and paraquat, through TORC1-dependent effects on autophagy and translation. It does not measure or mention triacylglycerol levels, so it neither supports nor contradicts the claim that rapamycin decreases triacylglycerol concentration in fruit flies. Two searches did not surface any other abstract that addresses this claim."
+            }
+          ]
+        }
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "6277638",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract shows that feeding rapamycin to adult Drosophila extends lifespan and increases resistance to starvation and paraquat, through TORC1-dependent effects on autophagy and translation. It does not measure or mention triacylglycerol levels, so it neither supports nor contradicts the claim that rapamycin decreases triacylglycerol concentration in fruit flies. Two searches did not surface any other abstract that addresses this claim."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 0,
+        "predicted_documents": 0,
+        "correct_document_labels": 0,
+        "correct_abstracts_with_evidence": 0,
+        "gold_sentences": 0,
+        "predicted_sentences": 0,
+        "correct_sentences": 0,
+        "nei_claims": 1,
+        "correct_nei": 1
+      },
+      "status": "ok",
+      "elapsed_seconds": 6.16
+    }
+  ],
+  "summary": {
+    "requested_pairs": 2,
+    "successful_pairs": 2,
+    "scoring_population": "Claims successful in both modes",
+    "modes": {
+      "off": {
+        "attempted": 2,
+        "failures": 0,
+        "metrics_on_successful_pairs": {
+          "document_labels": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "abstract_with_evidence": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "evidence_sentences": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "nei_abstention_rate": 0.5,
+          "counts": {
+            "claims": 2,
+            "gold_documents": 0,
+            "predicted_documents": 1,
+            "correct_document_labels": 0,
+            "correct_abstracts_with_evidence": 0,
+            "gold_sentences": 0,
+            "predicted_sentences": 2,
+            "correct_sentences": 0,
+            "nei_claims": 2,
+            "correct_nei": 1
+          }
+        },
+        "mean_elapsed_seconds": 7.909,
+        "reported_estimated_cost_usd": 0.002199445,
+        "runs_without_cost": 0
+      },
+      "on": {
+        "attempted": 2,
+        "failures": 0,
+        "metrics_on_successful_pairs": {
+          "document_labels": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "abstract_with_evidence": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "evidence_sentences": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "nei_abstention_rate": 1.0,
+          "counts": {
+            "claims": 2,
+            "gold_documents": 0,
+            "predicted_documents": 0,
+            "correct_document_labels": 0,
+            "correct_abstracts_with_evidence": 0,
+            "gold_sentences": 0,
+            "predicted_sentences": 0,
+            "correct_sentences": 0,
+            "nei_claims": 2,
+            "correct_nei": 2
+          }
+        },
+        "mean_elapsed_seconds": 8.527,
+        "reported_estimated_cost_usd": 0.0027275750000000003,
+        "runs_without_cost": 0
+      }
+    }
+  },
+  "finished_at": "2026-11-08T23:26:52.939471+00:00"
+}
