@@ -21,7 +21,7 @@ from corpus_tools import search_abstracts, read_abstract
 PROJECT_DIR = Path(__file__).resolve().parent
 load_dotenv(PROJECT_DIR / ".env")
 
-# Keep the abstracts actually read during this run.
+MAX_ABSTRACTS = 3
 opened_documents = {}
 
 
@@ -36,8 +36,11 @@ class AgentReport(BaseModel):
     assessments: list[Assessment]
 
 
-def tool_result(data):
-    return {"content": [{"type": "text", "text": json.dumps(data)}]}
+def tool_result(data, is_error=False):
+    result = {"content": [{"type": "text", "text": json.dumps(data)}]}
+    if is_error:
+        result["isError"] = True
+    return result
 
 
 @tool(
@@ -56,10 +59,68 @@ async def search_tool(args):
     {"document_id": str},
 )
 async def read_tool(args):
-    print(f"READ: {args['document_id']}", flush=True)
-    document = read_abstract(args["document_id"])
+    document_id = str(args["document_id"])
+
+    # Return an already-read abstract without another corpus lookup.
+    if document_id in opened_documents:
+        return tool_result(opened_documents[document_id])
+
+    # Enforce the limit in Python.
+    if len(opened_documents) >= MAX_ABSTRACTS:
+        return tool_result(
+            {
+                "error": (
+                    f"You have already read {MAX_ABSTRACTS} abstracts. "
+                    "Finish using the abstracts already read."
+                )
+            },
+            is_error=True,
+        )
+
+    document = read_abstract(document_id)
     opened_documents[document["document_id"]] = document
+    print(f"READ: {document_id}", flush=True)
     return tool_result(document)
+
+
+def validate_report(report, documents):
+    if not documents:
+        raise ValueError("The agent did not read any abstracts.")
+
+    returned_ids = [item.document_id for item in report.assessments]
+
+    if len(returned_ids) != len(set(returned_ids)):
+        raise ValueError("Duplicate document assessments.")
+
+    if set(returned_ids) != set(documents):
+        raise ValueError("Report does not match the abstracts read.")
+
+    for item in report.assessments:
+        ids = item.evidence_sentence_ids
+
+        if len(ids) != len(set(ids)):
+            raise ValueError(
+                f"Duplicate evidence sentence IDs for {item.document_id}."
+            )
+
+        if item.verdict == "NOT_ENOUGH_INFO":
+            if ids:
+                raise ValueError(
+                    f"NOT_ENOUGH_INFO must have no evidence: "
+                    f"{item.document_id}."
+                )
+        elif not ids:
+            raise ValueError(
+                f"{item.verdict} requires evidence: {item.document_id}."
+            )
+
+        sentences = documents[item.document_id]["sentences"]
+        for sentence_id in ids:
+            if not 0 <= sentence_id < len(sentences):
+                raise ValueError(
+                    f"Invalid sentence ID {sentence_id} "
+                    f"for document {item.document_id}."
+                )
 
 
 async def main(
@@ -100,7 +161,7 @@ async def main(
             "Check scientific claims against the supplied research corpus. "
             "First search for relevant papers, then read promising abstracts. "
             "You may refine your search if needed. "
-            "For this demonstration, read at most three abstracts. "
+            f"For this demonstration, read at most {MAX_ABSTRACTS} abstracts. "
             "Return one assessment for each abstract you read. "
             "SUPPORT means the abstract supports the claim; CONTRADICT means "
             "it contradicts it; NOT_ENOUGH_INFO means it does neither. "
@@ -120,8 +181,8 @@ async def main(
         options=options,
     ):
         if isinstance(message, SystemMessage) and message.subtype == "init":
-            skill_discovered = "scientific-evidence" in message.data.get(
-                "skills", []
+            skill_discovered = (
+                "scientific-evidence" in message.data.get("skills", [])
             )
 
         if not isinstance(message, ResultMessage):
@@ -134,17 +195,7 @@ async def main(
             )
 
         report = AgentReport.model_validate(message.structured_output)
-
-        returned_ids = {item.document_id for item in report.assessments}
-        if not opened_documents or returned_ids != set(opened_documents):
-            raise ValueError("Report does not match the abstracts read.")
-
-        # Validate references before displaying the report.
-        for item in report.assessments:
-            sentences = opened_documents[item.document_id]["sentences"]
-            for sentence_id in item.evidence_sentence_ids:
-                if not 0 <= sentence_id < len(sentences):
-                    raise ValueError(f"Invalid sentence ID: {sentence_id}")
+        validate_report(report, opened_documents)
 
         print("\nREPORT:")
         print(report.model_dump_json(indent=2))
@@ -158,7 +209,6 @@ async def main(
 
         print(f"\nEstimated cost: ${message.total_cost_usd or 0:.4f}")
 
-    # Check that Skill-on had access to the requested Skill.
     if use_skill and not skill_discovered:
         raise RuntimeError(
             "The scientific-evidence Skill was not discovered."
