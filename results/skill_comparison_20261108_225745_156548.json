@@ -1,0 +1,3216 @@
+{
+  "status": "finished",
+  "started_at": "2026-11-08T22:57:45.156548+00:00",
+  "split": "dev",
+  "claim_ids": [
+    48,
+    1197,
+    115,
+    859,
+    216,
+    72,
+    219,
+    148,
+    800,
+    873,
+    985,
+    692,
+    644,
+    141,
+    684,
+    50,
+    1104,
+    820,
+    275,
+    380,
+    411,
+    185,
+    51,
+    384,
+    298,
+    1014,
+    957,
+    1194,
+    137,
+    781
+  ],
+  "mode_order": "off/on for first claim, then alternating",
+  "package_versions": {
+    "claude-agent-sdk": "0.2.179",
+    "anthropic": "2.6.0",
+    "pydantic": "2.14.3"
+  },
+  "source_sha256": {
+    "agent.py": "9046b143ba1a202dfb6befddf38c6d46368688fbe9a1e09d3f1fcc59945ed77e",
+    "corpus_tools.py": "1352e12f38a9baacd4f8d6434901e5684d170d359637a44232de863958a8bb5f",
+    "scoring.py": "0b7d77edf3b354ae38ea4b498cbc27eefe4d8d166ee631bd300d65688dacc630",
+    "compare_skills.py": "593f4e7452871d6fd9424db8974fe74e2f6db1bcd8c13372d668f6ab2d934cce",
+    ".claude/skills/scientific-evidence/SKILL.md": "8ab7fad791dd44efda96f99ec4fe670c70699d823a03480933a6d87f440c755b"
+  },
+  "claims": [
+    {
+      "id": 48,
+      "claim": "A total of 1,000 people in the UK are asymptomatic carriers of vCJD infection.",
+      "gold_evidence": {
+        "13734012": [
+          {
+            "sentences": [
+              4
+            ],
+            "label": "CONTRADICT"
+          }
+        ]
+      }
+    },
+    {
+      "id": 1197,
+      "claim": "The availability of safe places to study is not effective at decreasing homelessness.",
+      "gold_evidence": {}
+    },
+    {
+      "id": 115,
+      "claim": "Anthrax spores can be disposed of easily after they are dispersed.",
+      "gold_evidence": {
+        "33872649": [
+          {
+            "sentences": [
+              6
+            ],
+            "label": "CONTRADICT"
+          }
+        ]
+      }
+    },
+    {
+      "id": 859,
+      "claim": "Normal expression of RUNX1 has tumor-promoting effects.",
+      "gold_evidence": {
+        "1982286": [
+          {
+            "sentences": [
+              3
+            ],
+            "label": "CONTRADICT"
+          }
+        ]
+      }
+    },
+    {
+      "id": 216,
+      "claim": "CX3CR1 on the Th2 cells impairs T cell survival",
+      "gold_evidence": {
+        "21366394": [
+          {
+            "sentences": [
+              4
+            ],
+            "label": "CONTRADICT"
+          }
+        ]
+      }
+    },
+    {
+      "id": 72,
+      "claim": "Activator-inhibitor pairs are provided dorsally by Admpchordin.",
+      "gold_evidence": {}
+    },
+    {
+      "id": 219,
+      "claim": "CX3CR1 on the Th2 cells suppresses airway inflammation.",
+      "gold_evidence": {
+        "21366394": [
+          {
+            "sentences": [
+              2
+            ],
+            "label": "CONTRADICT"
+          },
+          {
+            "sentences": [
+              3
+            ],
+            "label": "CONTRADICT"
+          }
+        ]
+      }
+    },
+    {
+      "id": 148,
+      "claim": "Autophagy declines in aged organisms.",
+      "gold_evidence": {
+        "1084345": [
+          {
+            "sentences": [
+              1
+            ],
+            "label": "SUPPORT"
+          }
+        ]
+      }
+    },
+    {
+      "id": 800,
+      "claim": "Modifying the epigenome in the brain affects the normal human aging process by affecting certain genes related to neurogenesis.",
+      "gold_evidence": {}
+    },
+    {
+      "id": 873,
+      "claim": "Obesity is determined solely by environmental factors.",
+      "gold_evidence": {
+        "1180972": [
+          {
+            "sentences": [
+              3,
+              4
+            ],
+            "label": "CONTRADICT"
+          },
+          {
+            "sentences": [
+              6
+            ],
+            "label": "CONTRADICT"
+          },
+          {
+            "sentences": [
+              7
+            ],
+            "label": "CONTRADICT"
+          }
+        ],
+        "19307912": [
+          {
+            "sentences": [
+              3
+            ],
+            "label": "CONTRADICT"
+          },
+          {
+            "sentences": [
+              7
+            ],
+            "label": "CONTRADICT"
+          }
+        ],
+        "27393799": [
+          {
+            "sentences": [
+              8
+            ],
+            "label": "CONTRADICT"
+          }
+        ],
+        "29025270": [
+          {
+            "sentences": [
+              1
+            ],
+            "label": "CONTRADICT"
+          },
+          {
+            "sentences": [
+              3
+            ],
+            "label": "CONTRADICT"
+          },
+          {
+            "sentences": [
+              5
+            ],
+            "label": "CONTRADICT"
+          }
+        ],
+        "3315558": [
+          {
+            "sentences": [
+              4
+            ],
+            "label": "CONTRADICT"
+          },
+          {
+            "sentences": [
+              5
+            ],
+            "label": "CONTRADICT"
+          }
+        ]
+      }
+    },
+    {
+      "id": 985,
+      "claim": "Pseudogene PTENP1 regulates the expression of PTEN by functioning as an miRNA decoy.",
+      "gold_evidence": {
+        "6828370": [
+          {
+            "sentences": [
+              3
+            ],
+            "label": "SUPPORT"
+          }
+        ]
+      }
+    },
+    {
+      "id": 692,
+      "claim": "Leuko-increased blood increases infectious complications in red blood cell transfusion.",
+      "gold_evidence": {
+        "24088502": [
+          {
+            "sentences": [
+              8
+            ],
+            "label": "CONTRADICT"
+          },
+          {
+            "sentences": [
+              9
+            ],
+            "label": "CONTRADICT"
+          },
+          {
+            "sentences": [
+              10
+            ],
+            "label": "CONTRADICT"
+          }
+        ]
+      }
+    },
+    {
+      "id": 644,
+      "claim": "Insulin increases risk of severe kidney failure.",
+      "gold_evidence": {}
+    },
+    {
+      "id": 141,
+      "claim": "Auditory entrainment is strengthened when people see congruent visual and auditory information.",
+      "gold_evidence": {
+        "14437255": [
+          {
+            "sentences": [
+              0
+            ],
+            "label": "SUPPORT"
+          },
+          {
+            "sentences": [
+              1
+            ],
+            "label": "SUPPORT"
+          },
+          {
+            "sentences": [
+              6
+            ],
+            "label": "SUPPORT"
+          },
+          {
+            "sentences": [
+              8
+            ],
+            "label": "SUPPORT"
+          },
+          {
+            "sentences": [
+              9
+            ],
+            "label": "SUPPORT"
+          },
+          {
+            "sentences": [
+              13
+            ],
+            "label": "SUPPORT"
+          }
+        ]
+      }
+    },
+    {
+      "id": 684,
+      "claim": "Lack of clpC does not affect sporulation efficiency in Bacillus subtilis cells.",
+      "gold_evidence": {}
+    },
+    {
+      "id": 50,
+      "claim": "AIRE is expressed in some skin tumors.",
+      "gold_evidence": {
+        "12580014": [
+          {
+            "sentences": [
+              1
+            ],
+            "label": "SUPPORT"
+          }
+        ]
+      }
+    },
+    {
+      "id": 1104,
+      "claim": "Stroke patients with prior use of direct oral anticoagulants have a lower risk of in-hospital mortality than stroke patients with prior use of warfarin.",
+      "gold_evidence": {
+        "3898784": [
+          {
+            "sentences": [
+              8
+            ],
+            "label": "SUPPORT"
+          },
+          {
+            "sentences": [
+              9
+            ],
+            "label": "SUPPORT"
+          },
+          {
+            "sentences": [
+              10
+            ],
+            "label": "SUPPORT"
+          },
+          {
+            "sentences": [
+              13
+            ],
+            "label": "SUPPORT"
+          }
+        ]
+      }
+    },
+    {
+      "id": 820,
+      "claim": "N-terminal cleavage increases success identifying transcription start sites.",
+      "gold_evidence": {}
+    },
+    {
+      "id": 275,
+      "claim": "Combining phosphatidylinositide 3-kinase and MEK 1/2 inhibitors is effective at treating KRAS mutant tumors.",
+      "gold_evidence": {
+        "4961038": [
+          {
+            "sentences": [
+              7
+            ],
+            "label": "SUPPORT"
+          },
+          {
+            "sentences": [
+              8
+            ],
+            "label": "SUPPORT"
+          }
+        ],
+        "14241418": [
+          {
+            "sentences": [
+              10
+            ],
+            "label": "SUPPORT"
+          }
+        ]
+      }
+    },
+    {
+      "id": 380,
+      "claim": "Enhanced early production of inflammatory chemokines improves viral control in the lung.",
+      "gold_evidence": {
+        "19005293": [
+          {
+            "sentences": [
+              2
+            ],
+            "label": "SUPPORT"
+          }
+        ]
+      }
+    },
+    {
+      "id": 411,
+      "claim": "Febrile seizures reduce the threshold for development of epilepsy.",
+      "gold_evidence": {}
+    },
+    {
+      "id": 185,
+      "claim": "Breast cancer development is determined exclusively by genetic factors.",
+      "gold_evidence": {
+        "18340282": [
+          {
+            "sentences": [
+              2
+            ],
+            "label": "CONTRADICT"
+          },
+          {
+            "sentences": [
+              6
+            ],
+            "label": "CONTRADICT"
+          }
+        ]
+      }
+    },
+    {
+      "id": 51,
+      "claim": "ALDH1 expression is associated with better breast cancer outcomes.",
+      "gold_evidence": {
+        "45638119": [
+          {
+            "sentences": [
+              4
+            ],
+            "label": "CONTRADICT"
+          }
+        ]
+      }
+    },
+    {
+      "id": 384,
+      "claim": "Epidemiological disease burden from noncommunicable diseases is more prevalent in low economic settings.",
+      "gold_evidence": {}
+    },
+    {
+      "id": 298,
+      "claim": "Cytochrome c is released from the mitochondrial intermembrane space to cytosol during apoptosis.",
+      "gold_evidence": {
+        "39381118": [
+          {
+            "sentences": [
+              0
+            ],
+            "label": "SUPPORT"
+          }
+        ]
+      }
+    },
+    {
+      "id": 1014,
+      "claim": "Rapamycin decreases the concentration of triacylglycerols in fruit flies.",
+      "gold_evidence": {}
+    },
+    {
+      "id": 957,
+      "claim": "Podocytes are motile and migrate in the presence of injury.",
+      "gold_evidence": {
+        "123859": [
+          {
+            "sentences": [
+              2
+            ],
+            "label": "SUPPORT"
+          }
+        ]
+      }
+    },
+    {
+      "id": 1194,
+      "claim": "The arm density of TatAd complexes is due to structural rearrangements within Class1 TatAd complexes such as the 'charge zipper mechanism'.",
+      "gold_evidence": {}
+    },
+    {
+      "id": 137,
+      "claim": "Asymptomatic visual impairment screening in elderly populations does not lead to improved vision.",
+      "gold_evidence": {
+        "26016929": [
+          {
+            "sentences": [
+              7,
+              9
+            ],
+            "label": "SUPPORT"
+          }
+        ]
+      }
+    },
+    {
+      "id": 781,
+      "claim": "Mice that lack Interferon-γ or its receptor exhibit high resistance to experimental autoimmune myocarditis.",
+      "gold_evidence": {
+        "24338780": [
+          {
+            "sentences": [
+              2
+            ],
+            "label": "CONTRADICT"
+          },
+          {
+            "sentences": [
+              3
+            ],
+            "label": "CONTRADICT"
+          },
+          {
+            "sentences": [
+              6
+            ],
+            "label": "CONTRADICT"
+          }
+        ]
+      }
+    }
+  ],
+  "runs": [
+    {
+      "claim_id": 48,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.00124981,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "13734012",
+            "verdict": "CONTRADICT",
+            "evidence_sentence_ids": [
+              4,
+              7
+            ],
+            "explanation": "The abstract reports 16 abnormal-PrP positives in 32,441 archived appendix samples, an overall prevalence of 493 per million population (95% CI 282 to 801 per million), and concludes this indicates vCJD carrier status in the population. Applied to the UK population (about 60 million, a figure not stated in the abstract), this implies roughly 17,000 to 48,000 carriers, far above 1,000. The abstract does not state a total count, so the contradiction relies on this calculation."
+          },
+          {
+            "document_id": "18617259",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This research letter describes a single preclinical vCJD case found in a transfusion recipient and says the findings have implications for future estimates of vCJD in the UK. It gives no population-level carrier count, so it neither supports nor contradicts the 1,000 figure."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 1,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 1,
+        "predicted_sentences": 2,
+        "correct_sentences": 1,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 9.816
+    },
+    {
+      "claim_id": 48,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.0017293500000000002,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "13734012",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract reports a survey of 32,441 archived UK appendix samples in which 16 were positive for abnormal PrP, an overall prevalence of 493 per million population (95% CI 282 to 801 per million). It concludes this suggests a high prevalence of infection with abnormal PrP, indicating vCJD carrier status in the population compared with 177 vCJD cases to date. It does not report a count of carriers, and it does not state that 1,000 people in the UK are asymptomatic carriers. Converting the per-million prevalence into a national headcount would be a derived estimate not stated in the abstract, so the specific claim of 1,000 cannot be confirmed or refuted from this abstract. The study also measures abnormal PrP in appendix tissue, which is not the same as a clinically defined asymptomatic vCJD carrier count."
+          },
+          {
+            "document_id": "18617259",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This research letter reports a single preclinical vCJD case, a patient who died of a non-neurological disorder 5 years after receiving a blood transfusion from a donor who later developed vCJD. Prion protein was found in spleen and a cervical lymph node but not brain. The authors state the findings have major implications for future estimates and surveillance of vCJD in the UK, but the abstract gives no UK population count or carrier estimate, so it neither supports nor contradicts the figure of 1,000."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 0,
+        "correct_document_labels": 0,
+        "correct_abstracts_with_evidence": 0,
+        "gold_sentences": 1,
+        "predicted_sentences": 0,
+        "correct_sentences": 0,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 12.515
+    },
+    {
+      "claim_id": 1197,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.0009917699999999999,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "154243324",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract studies youth-to-adult homelessness progression in 1,677 individuals and finds that longer homelessness makes exit more difficult, and that long-term support can help people return to conventional accommodation. It says nothing about the availability of safe places to study or its effect on homelessness, so it neither supports nor contradicts the claim."
+          },
+          {
+            "document_id": "20334484",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This qualitative study of shelter-based homeless youth in Baltimore describes perceived health problems and environmental safety threats. It does not examine study spaces or any effect of safe places to study on homelessness rates."
+          },
+          {
+            "document_id": "33135135",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This review covers health, developmental, and educational effects of homelessness on children and lists shelter conditions and service access as possible mediators. It does not address safe study places or their effect on homelessness."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 0,
+        "predicted_documents": 0,
+        "correct_document_labels": 0,
+        "correct_abstracts_with_evidence": 0,
+        "gold_sentences": 0,
+        "predicted_sentences": 0,
+        "correct_sentences": 0,
+        "nei_claims": 1,
+        "correct_nei": 1
+      },
+      "status": "ok",
+      "elapsed_seconds": 7.27
+    },
+    {
+      "claim_id": 1197,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.000791695,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "154243324",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract covers early intervention programs and the progression from youth to adult homelessness. It says nothing about safe places to study or their effect on homelessness, so it neither supports nor contradicts the claim."
+          },
+          {
+            "document_id": "31019903",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract describes health problems faced by homeless people and barriers to health care. It does not mention study spaces or their effect on homelessness, so it is not relevant to the claim."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 0,
+        "predicted_documents": 0,
+        "correct_document_labels": 0,
+        "correct_abstracts_with_evidence": 0,
+        "gold_sentences": 0,
+        "predicted_sentences": 0,
+        "correct_sentences": 0,
+        "nei_claims": 1,
+        "correct_nei": 1
+      },
+      "status": "ok",
+      "elapsed_seconds": 7.331
+    },
+    {
+      "claim_id": 115,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.000256045,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "status": "error",
+      "error": "RuntimeError: Agent failed: success; API Error: Haiku 5.5 can't help with this. Start a new session to continue.\n\nLearn more: https://www.anthropic.com/legal/aup\n\nDetails: `[bio]`\n\nRequest ID: req_011CgrHjUtbtzbwMzCPA4u79\n\nMessage ID: msg_011CgrHjVCTStDr5JBSNF3mV",
+      "elapsed_seconds": 4.661
+    },
+    {
+      "claim_id": 115,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.000274555,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "status": "error",
+      "error": "RuntimeError: Agent failed: success; API Error: Haiku 5.5 can't help with this. Start a new session to continue.\n\nLearn more: https://www.anthropic.com/legal/aup\n\nDetails: `[bio]`\n\nRequest ID: req_011CgrHk3D3auFyHLHKHYAMf\n\nMessage ID: msg_011CgrHk3ZNi3LPSFoBKPuLQ",
+      "elapsed_seconds": 8.558
+    },
+    {
+      "claim_id": 859,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.0013394099999999999,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "1982286",
+            "verdict": "CONTRADICT",
+            "evidence_sentence_ids": [
+              3,
+              4,
+              5
+            ],
+            "explanation": "This is a human T-ALL and cell-transformation study that identifies RUNX1 as a tumor suppressor in T cell transformation, supported by recurrent somatic loss-of-function RUNX1 mutations in human T-ALL. This is incompatible with the claim that normal RUNX1 expression promotes tumors. The abstract does not directly test normal expression levels, so the contradiction is indirect."
+          },
+          {
+            "document_id": "22049489",
+            "verdict": "CONTRADICT",
+            "evidence_sentence_ids": [
+              3,
+              5
+            ],
+            "explanation": "This study of human gastric cancer cells and tissues describes RUNX1 as a tumor suppressor. It reports that RUNX1 is a direct target of miR-675, which promotes gastric cancer cell growth, and that RUNX1 and H19/miR-675 expression are inversely related in gastric cancer tissues and cell lines. This points toward RUNX1 restraining, not promoting, tumor growth. The evidence is correlational and indirect, and the study does not test normal RUNX1 expression as a driver."
+          },
+          {
+            "document_id": "16364639",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This glioblastoma study is a broad analysis of microRNA-mediated regulation. RUNX1 is listed only among many oncogenic pathway genes whose transcripts are regulated by miRNA interactions. The abstract does not report whether RUNX1 expression promotes or suppresses tumors, so it does not address the claim."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 2,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 1,
+        "predicted_sentences": 5,
+        "correct_sentences": 1,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 10.402
+    },
+    {
+      "claim_id": 859,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.001157965,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "22049489",
+            "verdict": "CONTRADICT",
+            "evidence_sentence_ids": [
+              3,
+              5,
+              6
+            ],
+            "explanation": "The abstract describes RUNX1 as a tumor suppressor whose expression is inversely related to the oncogenic lncRNA H19/miR-675 in gastric cancer. Targeting RUNX1 promotes gastric cancer cell growth, so higher RUNX1 expression is associated with suppressing rather than promoting tumors. This contradicts the claim that normal RUNX1 expression is tumor-promoting."
+          },
+          {
+            "document_id": "1982286",
+            "verdict": "CONTRADICT",
+            "evidence_sentence_ids": [
+              3,
+              4
+            ],
+            "explanation": "The abstract identifies RUNX1 as a tumor suppressor in T-ALL, predicted by network analysis and supported by recurrent somatic loss-of-function mutations in human T-ALL. This indicates RUNX1 restrains rather than promotes leukemogenesis, contradicting the claim."
+          },
+          {
+            "document_id": "12315072",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract studies RUNX1's role in chromatin unfolding and hematopoietic gene expression (PU.1/Csf1r regulation during myelopoiesis). It does not address tumor growth or whether normal RUNX1 expression promotes tumors, so it neither supports nor contradicts the claim."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 2,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 1,
+        "predicted_sentences": 5,
+        "correct_sentences": 1,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 8.506
+    },
+    {
+      "claim_id": 216,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.0005946149999999999,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "21366394",
+            "verdict": "CONTRADICT",
+            "evidence_sentence_ids": [
+              4
+            ],
+            "explanation": "The abstract reports that CX3CR1 signaling promotes Th2 cell survival in inflamed lungs, and that BCL-2-transduced CX3CR1-deficient Th2 cells restored asthma. This is the opposite of the claim that CX3CR1 on Th2 cells impairs T cell survival."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 1,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 1,
+        "predicted_sentences": 1,
+        "correct_sentences": 1,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 6.327
+    },
+    {
+      "claim_id": 216,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.000723695,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "21366394",
+            "verdict": "CONTRADICT",
+            "evidence_sentence_ids": [
+              4,
+              5
+            ],
+            "explanation": "The claim says CX3CR1 on Th2 cells impairs T cell survival. The abstract reports the opposite direction: CX3CR1 signaling promoted T(H)2 survival in inflamed lungs, and restoring BCL-2 in CX3CR1-deficient Th2 cells restored asthma. CX3CR1-induced survival was also seen for Th1 cells during airway inflammation. The study is in mice (with some human observations about CD4+ T cells in asthma), and the findings concern airway inflammation rather than T cell survival in general. Only one abstract was read; it was sufficient to contradict the claim's direction."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 1,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 1,
+        "predicted_sentences": 2,
+        "correct_sentences": 1,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 6.327
+    },
+    {
+      "claim_id": 72,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.00126471,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "6076903",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              5,
+              6
+            ],
+            "explanation": "The abstract describes ADMP as a BMP-like signaling molecule (activator) and says it is unable to signal dorsally because of inhibition by Chordin. This describes a dorsal activator (ADMP) and inhibitor (Chordin) relationship, which supports the claim. The abstract does not use the phrase 'activator-inhibitor pair' and studies Xenopus embryos, so the support is an inference from the described mechanism rather than an explicit statement."
+          },
+          {
+            "document_id": "1031534",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract describes Chordin as a dorsally secreted antagonist of ventralizing BMPs and its interaction with Sizzled in Xenopus embryos. It does not mention Admp or describe an activator-inhibitor pair involving Admp, so it neither supports nor contradicts the claim."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 0,
+        "predicted_documents": 1,
+        "correct_document_labels": 0,
+        "correct_abstracts_with_evidence": 0,
+        "gold_sentences": 0,
+        "predicted_sentences": 2,
+        "correct_sentences": 0,
+        "nei_claims": 1,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 9.943
+    },
+    {
+      "claim_id": 72,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.001120185,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "6076903",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              5,
+              6
+            ],
+            "explanation": "The abstract describes ADMP as a BMP-like signal (activator) that acts dorsally in the Spemann organizer, and states that it is unable to signal dorsally because of inhibition by Chordin. This matches a dorsal ADMP (activator) and Chordin (inhibitor) pairing. The abstract does not use the term 'activator-inhibitor pair' explicitly, so this is a reasonable but not verbatim support."
+          },
+          {
+            "document_id": "1031534",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract describes Chordin as a dorsal BMP antagonist from Spemann's organizer, regulated by Sizzled, but never mentions Admp or any activator paired with Chordin. It does not address the claimed Admp-Chordin activator-inhibitor pair."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 0,
+        "predicted_documents": 1,
+        "correct_document_labels": 0,
+        "correct_abstracts_with_evidence": 0,
+        "gold_sentences": 0,
+        "predicted_sentences": 2,
+        "correct_sentences": 0,
+        "nei_claims": 1,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 9.373
+    },
+    {
+      "claim_id": 219,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.00063986,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "21366394",
+            "verdict": "CONTRADICT",
+            "evidence_sentence_ids": [
+              2,
+              3,
+              4
+            ],
+            "explanation": "The claim says CX3CR1 on Th2 cells suppresses airway inflammation. The abstract reports the opposite. CX3CR1-deficient mice had reduced lung disease after allergen challenge, and transferring WT Th2 cells into CX3CR1-deficient recipients restored asthma. The authors found that CX3CR1 signaling promotes Th2 survival in inflamed lungs, so CX3CR1 drives rather than suppresses airway inflammation."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 1,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 2,
+        "predicted_sentences": 3,
+        "correct_sentences": 2,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 7.867
+    },
+    {
+      "claim_id": 219,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.0007905950000000001,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "21366394",
+            "verdict": "CONTRADICT",
+            "evidence_sentence_ids": [
+              2,
+              3,
+              4
+            ],
+            "explanation": "This is a mouse study (with some human observations in sentence 1, where CX3CR1 is expressed on a fraction of CD4+ T cells in people with asthma). The claim says CX3CR1 on Th2 cells suppresses airway inflammation, but the abstract reports the opposite direction. CX3CR1-deficient mice, and wild-type mice treated with CX3CR1-blocking reagents, showed reduced lung disease. Transferring WT CD4+ T cells into CX3CR1-deficient mice restored asthma features, and CX3CR1 signaling promoted TH2 survival in inflamed lungs. The abstract therefore indicates that CX3CR1 promotes, rather than suppresses, airway inflammation. The abstract is about the population of mice and does not directly address human airway inflammation."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 1,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 2,
+        "predicted_sentences": 3,
+        "correct_sentences": 2,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 7.941
+    },
+    {
+      "claim_id": 148,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.00113857,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "1084345",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              1,
+              5
+            ],
+            "explanation": "Rodent study (mice and aged rodents, liver). The abstract states that CMA activity declines in aged organisms, citing the authors' previous work, and that preventing the age-related decrease in the CMA lysosomal receptor maintained CMA activity to advanced ages. The support is specific to chaperone-mediated autophagy rather than autophagy in general, and the decline is reported as prior finding, not newly established here."
+          },
+          {
+            "document_id": "56528795",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              2,
+              6,
+              7
+            ],
+            "explanation": "Rat liver study. Autophagy-related proteins (LC3II/I, Beclin-1, LAMP2) were significantly decreased as rats aged, and the abstract describes autophagic deficiency in aging liver. The evidence is correlational and limited to liver and rats, using protein markers rather than direct measures of autophagic flux. It does not establish that this applies to all aged organisms."
+          },
+          {
+            "document_id": "15728433",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "Review of autophagy in stem cell renewal, differentiation, and proliferation. Despite 'aging' in the title, the abstract sentences shown do not report any age-related decline in autophagy, so they neither support nor contradict the claim."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 2,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 1,
+        "predicted_sentences": 5,
+        "correct_sentences": 1,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 8.117
+    },
+    {
+      "claim_id": 148,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.001103715,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "1084345",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              1,
+              5
+            ],
+            "explanation": "The abstract states that CMA activity declines in aged organisms (sentence 1, citing the authors' prior work). It also reports that CMA activity is maintained to advanced ages when the age-dependent decrease in the lysosomal receptor is prevented (sentence 5), which supports the claim that autophagy declines with age. The age-related decline is the premise of the study, and the paper's own results add support to it."
+          },
+          {
+            "document_id": "33569870",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract studies endothelial autophagy and lipid homeostasis in ATG7-deficient mice and cells. It mentions 'the age-dependent decline in autophagic flux' only in passing (sentence 9) as a motivation for therapy. It does not measure or report any age-related change in autophagy, so it neither supports nor contradicts the claim."
+          },
+          {
+            "document_id": "52887689",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This is a methodological guidelines paper for monitoring autophagy and distinguishing autophagosome accumulation from autophagic flux. It does not discuss or report autophagy levels in aged organisms, so it is not relevant to the claim beyond being a general methods reference."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 1,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 1,
+        "predicted_sentences": 2,
+        "correct_sentences": 1,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 8.85
+    },
+    {
+      "claim_id": 800,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.0012979850000000002,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "4679264",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              1,
+              3,
+              8
+            ],
+            "explanation": "The abstract reports that DNA methylation (an epigenetic mechanism) in human cerebral cortex changes progressively across the lifespan, including at neurogenesis-related genes NEUROD1 and NEUROD2, with rising methylation typically accompanied by declining mRNA levels. This supports the claim that epigenomic changes in the brain accompany normal human aging and affect neurogenesis-related genes. The evidence is correlational, not an intervention that modifies the epigenome, so it supports the association more than a causal 'modifying affects' reading."
+          },
+          {
+            "document_id": "22264117",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This review argues that epigenomic and chromatin changes drive aging generally, but it does not mention the brain, human aging specifically, or neurogenesis-related genes."
+          },
+          {
+            "document_id": "25597580",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This study shows reduced hippocampal neurogenesis in aged mice linked to loss of active neural stem cells, but it does not examine epigenetic modification or any epigenome-gene relationship, so it neither supports nor contradicts the claim."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 0,
+        "predicted_documents": 1,
+        "correct_document_labels": 0,
+        "correct_abstracts_with_evidence": 0,
+        "gold_sentences": 0,
+        "predicted_sentences": 3,
+        "correct_sentences": 0,
+        "nei_claims": 1,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 9.171
+    },
+    {
+      "claim_id": 800,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.001345485,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "4679264",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This human cortex study is relevant context: it reports age-related DNA methylation changes at CNS development genes, including neurogenesis-related NEUROD1 and NEUROD2 (sentence 3). However, it is observational. It shows that methylation changes across the lifespan, not that modifying brain epigenome affects normal aging via neurogenesis genes. No intervention on the epigenome was tested, so the causal part of the claim is not supported."
+          },
+          {
+            "document_id": "9291668",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This is a review of DNA methylation in healthy human aging. It says epigenetic changes may be an important component of aging (sentence 1), but it does not address brain tissue, neurogenesis, or any modification of the epigenome. It does not test or establish the claim's causal link."
+          },
+          {
+            "document_id": "25597580",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This study is in mice, not humans. It examines hippocampal neural stem cells and Notch signaling. It reports that reduced neurogenesis in aged mice correlates with loss of active NSCs and that rejuvenation is possible (sentence 5), but it does not involve epigenome modification. The abstract therefore cannot support or contradict the human, epigenome-specific claim."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 0,
+        "predicted_documents": 0,
+        "correct_document_labels": 0,
+        "correct_abstracts_with_evidence": 0,
+        "gold_sentences": 0,
+        "predicted_sentences": 0,
+        "correct_sentences": 0,
+        "nei_claims": 1,
+        "correct_nei": 1
+      },
+      "status": "ok",
+      "elapsed_seconds": 8.842
+    },
+    {
+      "claim_id": 873,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.000891565,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "27393799",
+            "verdict": "CONTRADICT",
+            "evidence_sentence_ids": [
+              2,
+              3,
+              6,
+              8
+            ],
+            "explanation": "In this human twin study, BMI intrapair correlations for identical twins reared apart were 0.70 (men) and 0.66 (women), and heritability estimates were substantial (0.74 men, 0.69 women by model fitting). Individual-specific environment contributed about 30 percent of variance, and shared childhood environment had little or no influence. Genetic influences are described as substantial, so BMI is not determined solely by environment. The study concerns BMI, a proxy for obesity, in adults from a specific twin sample."
+          },
+          {
+            "document_id": "29025270",
+            "verdict": "CONTRADICT",
+            "evidence_sentence_ids": [
+              1,
+              2,
+              5
+            ],
+            "explanation": "In this Danish adoption study of adults, adoptee weight class was strongly related to the BMI of biological parents and unrelated to the BMI of adoptive (environmental) parents. The authors conclude genetic influences have an important role in determining human fatness, whereas the family environment alone has no apparent effect. This is incompatible with the claim that obesity is determined solely by environmental factors. The study is observational and does not quantify a precise heritability."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 5,
+        "predicted_documents": 2,
+        "correct_document_labels": 2,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 12,
+        "predicted_sentences": 7,
+        "correct_sentences": 3,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 7.235
+    },
+    {
+      "claim_id": 873,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.0008003250000000001,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "3315558",
+            "verdict": "CONTRADICT",
+            "evidence_sentence_ids": [
+              4,
+              5
+            ],
+            "explanation": "The abstract concludes that genetic factors are certainly present in human obesity and suggests a dominant major gene with weak effect. This contradicts the claim that obesity is determined solely by environmental factors."
+          },
+          {
+            "document_id": "27393799",
+            "verdict": "CONTRADICT",
+            "evidence_sentence_ids": [
+              2,
+              3,
+              8
+            ],
+            "explanation": "Twins reared apart show a BMI intrapair correlation of about 0.70 (heritability estimates around 0.7), and the authors conclude genetic influences are substantial while childhood environment has little or no influence. This contradicts the claim that obesity is determined solely by environmental factors."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 5,
+        "predicted_documents": 2,
+        "correct_document_labels": 2,
+        "correct_abstracts_with_evidence": 2,
+        "gold_sentences": 12,
+        "predicted_sentences": 5,
+        "correct_sentences": 3,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 5.374
+    },
+    {
+      "claim_id": 985,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.001132055,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "6828370",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              2,
+              3,
+              7
+            ],
+            "explanation": "The abstract states that PTENP1, the pseudogene of PTEN, is biologically active because it regulates cellular PTEN levels and exerts a growth-suppressive role. It frames this as a coding-independent competition for microRNA binding, which is the decoy mechanism named in the claim."
+          },
+          {
+            "document_id": "16364639",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract describes a miRNA sponge network that regulates PTEN in glioblastoma, but it never mentions the pseudogene PTENP1. It therefore does not directly test the specific claim about PTENP1 acting as a decoy."
+          },
+          {
+            "document_id": "13964633",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract concerns the versican 3'UTR acting as a miRNA decoy that upregulates PTEN and Rb1. It does not involve the PTENP1 pseudogene, so it neither supports nor contradicts the claim."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 1,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 1,
+        "predicted_sentences": 3,
+        "correct_sentences": 1,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 7.583
+    },
+    {
+      "claim_id": 985,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.001014885,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "6828370",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              1,
+              2,
+              3
+            ],
+            "explanation": "The abstract proposes that RNAs can regulate each other by competing for microRNA binding, uses the PTEN/PTENP1 mRNA pair as its model, and reports that PTENP1 is biologically active because it can regulate cellular levels of PTEN and exert a growth-suppressive role. This supports the claim that PTENP1 regulates PTEN via a miRNA-decoy mechanism. The abstract does not explicitly use the term 'decoy', and its evidence appears to be from cell/experimental work rather than a clinical population, so the support is for the mechanism in that setting."
+          },
+          {
+            "document_id": "16364639",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract describes a broad miRNA-mediated sponge network in glioblastoma and reports that siRNA silencing of 13 miR-mediated PTEN regulators downregulates PTEN. It does not mention PTENP1 or the pseudogene, so it does not directly address whether PTENP1 regulates PTEN as a miRNA decoy."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 1,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 1,
+        "predicted_sentences": 3,
+        "correct_sentences": 1,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 7.678
+    },
+    {
+      "claim_id": 692,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.001286275,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "24088502",
+            "verdict": "CONTRADICT",
+            "evidence_sentence_ids": [
+              8
+            ],
+            "explanation": "The claim is that leuko-increased (non-leukoreduced) blood increases infectious complications, which implies that leukoreduction would reduce infections. This retrospective before-and-after cohort (23 Canadian hospitals, 14,786 transfusion patients in high-risk surgical/trauma/ICU groups) found that after universal prestorage leukoreduction, serious nosocomial infections did not decrease (adjusted OR 0.97; 95% CI 0.87-1.09). The CI excludes a meaningful infection reduction from leukoreduction, so the abstract does not support the claimed infection effect. The study is observational and reports associations only. Its significant findings concern mortality (adjusted OR 0.87), posttransfusion fever (adjusted OR 0.86), and antibiotic use (adjusted OR 0.90), not infections. Those outcomes are not the claimed outcome, so they are not cited as contradicting evidence."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 1,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 3,
+        "predicted_sentences": 1,
+        "correct_sentences": 1,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 10.945
+    },
+    {
+      "claim_id": 692,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.000896805,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "24088502",
+            "verdict": "CONTRADICT",
+            "evidence_sentence_ids": [
+              8
+            ],
+            "explanation": "This retrospective before-and-after cohort study of universal prestorage leukoreduction found that serious nosocomial infections did not decrease after leukoreduction (adjusted OR 0.97, 95% CI 0.87-1.09). This does not support the claim that leukocyte-containing blood increases infectious complications. The study also found that leukoreduction was associated with lower mortality, fever, and antibiotic use, but those outcomes do not bear on the infection claim. The study is observational and only one abstract was read, so this is a moderate-strength contradiction."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 1,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 3,
+        "predicted_sentences": 1,
+        "correct_sentences": 1,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 7.32
+    },
+    {
+      "claim_id": 644,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.000854725,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "13619127",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract is a primary-care cohort of type 2 diabetes drugs and severe kidney failure. Insulin is one of the listed exposures (sentence 4), but the reported kidney-failure results (sentence 9) concern glitazones and gliptins versus metformin only. No insulin-specific hazard ratio for severe kidney failure is reported, so the abstract neither supports nor contradicts the claim that insulin increases that risk."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 0,
+        "predicted_documents": 0,
+        "correct_document_labels": 0,
+        "correct_abstracts_with_evidence": 0,
+        "gold_sentences": 0,
+        "predicted_sentences": 0,
+        "correct_sentences": 0,
+        "nei_claims": 1,
+        "correct_nei": 1
+      },
+      "status": "ok",
+      "elapsed_seconds": 5.745
+    },
+    {
+      "claim_id": 644,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.0008815299999999999,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "13619127",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This is a human cohort study of 469,688 primary care patients with type 2 diabetes in England. Insulin is one of the listed exposures (sentence 4), and severe kidney failure is one of the outcomes (sentence 5). However, the reported kidney-failure result concerns glitazones and gliptins versus metformin monotherapy (sentence 9), not insulin. The abstract reports no insulin-specific hazard ratio for severe kidney failure, so it neither supports nor contradicts the claim that insulin increases the risk of severe kidney failure. The second search returned no other insulin-specific kidney-outcome abstracts that I read, so the claim remains unassessed in this corpus."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 0,
+        "predicted_documents": 0,
+        "correct_document_labels": 0,
+        "correct_abstracts_with_evidence": 0,
+        "gold_sentences": 0,
+        "predicted_sentences": 0,
+        "correct_sentences": 0,
+        "nei_claims": 1,
+        "correct_nei": 1
+      },
+      "status": "ok",
+      "elapsed_seconds": 6.106
+    },
+    {
+      "claim_id": 141,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.00121465,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "14437255",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              5,
+              6,
+              13
+            ],
+            "explanation": "In human EEG recordings, cortical representation of the speech envelope (cortical entrainment to continuous auditory speech) was enhanced by congruent audiovisual speech, with the enhancement shown in noise-free conditions. Sentence 8 also reports that entrainment was inhibited when the streams were incongruent. This directly matches the claim, though the study is limited to continuous speech in humans and reports an enhancement effect rather than a general mechanism."
+          },
+          {
+            "document_id": "6955746",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The MEG study shows that delta-theta phase in auditory and visual areas tracks audiovisual movie dynamics. It does not compare congruent with incongruent audiovisual information, so it cannot show that auditory entrainment is strengthened by congruence."
+          },
+          {
+            "document_id": "10624000",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The MEG study focuses on visual entrainment to lip movements and on attention to visual speech. It reports enhanced lip-brain coherence and audiovisual speech processing, but it does not manipulate audiovisual congruence or measure auditory entrainment as a function of congruence, so it does not directly address the claim."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 1,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 6,
+        "predicted_sentences": 3,
+        "correct_sentences": 2,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 8.249
+    },
+    {
+      "claim_id": 141,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.001052795,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "14437255",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              6,
+              8,
+              13
+            ],
+            "explanation": "The abstract reports that cortical entrainment to the auditory speech envelope is enhanced by congruent audiovisual speech, even in noise-free conditions. It also reports that entrainment is inhibited when the auditory and visual streams are incongruent, which directly matches the claim."
+          },
+          {
+            "document_id": "6955746",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract shows that auditory cortex tracks both auditory and visual stimulus dynamics via delta-theta phase modulation. It does not compare congruent with incongruent audiovisual conditions, so it cannot confirm that entrainment is strengthened by congruence."
+          },
+          {
+            "document_id": "10624000",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract covers lip-movement entrainment of visual cortex and attention effects on lip-brain coherence. It does not test congruent versus incongruent auditory and visual information, so it neither supports nor contradicts the claim about auditory entrainment."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 1,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 6,
+        "predicted_sentences": 3,
+        "correct_sentences": 3,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 6.336
+    },
+    {
+      "claim_id": 684,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.00098029,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "4942718",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This Tn-seq screen identifies sporulation genes across the knockout collection, but the abstract does not mention clpC or report sporulation efficiency for clpC mutants, so it neither supports nor contradicts the claim."
+          },
+          {
+            "document_id": "34386619",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This paper characterizes CtsR as a repressor of the clpC operon and class III heat shock genes. It does not examine sporulation or sporulation efficiency in clpC mutants."
+          },
+          {
+            "document_id": "12881593",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This paper covers Clp protein levels, ClpC-ClpP interactions, and clp mRNA/protein regulation under heat stress. It does not address sporulation efficiency in clpC mutants."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 0,
+        "predicted_documents": 0,
+        "correct_document_labels": 0,
+        "correct_abstracts_with_evidence": 0,
+        "gold_sentences": 0,
+        "predicted_sentences": 0,
+        "correct_sentences": 0,
+        "nei_claims": 1,
+        "correct_nei": 1
+      },
+      "status": "ok",
+      "elapsed_seconds": 6.531
+    },
+    {
+      "claim_id": 684,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.0011254400000000001,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "4942718",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This Tn-seq screen of B. subtilis sporulation genes does not mention clpC in the abstract. It reports sporulation phenotypes for 133 of 148 known sporulation genes and new factors, but says nothing about clpC mutants or their sporulation efficiency, so it cannot confirm or refute the claim."
+          },
+          {
+            "document_id": "34386619",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This study addresses regulation of the clpC operon by the CtsR repressor (ctsR deletion, heat shock and sigma-factor expression). It does not measure sporulation efficiency in clpC mutant cells, so it does not directly address the claim."
+          },
+          {
+            "document_id": "12881593",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This paper covers Clp protein levels, ClpCP-mediated degradation of ClpE, and clp mRNA half-lives under heat stress. It does not test clpC deletion or sporulation efficiency, so it neither supports nor contradicts the claim."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 0,
+        "predicted_documents": 0,
+        "correct_document_labels": 0,
+        "correct_abstracts_with_evidence": 0,
+        "gold_sentences": 0,
+        "predicted_sentences": 0,
+        "correct_sentences": 0,
+        "nei_claims": 1,
+        "correct_nei": 1
+      },
+      "status": "ok",
+      "elapsed_seconds": 7.723
+    },
+    {
+      "claim_id": 50,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.000890065,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "12580014",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              0,
+              1
+            ],
+            "explanation": "The abstract reports that Aire is inducibly expressed in human and mouse tumor keratinocytes in a K17-dependent manner, and that Aire is required for timely onset of Gli2-induced skin tumorigenesis in mice. This supports the claim that AIRE is expressed in some skin tumors. The evidence comes from human tumor keratinocytes and a mouse model, and the study does not report a broad human tumor survey."
+          },
+          {
+            "document_id": "18488986",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract studies AIRE's role in thymic epithelial cells and immune responses to melanoma antigens in APECED patients and AIRE-deficient mice. It does not report AIRE expression in skin tumors or melanoma tissue, so it neither supports nor contradicts the claim."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 1,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 1,
+        "predicted_sentences": 2,
+        "correct_sentences": 1,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 6.338
+    },
+    {
+      "claim_id": 50,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.0007963,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "12580014",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              0,
+              1
+            ],
+            "explanation": "The abstract reports that Aire is inducibly expressed in human and mouse tumor keratinocytes and is required for timely onset of Gli2-induced skin tumorigenesis in mice. This directly supports the claim that AIRE is expressed in some skin tumors."
+          },
+          {
+            "document_id": "18488986",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This abstract studies AIRE's role in thymic expression of melanoma-associated self-antigens and anti-melanoma immune responses in AIRE-deficient mice. It does not report AIRE expression within skin tumors themselves, so it neither supports nor contradicts the claim."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 1,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 1,
+        "predicted_sentences": 2,
+        "correct_sentences": 1,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 6.489
+    },
+    {
+      "claim_id": 1104,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.001027285,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "3898784",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              10,
+              13
+            ],
+            "explanation": "In this cohort of 141,311 patients with intracerebral hemorrhage (a stroke subtype), prior NOAC use was associated with lower in-hospital mortality than prior warfarin use (adjusted risk difference -5.7%, adjusted OR 0.75). The study covers only ICH rather than all stroke types, so it supports the claim for that stroke population."
+          },
+          {
+            "document_id": "4910408",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This abstract studies DOAC trough levels and thromboembolic events in atrial fibrillation patients. It does not involve stroke patients, warfarin comparators, or in-hospital mortality, so it neither supports nor contradicts the claim."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 1,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 4,
+        "predicted_sentences": 2,
+        "correct_sentences": 2,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 7.201
+    },
+    {
+      "claim_id": 1104,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.0009410600000000001,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "3898784",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              10,
+              13
+            ],
+            "explanation": "The abstract is a retrospective cohort of 141,311 patients with intracerebral hemorrhage (a hemorrhagic stroke subtype) from GWTG-Stroke hospitals. It reports that, compared with prior warfarin use, prior NOAC use was associated with lower in-hospital mortality (AOR 0.75, 97.5% CI 0.69 to 0.81; ARD -5.7%). NOACs are the DOAC class, so this matches the exposure. The claim is broader than the study's population: it says 'stroke patients', but the study covers only ICH, not ischemic stroke. The finding is an association from an observational design, not a causal effect. Because the claim is a general stroke claim, the support is partial and limited to ICH."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 1,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 4,
+        "predicted_sentences": 2,
+        "correct_sentences": 2,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 7.326
+    },
+    {
+      "claim_id": 820,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.001066105,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "8712839",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract describes mapping of transcription start and termination sites in the mouse genome using full-length cDNAs. It does not mention N-terminal cleavage, protein N-termini, or whether any such cleavage affects success in identifying TSSs, so it neither supports nor contradicts the claim."
+          },
+          {
+            "document_id": "3346812",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This review concerns DNA methylation across genomic contexts, including transcriptional start sites and CpG islands. It does not address N-terminal cleavage or any effect of such cleavage on TSS identification, so it is not relevant to the claim."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 0,
+        "predicted_documents": 0,
+        "correct_document_labels": 0,
+        "correct_abstracts_with_evidence": 0,
+        "gold_sentences": 0,
+        "predicted_sentences": 0,
+        "correct_sentences": 0,
+        "nei_claims": 1,
+        "correct_nei": 1
+      },
+      "status": "ok",
+      "elapsed_seconds": 8.202
+    },
+    {
+      "claim_id": 820,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.0010949599999999999,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "8712839",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract describes comprehensive mapping of transcription start and termination sites in mouse using full-length cDNAs, but does not mention N-terminal cleavage or any effect of such cleavage on TSS identification success."
+          },
+          {
+            "document_id": "27061085",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract covers Cufflinks transcript assembly from RNA-Seq and TSS switching during differentiation. It does not discuss N-terminal cleavage or whether it increases TSS identification success."
+          },
+          {
+            "document_id": "3346812",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract is a review of DNA methylation functions at transcription start sites and other contexts. It does not address N-terminal cleavage or TSS identification methods."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 0,
+        "predicted_documents": 0,
+        "correct_document_labels": 0,
+        "correct_abstracts_with_evidence": 0,
+        "gold_sentences": 0,
+        "predicted_sentences": 0,
+        "correct_sentences": 0,
+        "nei_claims": 1,
+        "correct_nei": 1
+      },
+      "status": "ok",
+      "elapsed_seconds": 9.504
+    },
+    {
+      "claim_id": 275,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.001142925,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "4961038",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              6,
+              7,
+              8
+            ],
+            "explanation": "In mouse models of mutant Kras lung cancer, single-agent PI3K/mTOR inhibitor NVP-BEZ235 did not substantially work, but combining it with the MEK inhibitor ARRY-142886 produced marked synergy in shrinking these Kras-mutant tumors. The authors conclude that PI3K-mTOR inhibitors combined with MEK inhibitors may effectively treat KRAS-mutated lung cancers. This supports the claim, though the evidence is from a murine model and the abstract frames it as a suggestion."
+          },
+          {
+            "document_id": "4920376",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This study combines PI3K inhibition with direct ERK inhibition, not MEK 1/2 inhibition, in KRAS-mutant pancreatic cancer cell lines. ERK is downstream of MEK, so it does not directly test the MEK inhibitor combination in the claim."
+          },
+          {
+            "document_id": "14819804",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This study tests the PI3K inhibitor PX-866 alone in xenografts and finds that mutant Ras confers resistance. It does not test any MEK inhibitor combination, so it neither supports nor contradicts the claim."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 2,
+        "predicted_documents": 1,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 3,
+        "predicted_sentences": 3,
+        "correct_sentences": 2,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 7.384
+    },
+    {
+      "claim_id": 275,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.001522335,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "4961038",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              6,
+              7,
+              8
+            ],
+            "explanation": "This is a mouse study (genetically engineered mice with Kras-mutant lung tumors). Single-agent PI3K/mTOR inhibitor NVP-BEZ235 did not substantially respond, but combining it with the MEK inhibitor ARRY-142886 produced marked synergy in shrinking these Kras-mutant cancers. The authors state that combined with MEK inhibitors, PI3K-mTOR inhibitors 'may effectively treat KRAS mutated lung cancers,' which is hedged and based on in vivo animal data, not human trials. This supports the claim in mice only; it does not establish clinical effectiveness in patients."
+          },
+          {
+            "document_id": "4920376",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This study uses KRAS-mutant pancreatic cancer cell lines and reports synergistic cell death when ERK inhibition is combined with PI3K inhibition. The intervention is an ERK inhibitor, not a MEK 1/2 inhibitor, and the evidence is in vitro (only in a subset of cell lines), with no animal or clinical efficacy data. It is therefore not sufficient to assess the claim about MEK 1/2 inhibitors treating KRAS-mutant tumors."
+          },
+          {
+            "document_id": "14819804",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This study tests the PI3K inhibitor PX-866 alone in human tumor xenografts and finds that oncogenic Ras predicts resistance to it. It does not test any MEK inhibitor or a PI3K plus MEK combination, so it neither supports nor contradicts the claim. Its discussion of rational combinations is only a suggestion and does not report combination efficacy."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 2,
+        "predicted_documents": 1,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 3,
+        "predicted_sentences": 3,
+        "correct_sentences": 2,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 10.251
+    },
+    {
+      "claim_id": 380,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.001412805,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "19005293",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              2,
+              3
+            ],
+            "explanation": "The abstract reports that memory CD4+ T cells enhance production of multiple innate inflammatory cytokines and chemokines in the lung and that, during influenza infection, this leads to early control of virus. This matches the claim's direction of effect. Qualifications: the abstract describes this as a mouse-type experimental finding (animal model not named in the excerpt), the effect requires cognate antigen recognition, and it is specific to memory CD4+ T cells rather than general chemokine production. The abstract uses causal wording ('leads to'), so I report it as stated."
+          },
+          {
+            "document_id": "26068103",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This RSV study in a lung-specific IL-10 over-expression mouse model shows IL-10 attenuates acute inflammation and alters late Th2 cytokine and chemokine expression. It does not measure viral control or viral load, so it neither supports nor contradicts the claim that enhanced early inflammatory chemokine production improves viral control. The chemokine findings are about Th2-related chemokines and inflammation, not early enhancement improving viral clearance."
+          },
+          {
+            "document_id": "2248870",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This study shows lung dendritic cells imprint T cell lung homing via CCR4 and that these T cells protect against influenza more effectively. The protection is attributed to T cell trafficking, not to enhanced early production of inflammatory chemokines, and the abstract does not measure chemokine production. It is related to the lung immunity theme but does not directly test the claim."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 1,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 1,
+        "predicted_sentences": 2,
+        "correct_sentences": 1,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 11.552
+    },
+    {
+      "claim_id": 380,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.00116567,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "19005293",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              2,
+              3
+            ],
+            "explanation": "The abstract reports that memory CD4+ T cells enhance production of multiple innate inflammatory cytokines and chemokines in the lung and that this leads to early control of influenza virus. Sentence 3 adds that this depends on cognate antigen recognition and is independent of IFN-γ and TNF-α."
+          },
+          {
+            "document_id": "26068103",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract studies IL-10 in RSV lung inflammation and reports that IL-10 attenuates acute inflammation and that its timing matters. It does not measure early inflammatory chemokine production as improving viral control, so it neither supports nor contradicts the claim."
+          },
+          {
+            "document_id": "12966719",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract concerns macrophage chemokines that maintain vaginal CD4 tissue-resident memory T cells and protection against HSV-2. It does not address early inflammatory chemokine production in the lung or its effect on viral control in the lung, so it is not relevant to the claim."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 1,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 1,
+        "predicted_sentences": 2,
+        "correct_sentences": 1,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 9.147
+    },
+    {
+      "claim_id": 411,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.0008866,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "14924526",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract reports that hyperthermia-induced seizures in immature rats cause persistent presynaptic changes in hippocampal inhibitory transmission into adulthood, and it notes that the role of febrile seizures in later epilepsy has been controversial. It does not measure epilepsy development or show that febrile seizures lower the threshold for epilepsy, so it neither supports nor contradicts the claim directly."
+          },
+          {
+            "document_id": "15889329",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This abstract concerns innate immune responses (lipopolysaccharide/TLR4/IL-1) producing focal seizures and epileptiform activity in cortex. It does not study febrile seizures or their effect on later epilepsy risk."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 0,
+        "predicted_documents": 0,
+        "correct_document_labels": 0,
+        "correct_abstracts_with_evidence": 0,
+        "gold_sentences": 0,
+        "predicted_sentences": 0,
+        "correct_sentences": 0,
+        "nei_claims": 1,
+        "correct_nei": 1
+      },
+      "status": "ok",
+      "elapsed_seconds": 6.714
+    },
+    {
+      "claim_id": 411,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.0012256250000000002,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "14924526",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This is an animal study (immature rat model of complex febrile seizures) and is the only retrieved abstract on febrile seizures. It reports persistent changes in hippocampal synaptic transmission lasting into adulthood, and says febrile seizures' contribution to later epilepsy 'has remained controversial.' It does not measure seizure threshold or epilepsy development, and it does not show that febrile seizures lower the threshold for epilepsy. The claim is therefore not directly supported or contradicted."
+          },
+          {
+            "document_id": "15889329",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This is an experimental study of cortical lipopolysaccharide (TLR4/innate immune) application in animal models producing focal seizures. It does not study febrile seizures or their effect on later epilepsy risk, so it does not address the claim."
+          },
+          {
+            "document_id": "116792",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This is a rat kainate-induced status epilepticus model of temporal lobe epilepsy studying mTOR signaling. It does not involve febrile seizures or seizure threshold in febrile seizure contexts, so it does not bear on the claim."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 0,
+        "predicted_documents": 0,
+        "correct_document_labels": 0,
+        "correct_abstracts_with_evidence": 0,
+        "gold_sentences": 0,
+        "predicted_sentences": 0,
+        "correct_sentences": 0,
+        "nei_claims": 1,
+        "correct_nei": 1
+      },
+      "status": "ok",
+      "elapsed_seconds": 7.904
+    },
+    {
+      "claim_id": 185,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.00167127,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "18340282",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "Prospective study of 7610 UK women with breast cancer and 10,196 controls tested gene-environment interactions for 12 low-penetrance polymorphisms and ten reproductive, behavioural and anthropometric factors. It found no significant interaction and concluded that polymorphism-associated risks do not vary with these factors. It does not measure whether breast cancer development is determined exclusively by genetic factors, so it neither supports nor contradicts the claim."
+          },
+          {
+            "document_id": "23557241",
+            "verdict": "CONTRADICT",
+            "evidence_sentence_ids": [
+              6,
+              9
+            ],
+            "explanation": "Systematic review and meta-analysis of 57 studies reporting non-genetic prenatal exposures associated with adult breast cancer risk, including birthweight (RR 1.15), birth length (RR 1.28) and maternal age (RR 1.13). The authors conclude that the intrauterine environment contributes to the predisposition of women to breast cancer in adulthood. This is incompatible with the claim that development is determined exclusively by genetic factors. The evidence is observational and the wording is about association and contribution, not proven causation."
+          },
+          {
+            "document_id": "4886637",
+            "verdict": "CONTRADICT",
+            "evidence_sentence_ids": [
+              3
+            ],
+            "explanation": "Review of epidemiologic studies reports that the combined evidence supports a modest association between type 2 diabetes (a non-genetic metabolic condition) and breast cancer risk, more consistent in postmenopausal women. This indicates a non-genetic factor associated with risk, which is incompatible with 'exclusively genetic'. The review describes an association, not a proven causal effect, and notes that confounding by shared risk factors such as obesity is possible."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 2,
+        "correct_document_labels": 0,
+        "correct_abstracts_with_evidence": 0,
+        "gold_sentences": 2,
+        "predicted_sentences": 3,
+        "correct_sentences": 0,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 11.5
+    },
+    {
+      "claim_id": 185,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.001567695,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "18340282",
+            "verdict": "CONTRADICT",
+            "evidence_sentence_ids": [
+              0,
+              2
+            ],
+            "explanation": "The abstract studies combined effects of genetic polymorphisms and ten established environmental risk factors (reproductive, behavioural, anthropometric) on breast cancer incidence. Describing environmental factors as established risk factors for breast cancer, alongside genetic susceptibility, is inconsistent with the claim that development is determined exclusively by genetics. The abstract does not directly measure exclusivity, but it implies environmental contributions."
+          },
+          {
+            "document_id": "23557241",
+            "verdict": "CONTRADICT",
+            "evidence_sentence_ids": [
+              6,
+              9
+            ],
+            "explanation": "A meta-analysis of 57 studies reports that perinatal/intrauterine factors (birthweight, birth length, maternal age, maternal pre-eclampsia) are associated with breast cancer risk, and concludes that the intrauterine environment contributes to the predisposition to breast cancer in adulthood. This directly conflicts with the claim of exclusive genetic determination."
+          },
+          {
+            "document_id": "5864770",
+            "verdict": "CONTRADICT",
+            "evidence_sentence_ids": [
+              0,
+              1
+            ],
+            "explanation": "The review states that ovarian hormones contribute to breast cancer development at all stages, and that non-genetic factors such as premenopausal and postmenopausal obesity and menopausal estrogen replacement therapy alter risk. This indicates hormonal and environmental/lifestyle contributions, contradicting the claim that development is determined exclusively by genetics."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 3,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 2,
+        "predicted_sentences": 6,
+        "correct_sentences": 1,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 9.259
+    },
+    {
+      "claim_id": 51,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.000652025,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "45638119",
+            "verdict": "CONTRADICT",
+            "evidence_sentence_ids": [
+              4
+            ],
+            "explanation": "In a series of 577 breast carcinomas, ALDH1 expression detected by immunostaining correlated with poor prognosis. This is the opposite of the claim that ALDH1 expression is associated with better breast cancer outcomes."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 1,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 1,
+        "predicted_sentences": 1,
+        "correct_sentences": 1,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 6.243
+    },
+    {
+      "claim_id": 51,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.000690975,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "45638119",
+            "verdict": "CONTRADICT",
+            "evidence_sentence_ids": [
+              4
+            ],
+            "explanation": "The abstract is a human study of 577 breast carcinomas. It reports that ALDH1 expression detected by immunostaining correlated with poor prognosis, which is the opposite direction from the claim that ALDH1 expression is associated with better breast cancer outcomes. The abstract is an association finding and does not establish causation."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 1,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 1,
+        "predicted_sentences": 1,
+        "correct_sentences": 1,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 6.994
+    },
+    {
+      "claim_id": 384,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.00128856,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "25451374",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              5,
+              6,
+              9
+            ],
+            "explanation": "This is a 17-country human cohort (INTERHEART Risk Score, mean 4.1-year follow-up). It reports that major cardiovascular events were higher in middle- and low-income countries than in high-income countries (6.43 events per 1000 person-years in low-income vs. 3.99 in high-income), and case fatality was highest in low-income countries (17.3%). This supports a higher cardiovascular disease burden in low-income settings. The abstract also reports that risk-factor burden was lowest in low-income countries (sentences 4 and 9), so the support applies to disease events and deaths, not to risk factors. The study is observational and does not establish causation."
+          },
+          {
+            "document_id": "51972698",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This abstract describes an NCD screening program in Samoa, a single small island developing state, with a high-risk prevalence figure (50.1%) for one population. It does not compare NCD burden across economic settings, so it cannot confirm or refute that burden is higher in low-economic settings."
+          },
+          {
+            "document_id": "6207111",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "This cross-national study of 75 countries links soft drink consumption to overweight, obesity and diabetes prevalence. It states that the associations held in low- and middle-income countries, but it does not report that NCD prevalence is higher in low-income settings than in high-income ones. The claim's comparative element is not addressed."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 0,
+        "predicted_documents": 1,
+        "correct_document_labels": 0,
+        "correct_abstracts_with_evidence": 0,
+        "gold_sentences": 0,
+        "predicted_sentences": 3,
+        "correct_sentences": 0,
+        "nei_claims": 1,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 8.383
+    },
+    {
+      "claim_id": 384,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.001297645,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "51972698",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract describes a high NCD burden in Samoa, a small island developing state with increasing NCD morbidity and mortality, and notes shortages of health staff in a low-resource setting. However, it does not compare NCD prevalence or burden across economic levels, so it does not directly establish that NCD burden is more prevalent in low-economic settings."
+          },
+          {
+            "document_id": "8582337",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract reports US and OECD disease burden trends and rankings, including chronic disease and risk factors. It does not study low-economic settings or relate NCD burden to economic status, so it neither supports nor contradicts the claim."
+          },
+          {
+            "document_id": "8708082",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract covers type 2 diabetes prevention and notes that widespread application is limited by local financial considerations. It does not compare disease burden across economic settings, so it does not address the claim."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 0,
+        "predicted_documents": 0,
+        "correct_document_labels": 0,
+        "correct_abstracts_with_evidence": 0,
+        "gold_sentences": 0,
+        "predicted_sentences": 0,
+        "correct_sentences": 0,
+        "nei_claims": 1,
+        "correct_nei": 1
+      },
+      "status": "ok",
+      "elapsed_seconds": 8.713
+    },
+    {
+      "claim_id": 298,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.0010328149999999999,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "23403754",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              7
+            ],
+            "explanation": "The review states that massive mitoptosis can cause cell death through release to the cytosol of cell death proteins normally hidden in the mitochondrial intermembrane space. It does not name cytochrome c specifically, so support is general rather than direct."
+          },
+          {
+            "document_id": "39381118",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              0
+            ],
+            "explanation": "The abstract states that mitochondrial outer membrane permeabilization, which drives mitochondrial apoptosis, is responsible for the release of cytochrome c and other intermembrane space proteins."
+          },
+          {
+            "document_id": "25439264",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract says cytochrome c release from mitochondria to the cytosol was investigated (sentence 6) and that homocysteine induced apoptosis, but it does not report the cytochrome c release result itself. The claim is therefore not directly confirmed or refuted."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 2,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 1,
+        "predicted_sentences": 2,
+        "correct_sentences": 1,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 7.003
+    },
+    {
+      "claim_id": 298,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.00099934,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "39381118",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              0
+            ],
+            "explanation": "The abstract states that apoptosis via the mitochondrial pathway involves MOMP, which is responsible for release of cytochrome c and other intermembrane space proteins. This supports the claim that cytochrome c is released from the intermembrane space during apoptosis. It is a review/commentary, not primary data, and does not explicitly say 'to cytosol', though release from mitochondria implies it."
+          },
+          {
+            "document_id": "23403754",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              7
+            ],
+            "explanation": "A review of bioenergetics in cell death states that massive mitoptosis can result in cell death due to release to cytosol of cell death proteins normally hidden in the mitochondrial intermembrane space. This supports the release-to-cytosol concept, but it refers to cell death proteins generally, not cytochrome c specifically, and frames it as a postulated mechanism within a review."
+          },
+          {
+            "document_id": "23887844",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract concerns cytochrome c's pro-apoptotic activity and its redox state in neurons and cancer cells, and implies cytochrome c-mediated apoptosis, but does not report or describe the release of cytochrome c from the intermembrane space to the cytosol."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 2,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 1,
+        "predicted_sentences": 2,
+        "correct_sentences": 1,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 6.432
+    },
+    {
+      "claim_id": 1014,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.001237795,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "status": "error",
+      "error": "ValueError: Report does not match the abstracts read.",
+      "elapsed_seconds": 7.194
+    },
+    {
+      "claim_id": 1014,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.000867265,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "status": "error",
+      "error": "ValueError: Report does not match the abstracts read.",
+      "elapsed_seconds": 5.984
+    },
+    {
+      "claim_id": 957,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.00095561,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "123859",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              1,
+              2,
+              3
+            ],
+            "explanation": "The abstract used serial multiphoton imaging to visualize podocyte motility in vivo. After unilateral ureteral ligation (an injury model), podocytes formed multicellular clusters and migrated into the parietal Bowman's capsule, and tracking showed simultaneous migration of multiple podocytes. This directly supports the claim that podocytes are motile and migrate in the presence of injury."
+          },
+          {
+            "document_id": "22241778",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract covers podocyte beta1 integrin and ILK signaling in glomerular development and filtration. It does not study podocyte motility or migration, and it does not involve an injury model."
+          },
+          {
+            "document_id": "28783084",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract concerns immune responses and regeneration after tissue injury, mainly in newt lens regeneration. It does not mention podocytes, kidney, or podocyte migration."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 1,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 1,
+        "predicted_sentences": 3,
+        "correct_sentences": 1,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 6.278
+    },
+    {
+      "claim_id": 957,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.001346275,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "123859",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              1,
+              2,
+              3
+            ],
+            "explanation": "Mouse in vivo study. Serial multiphoton imaging showed podocyte motility, and after unilateral ureteral ligation (an injury model) podocytes formed clusters and migrated into the parietal Bowman's capsule. Supports the claim in mice; the study is in vivo mouse work, not human."
+          },
+          {
+            "document_id": "16355392",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              5,
+              6
+            ],
+            "explanation": "Mouse and in vitro study. uPAR signaling in podocytes promotes cell motility, and blocking alphavbeta3 integrin reduces podocyte motility in vitro and lowers proteinuria in mice. Motility is shown, but the injury link is indirect: the mouse model is LPS-mediated proteinuria, and the motility data are mainly in vitro rather than directly measured as migration during injury. Support is partial and qualified."
+          },
+          {
+            "document_id": "22241778",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "Mouse study of integrin beta1 and ILK signaling in podocytes for glomerular development and function. It reports podocyte foot process effacement and proteinuria but does not measure podocyte motility or migration, either in injury or otherwise."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 2,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 1,
+        "predicted_sentences": 5,
+        "correct_sentences": 1,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 11.943
+    },
+    {
+      "claim_id": 1194,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.001280635,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "11419230",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract proposes a 'charge zipper' model in which TatA subunits (amphiphilic helix plus densely charged region) self-assemble into a transmembrane pore via salt bridges, supported by MD simulations and monomer-oligomer equilibrium of charge mutants. It does not address arm density, does not describe Class1 TatAd complexes, and does not link any structural rearrangement to arm density. The claim's specific causal link is therefore not addressed."
+          },
+          {
+            "document_id": "22561064",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract reports single-particle EM of purified TatABC complexes from E. coli, S. typhimurium and A. tumefaciens, showing oval particles with stain-excluding densities around central pools and size variation suggesting modular assembly or varying numbers of TatBC/TatA units. It does not study TatAd complexes, does not mention arm density, and does not mention a charge zipper or any structural rearrangement mechanism. The stain-excluding densities are not described as arms, so this does not address the claim."
+          },
+          {
+            "document_id": "24706198",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract characterizes Bacillus subtilis TatAdCd (~230 kDa) and a discrete TatAd complex (~270 kDa by gel filtration), with TatAd bifunctional in complementation assays. It concerns the correct TatAd complex but reports no arm density, no Class1 classification, no charge zipper mechanism, and no structural rearrangement. Sizes alone cannot establish the mechanism behind arm density, so the claim is not addressed."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 0,
+        "predicted_documents": 0,
+        "correct_document_labels": 0,
+        "correct_abstracts_with_evidence": 0,
+        "gold_sentences": 0,
+        "predicted_sentences": 0,
+        "correct_sentences": 0,
+        "nei_claims": 1,
+        "correct_nei": 1
+      },
+      "status": "ok",
+      "elapsed_seconds": 9.95
+    },
+    {
+      "claim_id": 1194,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.0012814200000000001,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "11419230",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract proposes a charge zipper mechanism for folding and self-assembly of the TatA pore (salt bridges between an amphiphilic helix and a charged region). It does not mention arm density, TatAd complexes, Class1 TatAd complexes, or structural rearrangements causing arm density, so it neither supports nor contradicts the claim."
+          },
+          {
+            "document_id": "22561064",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract describes the composition and single-particle EM structure of purified TatABC complexes from E. coli, S. typhimurium and A. tumefaciens, with stain-excluding densities and size variation suggesting modular assembly. It does not discuss TatAd complexes, arm density, Class 1 classification, or the charge zipper mechanism."
+          },
+          {
+            "document_id": "24706198",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract describes the B. subtilis TatAdCd and TatAd complexes and their sizes, and that TatAd is a discrete ~270 kDa entity. It does not mention arm density, Class 1 TatAd rearrangements, or a charge zipper mechanism, so the claim is not verified or refuted."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 0,
+        "predicted_documents": 0,
+        "correct_document_labels": 0,
+        "correct_abstracts_with_evidence": 0,
+        "gold_sentences": 0,
+        "predicted_sentences": 0,
+        "correct_sentences": 0,
+        "nei_claims": 1,
+        "correct_nei": 1
+      },
+      "status": "ok",
+      "elapsed_seconds": 9.949
+    },
+    {
+      "claim_id": 137,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.0006801800000000001,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "26016929",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              7,
+              8,
+              9
+            ],
+            "explanation": "The systematic review of RCTs of community screening for impaired vision in adults aged 65+ found that adding a visual screening component did not improve self-reported visual problems (pooled OR 1.04, 95% CI 0.89 to 1.22), and concluded that screening asymptomatic older people is not justified on present evidence. The abstract notes a small reduction (11%) cannot be excluded and that outcomes were self-reported, so the support is somewhat qualified, but it matches the claim that screening did not lead to improved vision."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 1,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 2,
+        "predicted_sentences": 3,
+        "correct_sentences": 2,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 6.363
+    },
+    {
+      "claim_id": 137,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.000961445,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "26016929",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              7,
+              8,
+              9
+            ],
+            "explanation": "Systematic review of RCTs in community-dwelling adults aged 65+. Adding a visual screening component did not result in improvements in self-reported visual problems (pooled OR 1.04, 95% CI 0.89 to 1.22). A small 11% reduction could not be excluded, and the authors conclude that screening asymptomatic older people is not justified on present evidence. This supports the claim, with the qualifications that the outcome was self-reported rather than measured vision, the evidence came from five trials of multiphasic assessment, and the abstract says it is unclear why no benefit was seen."
+          },
+          {
+            "document_id": "21274919",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "Cross-sectional survey of physical impairments and dementia in low- and middle-income countries. It does not evaluate vision screening or its effect on vision, so it neither supports nor contradicts the claim."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 1,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 2,
+        "predicted_sentences": 3,
+        "correct_sentences": 2,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 7.128
+    },
+    {
+      "claim_id": 781,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.0012267699999999999,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "24338780",
+            "verdict": "CONTRADICT",
+            "evidence_sentence_ids": [
+              2,
+              3,
+              6
+            ],
+            "explanation": "In a BALB/c model of myosin-immunized experimental myocarditis, IFN-gamma receptor-deficient mice developed severe myocarditis with high mortality and persistent disease, whereas wild-type mice recovered. The authors conclude IFN-gamma protects against lethal myocarditis, which is the opposite of the claimed high resistance in IFN-gamma receptor-deficient mice."
+          },
+          {
+            "document_id": "8246922",
+            "verdict": "CONTRADICT",
+            "evidence_sentence_ids": [
+              6,
+              7,
+              11
+            ],
+            "explanation": "Mice lacking IFN-gamma, whether by antibody depletion or genetic deficiency, had exacerbated experimental autoimmune myocarditis. The authors state IFN-gamma suppresses EAM and plays a protective role. This contradicts the claim that IFN-gamma-deficient mice are highly resistant. The abstract does not directly test IFN-gamma receptor-deficient mice, but it does test IFN-gamma-deficient mice, which the claim covers."
+          },
+          {
+            "document_id": "40632104",
+            "verdict": "CONTRADICT",
+            "evidence_sentence_ids": [
+              4,
+              6
+            ],
+            "explanation": "IFN-gamma-deficient mice developed fatal autoimmune disease in this myocarditis model. The authors also state that IFN-gamma production limits disease progression. This contradicts the claim of high resistance in IFN-gamma-deficient mice. The resistance reported here applies to IL-12p40-deficient mice, not to IFN-gamma-deficient mice."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 3,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 3,
+        "predicted_sentences": 8,
+        "correct_sentences": 3,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 8.09
+    },
+    {
+      "claim_id": 781,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.0010702,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "24338780",
+            "verdict": "CONTRADICT",
+            "evidence_sentence_ids": [
+              2,
+              3,
+              6
+            ],
+            "explanation": "IFN-gamma receptor-deficient mices develop severe myocarditis with high mortality and persistent disease, the opposite of high resistance. The authors conclude IFN-gamma protects against lethal autoimmune myocarditis."
+          },
+          {
+            "document_id": "40632104",
+            "verdict": "CONTRADICT",
+            "evidence_sentence_ids": [
+              4,
+              6
+            ],
+            "explanation": "IFN-gamma-deficient mice developed fatal autoimmune disease, and IFN-gamma production limits disease progression. Resistance was seen only in IL-12p40-deficient mice, not in IFN-gamma-deficient mice."
+          },
+          {
+            "document_id": "8246922",
+            "verdict": "CONTRADICT",
+            "evidence_sentence_ids": [
+              7,
+              11
+            ],
+            "explanation": "Lack of IFN-gamma, whether from antibody depletion or genetic deficiency, exacerbated myocarditis. IFN-gamma plays a protective role. Resistance was seen in IL-12R-beta1- and STAT4-deficient mice, not in IFN-gamma-deficient mice."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 3,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 3,
+        "predicted_sentences": 7,
+        "correct_sentences": 3,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 8.78
+    }
+  ],
+  "summary": {
+    "requested_pairs": 30,
+    "successful_pairs": 28,
+    "scoring_population": "Claims successful in both modes",
+    "modes": {
+      "off": {
+        "attempted": 30,
+        "failures": 2,
+        "metrics_on_successful_pairs": {
+          "document_labels": {
+            "precision": 0.7142857142857143,
+            "recall": 0.8333333333333334,
+            "f1": 0.7692307692307693
+          },
+          "abstract_with_evidence": {
+            "precision": 0.7142857142857143,
+            "recall": 0.8333333333333334,
+            "f1": 0.7692307692307693
+          },
+          "evidence_sentences": {
+            "precision": 0.47540983606557374,
+            "recall": 0.6170212765957447,
+            "f1": 0.5370370370370371
+          },
+          "nei_abstention_rate": 0.7777777777777778,
+          "counts": {
+            "claims": 28,
+            "gold_documents": 24,
+            "predicted_documents": 28,
+            "correct_document_labels": 20,
+            "correct_abstracts_with_evidence": 20,
+            "gold_sentences": 47,
+            "predicted_sentences": 61,
+            "correct_sentences": 29,
+            "nei_claims": 9,
+            "correct_nei": 7
+          }
+        },
+        "mean_elapsed_seconds": 7.527,
+        "reported_estimated_cost_usd": 0.029447465,
+        "runs_without_cost": 0
+      },
+      "on": {
+        "attempted": 30,
+        "failures": 2,
+        "metrics_on_successful_pairs": {
+          "document_labels": {
+            "precision": 0.6428571428571429,
+            "recall": 0.75,
+            "f1": 0.6923076923076923
+          },
+          "abstract_with_evidence": {
+            "precision": 0.6071428571428571,
+            "recall": 0.7083333333333334,
+            "f1": 0.6538461538461539
+          },
+          "evidence_sentences": {
+            "precision": 0.4,
+            "recall": 0.5531914893617021,
+            "f1": 0.4642857142857143
+          },
+          "nei_abstention_rate": 0.7777777777777778,
+          "counts": {
+            "claims": 28,
+            "gold_documents": 24,
+            "predicted_documents": 28,
+            "correct_document_labels": 18,
+            "correct_abstracts_with_evidence": 17,
+            "gold_sentences": 47,
+            "predicted_sentences": 65,
+            "correct_sentences": 26,
+            "nei_claims": 9,
+            "correct_nei": 7
+          }
+        },
+        "mean_elapsed_seconds": 8.568,
+        "reported_estimated_cost_usd": 0.033773545,
+        "runs_without_cost": 0
+      }
+    }
+  },
+  "finished_at": "2026-11-08T23:05:48.184469+00:00"
+}
