@@ -1,0 +1,201 @@
+[
+  {
+    "claim_id": 1391,
+    "claim": "miR-142-5P is a known regulator of raised body temperature.",
+    "dataset_label": "SUPPORT",
+    "gold_evidence": {
+      "6766459": [
+        {
+          "sentences": [
+            5
+          ],
+          "label": "SUPPORT"
+        }
+      ]
+    },
+    "papers_and_labels_match": true,
+    "exact_evidence_match": false,
+    "report": {
+      "assessments": [
+        {
+          "document_id": "6766459",
+          "verdict": "SUPPORT",
+          "evidence_sentence_ids": [
+            4,
+            5,
+            6,
+            7
+          ],
+          "explanation": "The abstract reports miR-142-5p as a temperature-sensitive microRNA ('thermomiR') whose expression rises when RBM3 falls, and says it targets pyrogens (IL-6, TNF, etc.) in a negative feedback loop that 'regulates fever' (sentence 7). This matches the claim that miR-142-5p regulates raised body temperature. Qualifications: the evidence is mixed-source. Fever was measured in 30 patients, but the miR-142-5p link comes from THP-1-derived macrophages and normal PBMCs exposed ex vivo to 40 \u00b0C, with a 24 h time course. The sentence 6 wording is associative ('associated with'), and sentence 7 describes a proposed mechanism from one study, so the word 'known' overstates a single paper's finding. Only one abstract was read, so this is one supporting source, not a consensus."
+        }
+      ]
+    },
+    "status": "success"
+  },
+  {
+    "claim_id": 246,
+    "claim": "Charcoal shows no benefit for acute paraquat poisoning.",
+    "dataset_label": "SUPPORT",
+    "gold_evidence": {
+      "3430789": [
+        {
+          "sentences": [
+            8
+          ],
+          "label": "SUPPORT"
+        }
+      ]
+    },
+    "papers_and_labels_match": true,
+    "exact_evidence_match": false,
+    "report": {
+      "assessments": [
+        {
+          "document_id": "3430789",
+          "verdict": "SUPPORT",
+          "evidence_sentence_ids": [
+            0,
+            8
+          ],
+          "explanation": "Human retrospective study of 19 patients with paraquat poisoning treated with activated charcoal hemoperfusion. The authors conclude it 'had little effect on avoiding acute kidney injury in patients with severe PQ poisoning.' This supports the claim only for the renal outcome. The abstract does not report mortality or other clinical benefit, and 'little effect' is weaker than 'no benefit', so the support is partial and limited to the renal endpoint."
+        },
+        {
+          "document_id": "25104843",
+          "verdict": "NOT_ENOUGH_INFO",
+          "evidence_sentence_ids": [],
+          "explanation": "A single-patient case report of combined hemoperfusion-hemodialysis (HP-HD), not charcoal alone. It measured plasma clearance (charcoal column 116 +/- 32 ml/min) and states that the efficiency of short HP-HD is 'questionable' because tissue paraquat remains elevated. The title calls HP-HD 'ineffective for paraquat removal', but the single case, the combined intervention, and the mix of plasma-clearance benefit with the authors' conclusion mean it does not directly test charcoal alone for benefit."
+        },
+        {
+          "document_id": "12209494",
+          "verdict": "NOT_ENOUGH_INFO",
+          "evidence_sentence_ids": [],
+          "explanation": "Randomised trial of multiple-dose activated charcoal in mixed acute self-poisoning in Sri Lanka (51% pesticides, 36% yellow oleander seeds). Mortality did not differ (6.3% vs 6.8%). However, the abstract does not report a paraquat-specific subgroup; it only says there were no differences 'for patients who took particular poisons'. It is also about multiple-dose charcoal rather than the single-dose or acute regimen the claim addresses, so it cannot establish the claim for paraquat."
+        }
+      ]
+    },
+    "status": "success"
+  },
+  {
+    "claim_id": 77,
+    "claim": "Active Ly49Q prevents neutrophil polarization.",
+    "dataset_label": "CONTRADICT",
+    "gold_evidence": {
+      "5531479": [
+        {
+          "sentences": [
+            1
+          ],
+          "label": "CONTRADICT"
+        },
+        {
+          "sentences": [
+            6
+          ],
+          "label": "CONTRADICT"
+        }
+      ]
+    },
+    "papers_and_labels_match": true,
+    "exact_evidence_match": false,
+    "report": {
+      "assessments": [
+        {
+          "document_id": "5531479",
+          "verdict": "CONTRADICT",
+          "evidence_sentence_ids": [
+            1,
+            2,
+            3,
+            6
+          ],
+          "explanation": "The claim says active Ly49Q prevents neutrophil polarization. The abstract reports the opposite for the main finding: Ly49Q was crucial for swift neutrophil polarization and tissue infiltration, and under inflammatory stimuli it mediated rapid polarization (sentences 1, 3, 6). The only inhibitory role described is at steady state, where Ly49Q inhibited neutrophil adhesion by preventing focal-complex formation (sentence 2). That is adhesion, not polarization, so it does not support the claim. The study appears to be in neutrophils, likely mouse work, but the abstract does not state the species or cell-type details, so I did not assume them."
+        }
+      ]
+    },
+    "status": "success"
+  },
+  {
+    "claim_id": 590,
+    "claim": "In young and middle-aged adults, current or remote uses of ADHD medications increase the risk of serious cardiovascular events.",
+    "dataset_label": "CONTRADICT",
+    "gold_evidence": {
+      "10984005": [
+        {
+          "sentences": [
+            9,
+            10
+          ],
+          "label": "CONTRADICT"
+        },
+        {
+          "sentences": [
+            12
+          ],
+          "label": "CONTRADICT"
+        }
+      ]
+    },
+    "papers_and_labels_match": true,
+    "exact_evidence_match": false,
+    "report": {
+      "assessments": [
+        {
+          "document_id": "10984005",
+          "verdict": "CONTRADICT",
+          "evidence_sentence_ids": [
+            9,
+            11,
+            12,
+            13
+          ],
+          "explanation": "The abstract is a retrospective, population-based cohort study of adults aged 25-64 using ADHD medications (methylphenidate, amphetamine, atomoxetine). It matches the claim's population and exposure, but the findings run against the claim's direction. Current use vs nonuse had an adjusted RR of 0.83 (95% CI 0.72-0.96) for serious cardiovascular events, and current vs remote use had an adjusted RR of 1.03 (95% CI 0.86-1.24), which does not show increased risk. The authors conclude that current or new use was not associated with increased risk, and that the apparent protective associations likely reflect healthy-user bias. The abstract reports associations only, not causation. It does not directly report a remote-use vs nonuse comparison, but the current-vs-remote result already contradicts the claim that current or remote use increases risk."
+        }
+      ]
+    },
+    "status": "success"
+  },
+  {
+    "claim_id": 526,
+    "claim": "Homozygous deletion of murine Sbds gene from osterix-expressing mesenchymal stem and progenitor cells (MPCs) induces oxidative stress.",
+    "dataset_label": "NOT_ENOUGH_INFO",
+    "gold_evidence": {},
+    "papers_and_labels_match": true,
+    "exact_evidence_match": true,
+    "report": {
+      "assessments": [
+        {
+          "document_id": "1617327",
+          "verdict": "NOT_ENOUGH_INFO",
+          "evidence_sentence_ids": [],
+          "explanation": "The abstract studies Sbds deletion in mouse osteoprogenitors (Dicer1-deletion context) and reports bone marrow dysfunction with myelodysplasia (sentences 3-4). It does not mention oxidative stress, reactive oxygen species, or osterix-expressing MPCs specifically, so it neither supports nor contradicts the claim that Sbds deletion induces oxidative stress. Only one of the two searches surfaced a relevant Sbds paper, and no other read abstract addressed oxidative stress."
+        }
+      ]
+    },
+    "status": "success"
+  },
+  {
+    "claim_id": 481,
+    "claim": "Guanine nucleotide dissociation inhibitor (Rho-GDI) interacts with the p75 NTR death domain",
+    "dataset_label": "NOT_ENOUGH_INFO",
+    "gold_evidence": {},
+    "papers_and_labels_match": true,
+    "exact_evidence_match": true,
+    "report": {
+      "assessments": [
+        {
+          "document_id": "18041692",
+          "verdict": "NOT_ENOUGH_INFO",
+          "evidence_sentence_ids": [],
+          "explanation": "This review of Rho GTPase signalling in cell migration discusses Rho, Rac and Cdc42 and other Rho-family members. It does not mention Rho-GDI (guanine nucleotide dissociation inhibitor), p75 NTR, or any interaction with the p75 death domain, so it neither supports nor contradicts the claim."
+        },
+        {
+          "document_id": "14706752",
+          "verdict": "NOT_ENOUGH_INFO",
+          "evidence_sentence_ids": [],
+          "explanation": "This glioma study concerns neurotrophin-dependent regulated intramembrane proteolysis of p75 NTR and gamma-secretase inhibitors in glioma invasion. It does not mention Rho-GDI or any binding partner of the p75 death domain, so it neither supports nor contradicts the claim."
+        }
+      ]
+    },
+    "status": "success"
+  }
+]
