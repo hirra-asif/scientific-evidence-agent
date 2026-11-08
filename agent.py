@@ -1,3 +1,4 @@
+import argparse
 import asyncio
 import json
 import os
@@ -39,7 +40,6 @@ def tool_result(data):
     return {"content": [{"type": "text", "text": json.dumps(data)}]}
 
 
-# These wrappers make your Python functions available to Claude.
 @tool(
     "search_abstracts",
     "Search research abstracts by keywords. Returns the top five papers.",
@@ -63,11 +63,12 @@ async def read_tool(args):
 
 
 async def main(
-    claim="1 in 5 million in UK have abnormal PrP positivity."
+    claim="1 in 5 million in UK have abnormal PrP positivity.",
+    use_skill=True,
 ):
-    # Start each claim with no documents left over from the previous run.
     opened_documents.clear()
     report = None
+    skill_discovered = False
 
     server = create_sdk_mcp_server(
         name="scifact",
@@ -78,8 +79,8 @@ async def main(
         model="claude-haiku-5-5",
         cwd=str(PROJECT_DIR),
         setting_sources=["project"],
-        tools=["Skill"],
-        skills=["scientific-evidence"],
+        tools=["Skill"] if use_skill else [],
+        skills=["scientific-evidence"] if use_skill else [],
         strict_mcp_config=True,
         mcp_servers={"scifact": server},
         allowed_tools=[
@@ -111,17 +112,16 @@ async def main(
         ),
     )
 
-    print("Starting agent...", flush=True)
+    mode = "on" if use_skill else "off"
+    print(f"Starting agent (Skill: {mode})...", flush=True)
 
     async for message in query(
-        prompt=f"/scientific-evidence {claim}",
+        prompt=f"/scientific-evidence {claim}" if use_skill else claim,
         options=options,
     ):
         if isinstance(message, SystemMessage) and message.subtype == "init":
-            print(
-                "DISCOVERED SKILLS:",
-                message.data.get("skills", []),
-                flush=True,
+            skill_discovered = "scientific-evidence" in message.data.get(
+                "skills", []
             )
 
         if not isinstance(message, ResultMessage):
@@ -158,7 +158,12 @@ async def main(
 
         print(f"\nEstimated cost: ${message.total_cost_usd or 0:.4f}")
 
-    # Return the report only after the response stream has finished.
+    # Check that Skill-on had access to the requested Skill.
+    if use_skill and not skill_discovered:
+        raise RuntimeError(
+            "The scientific-evidence Skill was not discovered."
+        )
+
     if report is None:
         raise RuntimeError("Agent finished without returning a report.")
 
@@ -166,4 +171,7 @@ async def main(
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--skill", choices=["on", "off"], default="on")
+    args = parser.parse_args()
+    asyncio.run(main(use_skill=args.skill == "on"))
