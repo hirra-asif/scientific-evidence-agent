@@ -159,6 +159,7 @@ async def main(
     claim="1 in 5 million in UK have abnormal PrP positivity.",
     use_skill=True,
     run_metadata=None,
+    skill_workspace=None,
 ):
     global tool_trace
 
@@ -185,7 +186,7 @@ async def main(
 
     options = ClaudeAgentOptions(
         model="claude-haiku-5-5",
-        cwd=str(PROJECT_DIR),
+        cwd=str(PROJECT_DIR if skill_workspace is None else skill_workspace),
         setting_sources=["project"],
         tools=["Skill"] if use_skill else [],
         skills=["scientific-evidence"] if use_skill else [],
