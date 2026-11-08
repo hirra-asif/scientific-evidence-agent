@@ -1,0 +1,288 @@
+{
+  "status": "finished",
+  "started_at": "2026-11-08T22:32:23.457381+00:00",
+  "split": "train",
+  "claim_ids": [
+    1391,
+    526
+  ],
+  "mode_order": "off/on for first claim, then alternating",
+  "package_versions": {
+    "claude-agent-sdk": "0.2.179",
+    "anthropic": "2.6.0",
+    "pydantic": "2.14.3"
+  },
+  "source_sha256": {
+    "agent.py": "ec34ea3539e883d53bb5fb3bee1fd8f8832fafdce0ca613ed13390084678f042",
+    "corpus_tools.py": "1352e12f38a9baacd4f8d6434901e5684d170d359637a44232de863958a8bb5f",
+    "scoring.py": "0b7d77edf3b354ae38ea4b498cbc27eefe4d8d166ee631bd300d65688dacc630",
+    "compare_skills.py": "593f4e7452871d6fd9424db8974fe74e2f6db1bcd8c13372d668f6ab2d934cce",
+    ".claude/skills/scientific-evidence/SKILL.md": "8ab7fad791dd44efda96f99ec4fe670c70699d823a03480933a6d87f440c755b"
+  },
+  "claims": [
+    {
+      "id": 1391,
+      "claim": "miR-142-5P is a known regulator of raised body temperature.",
+      "gold_evidence": {
+        "6766459": [
+          {
+            "sentences": [
+              5
+            ],
+            "label": "SUPPORT"
+          }
+        ]
+      }
+    },
+    {
+      "id": 526,
+      "claim": "Homozygous deletion of murine Sbds gene from osterix-expressing mesenchymal stem and progenitor cells (MPCs) induces oxidative stress.",
+      "gold_evidence": {}
+    }
+  ],
+  "runs": [
+    {
+      "claim_id": 1391,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.00089392,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "6766459",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              4,
+              5,
+              7
+            ],
+            "explanation": "The abstract reports that miR-142-5p is a temperature-sensitive miRNA (a 'thermomiR') whose levels rise when RBM3 is reduced during fever. It targets pyrogens (IL-6, TNF, PGE2, etc.) in a negative feedback loop that regulates fever and may prevent pathological hyperthermia. This supports the claim that miR-142-5p regulates raised body temperature. The claim says 'known', but this is a single study's finding, and I read only this one abstract."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 1,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 1,
+        "predicted_sentences": 3,
+        "correct_sentences": 1,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 6.868
+    },
+    {
+      "claim_id": 1391,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.001064225,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "6766459",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              4,
+              5,
+              6,
+              7
+            ],
+            "explanation": "The abstract reports miR-142-5p as a temperature-sensitive thermomiR that increases when RBM3 is reduced, and states that it targets endogenous pyrogens (IL-6, IL6ST, TLR2, PGE2, TNF) in a negative feedback mechanism that may prevent pathological hyperthermia. The authors conclude a negative feedback loop regulates fever via reduced RBM3 and increased miR-142-5p and miR-143. This supports the claim that miR-142-5p regulates raised body temperature. Caveats: the evidence is from a study of 30 fever patients (where RBM3 was reduced, not miR-142-5p measured in this sentence) plus in vitro THP-1 macrophage and normal PBMC experiments at 40 °C, and the regulatory link is described as an association/trend in part (sentence 6). The word 'known' overstates a single study's finding, though the abstract itself frames this as a regulatory mechanism."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 1,
+        "predicted_documents": 1,
+        "correct_document_labels": 1,
+        "correct_abstracts_with_evidence": 1,
+        "gold_sentences": 1,
+        "predicted_sentences": 4,
+        "correct_sentences": 1,
+        "nei_claims": 0,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 7.042
+    },
+    {
+      "claim_id": 526,
+      "skill": "on",
+      "metadata": {
+        "estimated_cost_usd": 0.00119409,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "3863543",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              1
+            ],
+            "explanation": "The abstract is a mouse study of an SDS mouse model in which perturbation of mesenchymal cells induces mitochondrial dysfunction, oxidative stress, and DNA damage response in hematopoietic stem and progenitor cells. This is consistent with the claim that deleting Sbds from mesenchymal cells induces oxidative stress. Caveats: the abstract does not explicitly state a homozygous Sbds deletion or osterix-expressing MPCs, only 'perturbation of mesenchymal cells' in an SDS model, and the oxidative stress is reported in hematopoietic cells rather than in the mesenchymal cells themselves. Evidence is from mice (and cells), not humans."
+          },
+          {
+            "document_id": "1617327",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract shows that Sbds deletion in mouse osteoprogenitors induces bone marrow dysfunction with myelodysplasia and that Sbds expression is reduced after Dicer1 deletion. It does not mention oxidative stress, reactive oxygen species, or a homozygous deletion specifically, so it neither supports nor contradicts the claim. It also does not name osterix as the Cre driver."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 0,
+        "predicted_documents": 1,
+        "correct_document_labels": 0,
+        "correct_abstracts_with_evidence": 0,
+        "gold_sentences": 0,
+        "predicted_sentences": 1,
+        "correct_sentences": 0,
+        "nei_claims": 1,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 8.482
+    },
+    {
+      "claim_id": 526,
+      "skill": "off",
+      "metadata": {
+        "estimated_cost_usd": 0.00102136,
+        "model": "claude-haiku-5-5",
+        "max_turns": 8,
+        "max_abstracts": 3
+      },
+      "report": {
+        "assessments": [
+          {
+            "document_id": "1617327",
+            "verdict": "NOT_ENOUGH_INFO",
+            "evidence_sentence_ids": [],
+            "explanation": "The abstract shows that Sbds deletion in mouse osteoprogenitors induces bone marrow dysfunction and myelodysplasia (sentence 4), but it does not mention oxidative stress or any oxidative stress measurement, so the claim can be neither supported nor contradicted."
+          },
+          {
+            "document_id": "3863543",
+            "verdict": "SUPPORT",
+            "evidence_sentence_ids": [
+              1
+            ],
+            "explanation": "Sentence 1 reports that perturbing mesenchymal cells in a mouse Shwachman-Diamond syndrome (SDS) model induces mitochondrial dysfunction and oxidative stress. This is consistent with the claim, though the abstract does not explicitly name osterix-expressing MPCs or a homozygous Sbds deletion, and the oxidative stress is reported in hematopoietic stem and progenitor cells, so the support is indirect."
+          }
+        ]
+      },
+      "score_counts": {
+        "claims": 1,
+        "gold_documents": 0,
+        "predicted_documents": 1,
+        "correct_document_labels": 0,
+        "correct_abstracts_with_evidence": 0,
+        "gold_sentences": 0,
+        "predicted_sentences": 1,
+        "correct_sentences": 0,
+        "nei_claims": 1,
+        "correct_nei": 0
+      },
+      "status": "ok",
+      "elapsed_seconds": 7.81
+    }
+  ],
+  "summary": {
+    "requested_pairs": 2,
+    "successful_pairs": 2,
+    "scoring_population": "Claims successful in both modes",
+    "modes": {
+      "off": {
+        "attempted": 2,
+        "failures": 0,
+        "metrics_on_successful_pairs": {
+          "document_labels": {
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6666666666666666
+          },
+          "abstract_with_evidence": {
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6666666666666666
+          },
+          "evidence_sentences": {
+            "precision": 0.25,
+            "recall": 1.0,
+            "f1": 0.4
+          },
+          "nei_abstention_rate": 0.0,
+          "counts": {
+            "claims": 2,
+            "gold_documents": 1,
+            "predicted_documents": 2,
+            "correct_document_labels": 1,
+            "correct_abstracts_with_evidence": 1,
+            "gold_sentences": 1,
+            "predicted_sentences": 4,
+            "correct_sentences": 1,
+            "nei_claims": 1,
+            "correct_nei": 0
+          }
+        },
+        "mean_elapsed_seconds": 7.339,
+        "reported_estimated_cost_usd": 0.00191528,
+        "runs_without_cost": 0
+      },
+      "on": {
+        "attempted": 2,
+        "failures": 0,
+        "metrics_on_successful_pairs": {
+          "document_labels": {
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6666666666666666
+          },
+          "abstract_with_evidence": {
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6666666666666666
+          },
+          "evidence_sentences": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.3333333333333333
+          },
+          "nei_abstention_rate": 0.0,
+          "counts": {
+            "claims": 2,
+            "gold_documents": 1,
+            "predicted_documents": 2,
+            "correct_document_labels": 1,
+            "correct_abstracts_with_evidence": 1,
+            "gold_sentences": 1,
+            "predicted_sentences": 5,
+            "correct_sentences": 1,
+            "nei_claims": 1,
+            "correct_nei": 0
+          }
+        },
+        "mean_elapsed_seconds": 7.762,
+        "reported_estimated_cost_usd": 0.0022583150000000003,
+        "runs_without_cost": 0
+      }
+    }
+  },
+  "finished_at": "2026-11-08T22:32:53.669826+00:00"
+}

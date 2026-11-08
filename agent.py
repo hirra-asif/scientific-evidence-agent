@@ -39,7 +39,7 @@ class AgentReport(BaseModel):
 def tool_result(data, is_error=False):
     result = {"content": [{"type": "text", "text": json.dumps(data)}]}
     if is_error:
-        result["isError"] = True
+        result["is_error"] = True
     return result
 
 
@@ -126,7 +126,13 @@ def validate_report(report, documents):
 async def main(
     claim="1 in 5 million in UK have abnormal PrP positivity.",
     use_skill=True,
+    run_metadata=None,
 ):
+    if run_metadata is None:
+        run_metadata = {}
+
+    run_metadata.clear()
+    run_metadata["estimated_cost_usd"] = None
     opened_documents.clear()
     report = None
     skill_discovered = False
@@ -151,6 +157,8 @@ async def main(
         env={
             "ANTHROPIC_API_KEY": os.environ["ANTHROPIC_API_KEY"],
             "ENABLE_TOOL_SEARCH": "false",
+            "API_TIMEOUT_MS": "120000",
+            "CLAUDE_CODE_MAX_RETRIES": "2",
         },
         max_turns=8,
         output_format={
@@ -188,6 +196,13 @@ async def main(
         if not isinstance(message, ResultMessage):
             continue
 
+        run_metadata.update({
+            "model": options.model,
+            "max_turns": options.max_turns,
+            "max_abstracts": MAX_ABSTRACTS,
+            "estimated_cost_usd": message.total_cost_usd,
+        })
+
         if message.is_error or message.structured_output is None:
             raise RuntimeError(
                 f"Agent failed: {message.subtype}; "
@@ -207,7 +222,10 @@ async def main(
                 text = sentences[sentence_id]["text"]
                 print(f"Document {item.document_id}, [{sentence_id}]: {text}")
 
-        print(f"\nEstimated cost: ${message.total_cost_usd or 0:.4f}")
+        if message.total_cost_usd is None:
+            print("\nEstimated cost: unavailable")
+        else:
+            print(f"\nEstimated cost: ${message.total_cost_usd:.4f}")
 
     if use_skill and not skill_discovered:
         raise RuntimeError(
