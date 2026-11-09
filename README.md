@@ -78,7 +78,7 @@ report = asyncio.run(
 - Keyword search can miss relevant papers, and the three-abstract limit restricts coverage. The corpus contains abstracts, not full papers or a live literature search.
 - Evaluation samples are small and drawn from development data. Different claim IDs can still share papers or topics.
 - Agreement with dataset annotations does not guarantee a scientifically sound interpretation. Valid citations also do not establish that an explanation supports its verdict.
-- The evidence-removal diagnostic covers three selected examples. This is a research prototype, not a clinical decision tool.
+- The evidence-removal diagnostic covers three selected examples, so the results do not establish reliability across other claims.
 
 ## Main files
 
