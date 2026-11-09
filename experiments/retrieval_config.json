@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-11-09T16:03:27.642073+00:00",
+  "retrieval_split_sha256": "48d8f03f91ec97c6826968ca3139a79991e38d5eed07df98c5f427a0e7c1ce96",
+  "dataset_sha256": "f4c8fa82d8bd0653a9cc8d61a6ea48c25eacea64e90af5dbf390ebb1b74372f0",
+  "corpus_sha256": "b8d6c89624cb2ed74dee8938effc4f5d8bd2086887880af8110d64be4ceade62",
+  "bm25_source_sha256": "1352e12f38a9baacd4f8d6434901e5684d170d359637a44232de863958a8bb5f",
+  "embedding": {
+    "model_id": "intfloat/e5-small-v2",
+    "revision": "ffb93f3bd4047442299a41ebb6fa998a38507c52",
+    "device": "mps",
+    "dtype": "float32",
+    "dimensions": 384,
+    "max_seq_length": 512,
+    "batch_size": 32,
+    "normalize_embeddings": true,
+    "query_prefix": "query: ",
+    "passage_prefix": "passage: ",
+    "document_text": "title + ' ' + ' '.join(abstract)",
+    "similarity": "dot product of normalized embeddings"
+  },
+  "fusion": {
+    "method": "weighted_reciprocal_rank_fusion",
+    "rank_start": 1,
+    "rank_constant": 60,
+    "candidate_depth_per_retriever": 100,
+    "dense_weights": [
+      0.25,
+      0.5,
+      0.75
+    ],
+    "bm25_weight": "1 - dense_weight",
+    "missing_rank_contribution": 0,
+    "bm25_candidates": "Only documents with a positive BM25 score",
+    "tie_break": "Original corpus order"
+  },
+  "selection": {
+    "partition": "tuning",
+    "primary_metric": "at_3.recall",
+    "tie_breakers": [
+      "Higher at_5.recall",
+      "Lower dense weight"
+    ],
+    "keep_rule": "Select one hybrid on tuning. Keep it only if recall@3 exceeds BM25 on both tuning and the subsequent validation comparison."
+  },
+  "environment": {
+    "python": "3.13.2",
+    "platform": "macOS-27.2-arm64-arm-64bit-Mach-O",
+    "packages": {
+      "sentence-transformers": "6.2.0",
+      "torch": "2.15.0",
+      "transformers": "5.22.2",
+      "huggingface-hub": "2.4.0",
+      "numpy": "2.4.3",
+      "rank-bm25": "0.2.2"
+    }
+  }
+}
