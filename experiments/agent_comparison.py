@@ -64,11 +64,11 @@ def adapt_agent(source, frozen_hash):
     return adapted
 
 
-def schedule_runs(claim_ids, repetitions):
+def schedule_runs(claim_ids, repetitions, conditions=CONDITIONS):
     schedule = []
     for repetition in range(1, repetitions + 1):
         for index, claim_id in enumerate(claim_ids):
-            order = CONDITIONS if (index + repetition - 1) % 2 == 0 else CONDITIONS[::-1]
+            order = conditions if (index + repetition - 1) % 2 == 0 else conditions[::-1]
             for condition in order:
                 schedule.append({"claim_id": claim_id, "repetition": repetition,
                                  "condition": condition})
@@ -125,14 +125,14 @@ def recover_interrupted(runs, claims_by_id):
             row["trace_complete"] = False
 
 
-def summarize(runs, schedule):
+def summarize(runs, schedule, conditions=CONDITIONS, keep_key="keep_hybrid_for_combination"):
     terminal = [row for row in runs if row["status"] in TERMINAL]
     success = {
         condition: {(r["claim_id"], r["repetition"]) for r in terminal
                     if r["condition"] == condition and r["status"] == "ok"}
-        for condition in CONDITIONS
+        for condition in conditions
     }
-    paired = success[CONDITIONS[0]] & success[CONDITIONS[1]]
+    paired = success[conditions[0]] & success[conditions[1]]
     complete = len(terminal) == len(schedule)
     summary = {"planned_runs": len(schedule), "completed_runs": len(terminal),
                "complete": complete, "successful_pairs": len(paired), "conditions": {}}
@@ -152,7 +152,7 @@ def summarize(runs, schedule):
             "nei_false_flag_rate_successful_runs": false_flags / successful_nei if successful_nei else None,
         }
 
-    for condition in CONDITIONS:
+    for condition in conditions:
         rows = [row for row in terminal if row["condition"] == condition]
         data = aggregate(rows)
         matched = [r for r in rows if (r["claim_id"], r["repetition"]) in paired]
@@ -181,15 +181,15 @@ def summarize(runs, schedule):
             "runs_with_complete_trace": len(traced),
         })
         summary["conditions"][condition] = data
-    summary["training_decision"] = {"ready": complete, "keep_hybrid_for_combination": None}
+    summary["training_decision"] = {"ready": complete, keep_key: None}
     if complete:
-        baseline, hybrid = (summary["conditions"][name] for name in CONDITIONS)
-        a, b = baseline["metrics_all_attempts"], hybrid["metrics_all_attempts"]
+        baseline, candidate = (summary["conditions"][name] for name in conditions)
+        a, b = baseline["metrics_all_attempts"], candidate["metrics_all_attempts"]
         checks = {
             "higher_evidence_f1": b["evidence_sentences"]["f1"] > a["evidence_sentences"]["f1"],
             "no_lower_document_verdict_f1": b["document_labels"]["f1"] >= a["document_labels"]["f1"],
-            "no_more_nei_false_flags": hybrid["nei_false_flags"] <= baseline["nei_false_flags"],
-            "no_more_processing_failures": hybrid["failures"] <= baseline["failures"],
+            "no_more_nei_false_flags": candidate["nei_false_flags"] <= baseline["nei_false_flags"],
+            "no_more_processing_failures": candidate["failures"] <= baseline["failures"],
         }
-        summary["training_decision"].update(checks=checks, keep_hybrid_for_combination=all(checks.values()))
+        summary["training_decision"].update({"checks": checks, keep_key: all(checks.values())})
     return summary

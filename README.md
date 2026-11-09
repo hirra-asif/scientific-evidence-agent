@@ -10,6 +10,13 @@ I’m interested in how language models can help people work with scientific evi
 
 ## How it works
 
+![Scientific evidence agent workflow](docs/agent-flow.svg)
+
+The default agent uses BM25. Hybrid experiments replace the search
+implementation while keeping the same agent loop, assessment guidelines
+and three-abstract limit. Python validates the output schema and
+references; scientific correctness is measured separately.
+
 1. **Search:** Claude calls a BM25 keyword search over paper titles and abstracts.
 2. **Read:** It selects up to three abstracts and receives their numbered sentences.
 3. **Assess:** It returns `SUPPORT`, `CONTRADICT` or `NOT_ENOUGH_INFO` for each abstract.
@@ -119,6 +126,22 @@ report = asyncio.run(
     main(claim="CX3CR1 on the Th2 cells promotes airway inflammation.")
 )
 ~~~
+### Training development results
+
+On 60 fixed training claims, with two repetitions per condition:
+
+| Metric | BM25 agent | Hybrid agent |
+| --- | ---: | ---: |
+| Evidence F1 | 0.503 | 0.535 |
+| Document/verdict F1 | 0.721 | 0.766 |
+| NEI false flags | 9/40 | 8/40 |
+| Processing failures | 4/120 | 4/120 |
+
+Hybrid retrieval passed the predefined training selection rule and was
+retained for combination testing. These are development results, not
+held-out performance estimates. The fresh dev comparison is pending.
+
+[Full training results](results/agent_retrieval_training.json)
 
 ## Limitations
 

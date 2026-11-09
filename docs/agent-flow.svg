@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="880" viewBox="0 0 1500 880" font-family="Inter, 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8C8A86"/>
+    </marker>
+  </defs>
+  <style>
+    .tag   { font-size: 11px; font-weight: 600; letter-spacing: 1.4px; fill: #8A8680; }
+    .title { font-size: 19px; font-weight: 600; fill: #2B2A28; }
+    .sub   { font-size: 14.5px; fill: #6B6862; }
+    .mono  { font-family: 'DejaVu Sans Mono', Menlo, monospace; font-size: 17px; font-weight: 600; fill: #2B2A28; }
+    .edge  { font-size: 13.5px; fill: #6B6862; }
+    .line  { stroke: #8C8A86; stroke-width: 1.6; fill: none; }
+  </style>
+
+  <rect width="1500" height="880" fill="#FFFFFF"/>
+
+  <!-- Row 1: inputs -->
+  <rect x="430" y="40" width="300" height="80" rx="14" fill="#F6F6F4" stroke="#D9D7D2"/>
+  <text x="580" y="73" text-anchor="middle" class="tag">INPUT</text>
+  <text x="580" y="100" text-anchor="middle" class="title">Scientific claim</text>
+
+  <rect x="770" y="40" width="360" height="80" rx="14" fill="#F6F6F4" stroke="#D9D7D2" stroke-dasharray="5 4"/>
+  <text x="950" y="64" text-anchor="middle" class="tag">SKILL · OPTIONAL</text>
+  <text x="950" y="88" text-anchor="middle" class="title">Evidence guidelines</text>
+  <text x="950" y="109" text-anchor="middle" class="sub">populations · causation · minimal evidence</text>
+
+  <path class="line" d="M580,120 L580,160 L700,160 L700,196" marker-end="url(#arrow)"/>
+  <path class="line" d="M950,120 L950,160 L800,160 L800,196" marker-end="url(#arrow)" stroke-dasharray="5 4"/>
+
+  <!-- Row 2: agent loop -->
+  <rect x="590" y="200" width="320" height="120" rx="14" fill="#F4EDE4" stroke="#D8C3A5"/>
+  <text x="750" y="234" text-anchor="middle" class="tag">CLAUDE AGENT SDK</text>
+  <text x="750" y="264" text-anchor="middle" class="title">Claude chooses</text>
+  <text x="750" y="289" text-anchor="middle" class="title">the next action</text>
+  <text x="750" y="309" text-anchor="middle" class="sub">max 8 turns</text>
+
+  <rect x="80" y="200" width="340" height="120" rx="14" fill="#FFFFFF" stroke="#CFCDC8"/>
+  <text x="250" y="234" text-anchor="middle" class="tag">MCP TOOL</text>
+  <text x="250" y="264" text-anchor="middle" class="mono">search_abstracts</text>
+  <text x="250" y="290" text-anchor="middle" class="sub">BM25 over 5,183 abstracts</text>
+  <text x="250" y="309" text-anchor="middle" class="sub">returns top 5</text>
+
+  <rect x="1080" y="200" width="340" height="120" rx="14" fill="#FFFFFF" stroke="#CFCDC8"/>
+  <text x="1250" y="234" text-anchor="middle" class="tag">MCP TOOL</text>
+  <text x="1250" y="264" text-anchor="middle" class="mono">read_abstract</text>
+  <text x="1250" y="290" text-anchor="middle" class="sub">numbered sentences</text>
+  <text x="1250" y="309" text-anchor="middle" class="sub">max 3 abstracts per claim</text>
+
+  <!-- tool exchanges -->
+  <path class="line" d="M590,240 L424,240" marker-end="url(#arrow)"/>
+  <text x="507" y="230" text-anchor="middle" class="edge">search</text>
+  <path class="line" d="M420,282 L586,282" marker-end="url(#arrow)"/>
+  <text x="503" y="304" text-anchor="middle" class="edge">IDs, titles, scores</text>
+
+  <path class="line" d="M910,240 L1076,240" marker-end="url(#arrow)"/>
+  <text x="993" y="230" text-anchor="middle" class="edge">read</text>
+  <path class="line" d="M1080,282 L914,282" marker-end="url(#arrow)"/>
+  <text x="997" y="304" text-anchor="middle" class="edge">sentences</text>
+
+  <!-- Row 3: report -->
+  <path class="line" d="M750,320 L750,386" marker-end="url(#arrow)"/>
+  <text x="762" y="358" class="edge">finish</text>
+
+  <rect x="520" y="390" width="460" height="110" rx="14" fill="#F6F6F4" stroke="#D9D7D2"/>
+  <text x="750" y="423" text-anchor="middle" class="tag">STRUCTURED REPORT</text>
+  <text x="750" y="452" text-anchor="middle" class="title">One verdict per abstract read</text>
+  <text x="750" y="478" text-anchor="middle" class="sub">SUPPORT · CONTRADICT · NOT_ENOUGH_INFO  +  sentence IDs</text>
+
+  <!-- Row 4: validation -->
+  <path class="line" d="M750,500 L750,556" marker-end="url(#arrow)"/>
+
+  <rect x="545" y="560" width="410" height="90" rx="14" fill="#EEF2F6" stroke="#C9D3DE"/>
+  <text x="750" y="592" text-anchor="middle" class="tag">PYTHON CHECKS</text>
+  <text x="750" y="622" text-anchor="middle" class="title">Validate references and verdicts</text>
+
+  <!-- Row 5: outcomes -->
+  <path class="line" d="M750,650 L750,690 L540,690 L540,736" marker-end="url(#arrow)"/>
+  <path class="line" d="M750,690 L960,690 L960,736" marker-end="url(#arrow)"/>
+  <text x="640" y="680" text-anchor="middle" class="edge">valid</text>
+  <text x="860" y="680" text-anchor="middle" class="edge">invalid</text>
+
+  <rect x="380" y="740" width="320" height="100" rx="14" fill="#EBF4ED" stroke="#B9D8BF"/>
+  <text x="540" y="772" text-anchor="middle" class="tag">OUTPUT</text>
+  <text x="540" y="801" text-anchor="middle" class="title">Evidence quoted</text>
+  <text x="540" y="824" text-anchor="middle" class="sub">directly from the corpus</text>
+
+  <rect x="800" y="740" width="320" height="100" rx="14" fill="#FBEFEE" stroke="#E2BDB9"/>
+  <text x="960" y="772" text-anchor="middle" class="tag">FAILURE</text>
+  <text x="960" y="801" text-anchor="middle" class="title">Recorded as a failure</text>
+  <text x="960" y="824" text-anchor="middle" class="sub">with its tool trace (evaluation runs)</text>
+</svg>
