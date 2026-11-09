@@ -165,6 +165,7 @@ async def main(
     run_metadata=None,
     skill_workspace=None,
     search_fn=None,
+    model="claude-haiku-5-5",
 ):
     state = RunState(search_fn=search_fn)
     opened_documents = state.opened_documents
@@ -189,7 +190,7 @@ async def main(
     )
 
     options = ClaudeAgentOptions(
-        model="claude-haiku-5-5",
+        model=model,
         cwd=str(PROJECT_DIR if skill_workspace is None else skill_workspace),
         setting_sources=["project"],
         tools=["Skill"] if use_skill else [],
@@ -247,6 +248,7 @@ async def main(
                 isinstance(message, SystemMessage)
                 and message.subtype == "init"
             ):
+                run_metadata["sdk_model"] = message.data.get("model")
                 skill_discovered = (
                     "scientific-evidence" in message.data.get("skills", [])
                 )
@@ -257,6 +259,10 @@ async def main(
             # Save before schema or reference validation can fail.
             run_metadata.update({
                 "estimated_cost_usd": message.total_cost_usd,
+                "usage": getattr(message, "usage", None),
+                "model_usage": getattr(message, "model_usage", None),
+                "sdk_duration_ms": getattr(message, "duration_ms", None),
+                "api_duration_ms": getattr(message, "duration_api_ms", None),
                 "result_subtype": message.subtype,
                 "sdk_is_error": message.is_error,
                 "stop_reason": getattr(message, "stop_reason", None),
