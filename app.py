@@ -90,9 +90,10 @@ def show_result(result):
         st.caption("Recorded run · saved evaluation output. No model request was made.")
     else:
         st.caption("Live run · " + result["model"])
-    markup('<div class="section-kicker report-kicker">Claim under review</div>')
-    markup(f'<h2 class="claim-heading">{escape(result["claim"])}</h2>')
-    st.caption(f"{result['model']} · {result['retriever'].upper()} retrieval · verdicts apply to individual abstracts")
+    with st.container(key="claim_summary"):
+        markup('<div class="section-kicker report-kicker">Claim under review</div>')
+        markup(f'<h2 class="claim-heading">{escape(result["claim"])}</h2>')
+        st.caption(f"{result['model']} · {result['retriever'].upper()} retrieval · verdicts apply to individual abstracts")
 
     with st.container(key="run_metrics"):
         columns = st.columns(4)

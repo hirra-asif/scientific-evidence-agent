@@ -105,16 +105,19 @@ class TestStreamlitApp(unittest.TestCase):
         with patch.object(demo, "live_requirements", return_value=["Setup needed"]):
             app = self.app().run()
             self.assertFalse(app.exception)
-            self.assertTrue(app.button[0].disabled)
-            app.radio[0].set_value("Recorded examples").run()
+            self.assertEqual(app.radio[0].value, "Recorded examples")
+            self.assertFalse(app.button[0].disabled)
             app.button[0].click().run()
             self.assertFalse(app.exception)
-            self.assertTrue(any("Recorded run" in element.value for element in app.info))
+            self.assertTrue(any("Recorded run" in element.value for element in app.caption))
             self.assertEqual(app.metric[1].value, "1 / 3")
             app.selectbox[0].set_value(2).run()
             app.button[0].click().run()
             self.assertFalse(app.exception)
             self.assertTrue(any("Processing failure" in element.value for element in app.error))
+            app.radio[0].set_value("Try the SciFact corpus").run()
+            self.assertTrue(app.button[0].disabled)
+            self.assertEqual(len(app.metric), 0)
 
     def test_mode_change_clears_old_report_and_live_submission_runs_only_once(self):
         result = demo.recorded_example(0)
@@ -122,6 +125,7 @@ class TestStreamlitApp(unittest.TestCase):
         with patch.object(demo, "live_requirements", return_value=[]):
             with patch.object(demo, "run_live", return_value=result) as run:
                 app = self.app().run()
+                app.radio[0].set_value("Try the SciFact corpus").run()
                 app.text_area[0].input("A scientific claim.")
                 app.button[0].click().run()
                 self.assertFalse(app.exception)
@@ -130,3 +134,17 @@ class TestStreamlitApp(unittest.TestCase):
                 self.assertEqual(run.call_count, 1)
                 app.radio[0].set_value("Recorded examples").run()
                 self.assertEqual(len(app.metric), 0)
+
+    def test_sample_claim_prefills_input_without_starting_a_live_run(self):
+        with patch.object(demo, "live_requirements", return_value=[]):
+            with patch.object(demo, "run_live") as run:
+                app = self.app().run()
+                app.radio[0].set_value("Try the SciFact corpus").run()
+                for index in range(3):
+                    app.selectbox[0].set_value(index).run()
+                    self.assertFalse(app.exception)
+                    self.assertEqual(app.text_area[0].value,
+                                     demo.load_examples()["examples"][index]["run"]["claim"])
+                app.selectbox[0].set_value(None).run()
+                self.assertEqual(app.text_area[0].value, "")
+                run.assert_not_called()

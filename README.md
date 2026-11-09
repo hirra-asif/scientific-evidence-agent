@@ -4,6 +4,10 @@ An agent that checks scientific claims against **5,183 research abstracts from S
 
 **Evaluation:** Compared four configurations on 60 previously unused SciFact dev claims, with two repetitions each. Sonnet with hybrid retrieval had the highest observed F1 scores; hybrid retrieval lowered Haiku's evidence F1 on this sample. [Results and methods](docs/final_evaluation.md).
 
+![Recorded example showing evidence and the agent explanation](docs/demo.gif)
+
+*Recorded evaluation run; playback edited for readability.*
+
 ## Why I built this
 
 I’m interested in how language models can help people work with scientific evidence. I built this project to learn the Claude Agent SDK and test whether evidence guidelines make an agent’s answers more reliable. I wanted to check whether it could find the right evidence and recognise when the available text was insufficient. I developed it step by step, adding search tools, reference checks and evaluations.
@@ -133,10 +137,10 @@ report = asyncio.run(
 python -m streamlit run app.py
 ~~~
 
-Check a claim with the default BM25 Haiku agent and inspect its searches,
-per-abstract verdicts, exact quotes, duration and estimated cost. Live runs
-use your local `.env` key and corpus. **Recorded examples** work without
-either and are explicitly labelled as saved runs.
+The app opens on **Recorded examples**, which need no API key or dataset.
+**Try the SciFact corpus** runs the default BM25 Haiku agent using your local
+`.env` key and corpus. It includes sample claims and searches only the fixed
+abstract collection, not the web. Reports show exact quotes and search history.
 
 ## Evaluation
 
