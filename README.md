@@ -2,7 +2,7 @@
 
 An agent that checks scientific claims against **5,183 research abstracts from SciFact**. Built with the Claude Agent SDK, it searches for relevant papers, reads up to three abstracts and returns a verdict for each, with evidence quoted directly from the source.
 
-**Results:** On a 30-claim development sample, 29 claims completed successfully with both guideline versions. The minimal-evidence rule increased evidence precision from **0.288 to 0.425**, with recall unchanged at **0.548**. One run failed with the original guidelines; none failed with the revision. In a separate supplied-text test, the model returned `NOT_ENOUGH_INFO` after findings were removed in all nine runs: three examples, each repeated three times. These are small development experiments, not a full SciFact benchmark evaluation. [Full results and methods](docs/evaluation.md).
+**Evaluation:** Compared four configurations on 60 previously unused SciFact dev claims, with two repetitions each. Sonnet with hybrid retrieval had the highest observed F1 scores; hybrid retrieval did not improve Haiku. [Results and methods](docs/final_evaluation.md).
 
 ## Why I built this
 
@@ -71,7 +71,10 @@ This demonstrates a retrieval failure against the benchmark. Vocabulary mismatch
 
 ## Setup
 
-Tested on macOS with **Python 3.13.2**. The recorded experiments used `claude-haiku-5-5`. Running the agent requires an Anthropic API key with access to that model and incurs API charges.
+Tested on macOS with **Python 3.13.2**. The default agent uses
+`claude-haiku-5-5`; the evaluation also used `claude-sonnet-5-5`.
+Running requires an Anthropic API key with access to the requested model
+and incurs API charges.
 
 From the repository root:
 
@@ -94,7 +97,7 @@ rm scifact-data.tar.gz
 
 The project expects `data/corpus.jsonl`, `data/claims_train.jsonl` and `data/claims_dev.jsonl`. The dataset is downloaded separately and is not committed.
 
-Check the data and run the scoring tests without API calls:
+Check the data and run the test suite without API calls:
 
 ~~~bash
 python inspect_data.py
@@ -121,22 +124,31 @@ report = asyncio.run(
     main(claim="CX3CR1 on the Th2 cells promotes airway inflammation.")
 )
 ~~~
-### Training development results
+## Evaluation
 
-On 60 fixed training claims, with two repetitions per condition:
+60 previously unused dev claims, balanced across three classes, with two
+repetitions per configuration: 480 attempts in total.
 
-| Metric | BM25 agent | Hybrid agent |
-| --- | ---: | ---: |
-| Evidence F1 | 0.503 | 0.535 |
-| Document/verdict F1 | 0.721 | 0.766 |
-| NEI false flags | 9/40 | 8/40 |
-| Processing failures | 4/120 | 4/120 |
+| Configuration | Evidence F1 | Document/verdict F1 | NEI false flags |
+| --- | ---: | ---: | ---: |
+| Haiku · BM25 | 0.457 | 0.586 | 5/40 |
+| Haiku · hybrid | 0.396 | 0.558 | 8/40 |
+| Sonnet · hybrid | 0.492 | 0.701 | 7/40 |
+| Fixed pipeline · hybrid | 0.437 | 0.644 | 7/40 |
 
-Hybrid retrieval passed the predefined training selection rule and was
-retained for combination testing. These are development results, not
-held-out performance estimates. The fresh dev comparison is pending.
+Hybrid combines BM25 with E5 embeddings. The pipeline supplies its top
+three abstracts to Haiku through the same SDK and assessment guidelines.
+A false flag means at least one `SUPPORT` or `CONTRADICT` assessment on a
+gold `NOT_ENOUGH_INFO` claim.
 
-[Full training results](results/agent_retrieval_training.json)
+Sonnet had the highest observed F1 scores. No planned comparison met the
+frozen rule for improvement on both F1 metrics after adjustment for
+multiple comparisons. Hybrid's training gains did not carry over to this
+dev sample. The default remains BM25 Haiku.
+
+[Final analysis and confidence intervals](docs/final_evaluation.md)
+· [Training results](results/agent_retrieval_training.json)
+· [Earlier guideline experiments](docs/evaluation.md)
 
 ## Limitations
 
