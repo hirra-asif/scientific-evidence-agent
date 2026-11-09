@@ -1,6 +1,6 @@
 # Scientific Evidence Agent
 
-An agent that checks scientific claims against **5,183 research abstracts from SciFact**. Built with the Claude Agent SDK, it searches for relevant papers, reads up to three abstracts and returns a verdict for each, with evidence quoted directly from the source.
+An agent that checks scientific claims against **5,183 research abstracts from SciFact**. Built with the Claude Agent SDK, it chooses searches, reads up to three abstracts and returns a verdict for each. Python validates document and sentence references, then copies evidence quotes directly from the corpus.
 
 **Evaluation:** Compared four configurations on 60 previously unused SciFact dev claims, with two repetitions each. Sonnet with hybrid retrieval had the highest observed F1 scores; hybrid retrieval lowered Haiku's evidence F1 on this sample. [Results and methods](docs/final_evaluation.md).
 
@@ -104,6 +104,8 @@ python inspect_data.py
 python -m unittest discover -s tests -v
 ~~~
 
+The unit tests also run without downloading SciFact; GitHub Actions runs them on Python 3.13. Corpus loading and BM25 indexing happen only when first needed.
+
 ## Run the agent
 
 Run the built-in example:
@@ -124,6 +126,17 @@ report = asyncio.run(
     main(claim="CX3CR1 on the Th2 cells promotes airway inflammation.")
 )
 ~~~
+
+## Interactive demo
+
+~~~bash
+python -m streamlit run app.py
+~~~
+
+Check a claim with the default BM25 Haiku agent and inspect its searches,
+per-abstract verdicts, exact quotes, duration and estimated cost. Live runs
+use your local `.env` key and corpus. **Recorded examples** work without
+either and are explicitly labelled as saved runs.
 
 ## Evaluation
 
@@ -167,11 +180,12 @@ multiple comparisons. The default remains BM25 Haiku.
 | File | Purpose |
 |---|---|
 | [agent.py](agent.py) | Agent loop, tool wrappers and output validation |
+| [app.py](app.py) and [demo.py](demo.py) | Streamlit interface and live/recorded report adapter |
 | [corpus_tools.py](corpus_tools.py) | Abstract search and reading |
 | [hybrid_retrieval.py](hybrid_retrieval.py) | BM25 and E5 hybrid retrieval |
 | [Skill instructions](.claude/skills/scientific-evidence/SKILL.md) | Scientific evidence guidelines |
 | [scoring.py](scoring.py) and [tests](tests/) | Evaluation rules and scoring tests |
-| [experiments](experiments/) | Evaluation runners and frozen claim-selection files |
+| [Experiment index](experiments/README.md) | Evaluation runners, development history and frozen reproduction instructions |
 | [results](results/) | Saved experimental outputs |
 
 ## References

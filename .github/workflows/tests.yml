@@ -1,0 +1,38 @@
+name: Python tests
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+      - name: Install test and app dependencies
+        # Hybrid tests cover ranking/fusion with fixtures; no embedding model is loaded.
+        # Derive this temporary list from the single maintained requirements file.
+        run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          lines = Path('requirements.txt').read_text().splitlines()
+          target = Path(os.environ['RUNNER_TEMP']) / 'test-requirements.txt'
+          target.write_text('\n'.join(line for line in lines if not line.startswith('sentence-transformers==')) + '\n')
+          PY
+          python -m pip install -r "$RUNNER_TEMP/test-requirements.txt"
+      - name: Test without corpus data or API credentials
+        env:
+          ANTHROPIC_API_KEY: ''
+        run: |
+          test ! -e data/corpus.jsonl
+          python -m unittest discover -s tests -v
+          git diff --check

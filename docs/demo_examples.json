@@ -1,0 +1,822 @@
+{
+  "schema_version": 1,
+  "source_path": "results/final_evaluation.json",
+  "source_sha256": "33b6fce85a5034f369d67363fd64fd155e83799885969d5cdfe5a8faedef4ff9",
+  "examples": [
+    {
+      "name": "Evidence found · exercise and cognition",
+      "run": {
+        "claim_id": 921,
+        "repetition": 1,
+        "condition": "current_haiku",
+        "claim": "Participating in six months of physical activity improves cognitive functioning.",
+        "gold_evidence": {
+          "1642727": [
+            {
+              "sentences": [
+                9
+              ],
+              "label": "SUPPORT"
+            },
+            {
+              "sentences": [
+                10
+              ],
+              "label": "SUPPORT"
+            },
+            {
+              "sentences": [
+                13
+              ],
+              "label": "SUPPORT"
+            }
+          ]
+        },
+        "configuration": {
+          "mode": "agent",
+          "model": "claude-haiku-5-5",
+          "retriever": "bm25",
+          "max_turns": 8
+        },
+        "status": "ok",
+        "started_at": "2026-11-09T20:18:10.933938+00:00",
+        "elapsed_seconds": 6.940202,
+        "trace_complete": true,
+        "metadata": {
+          "estimated_cost_usd": 0.00095035,
+          "tool_trace": [
+            {
+              "tool": "search_abstracts",
+              "arguments": {
+                "query": "six months physical activity cognitive function"
+              },
+              "status": "ok",
+              "results": [
+                {
+                  "document_id": "1642727",
+                  "title": "Effect of physical activity on cognitive function in older adults at risk for Alzheimer disease: a randomized trial.",
+                  "score": 22.152
+                },
+                {
+                  "document_id": "37156349",
+                  "title": "Cognitive predictors of young children's readiness for powered mobility.",
+                  "score": 20.787
+                },
+                {
+                  "document_id": "21274919",
+                  "title": "The association between common physical impairments and dementia in low and middle income countries, and, among people with dementia, their association with cognitive function and disability. A 10/66 Dementia Research Group population-based study.",
+                  "score": 15.326
+                },
+                {
+                  "document_id": "15041758",
+                  "title": "Functional outcomes of multi-condition collaborative care and successful ageing: results of randomised trial",
+                  "score": 14.36
+                },
+                {
+                  "document_id": "15678772",
+                  "title": "Effect of low doses of ionising radiation in infancy on cognitive function in adulthood: Swedish population based cohort study.",
+                  "score": 13.284
+                }
+              ]
+            },
+            {
+              "tool": "search_abstracts",
+              "arguments": {
+                "query": "exercise training improves cognition older adults"
+              },
+              "status": "ok",
+              "results": [
+                {
+                  "document_id": "32322418",
+                  "title": "Moderate regular exercise increases basal production of nitric oxide in elderly women.",
+                  "score": 24.191
+                },
+                {
+                  "document_id": "2028532",
+                  "title": "High-intensity functional exercise program and protein-enriched energy supplement for older persons dependent in activities of daily living: a randomised controlled trial.",
+                  "score": 24.049
+                },
+                {
+                  "document_id": "4164929",
+                  "title": "The emerging role of skeletal muscle extracellular matrix remodelling in obesity and exercise.",
+                  "score": 20.669
+                },
+                {
+                  "document_id": "40631095",
+                  "title": "The Combination of Exercise and Respiratory Training Improves Respiratory Muscle Function in Pulmonary Hypertension",
+                  "score": 20.495
+                },
+                {
+                  "document_id": "50670403",
+                  "title": "Are expert athletes 'expert' in the cognitive laboratory? A meta-analytic review of cognition and sport expertise",
+                  "score": 18.33
+                }
+              ]
+            },
+            {
+              "tool": "read_abstract",
+              "arguments": {
+                "document_id": "1642727"
+              },
+              "status": "ok",
+              "document_id": "1642727"
+            }
+          ],
+          "opened_document_ids": [
+            "1642727"
+          ],
+          "model": "claude-haiku-5-5",
+          "max_turns": 8,
+          "max_abstracts": 3,
+          "api_timeout_ms": 120000,
+          "max_api_retries": 2,
+          "sdk_model": "claude-haiku-5-5",
+          "usage": {
+            "input_tokens": 6,
+            "cache_creation_input_tokens": 3272,
+            "cache_read_input_tokens": 8375,
+            "output_tokens": 914,
+            "output_tokens_details": {
+              "thinking_tokens": 360
+            },
+            "server_tool_use": {
+              "web_search_requests": 0,
+              "web_fetch_requests": 0
+            },
+            "service_tier": "standard",
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 3272
+            },
+            "inference_geo": "global",
+            "iterations": [
+              {
+                "input_tokens": 2,
+                "output_tokens": 719,
+                "cache_read_input_tokens": 3743,
+                "cache_creation_input_tokens": 1293,
+                "cache_creation": {
+                  "ephemeral_5m_input_tokens": 1293,
+                  "ephemeral_1h_input_tokens": 0
+                },
+                "type": "message"
+              }
+            ],
+            "speed": "standard",
+            "fallback_credit": null
+          },
+          "model_usage": {
+            "claude-haiku-5-5": {
+              "inputTokens": 6,
+              "outputTokens": 914,
+              "cacheReadInputTokens": 8375,
+              "cacheCreationInputTokens": 3272,
+              "webSearchRequests": 0,
+              "costUSD": 0.00095035,
+              "contextWindow": 1000000,
+              "maxOutputTokens": 128000,
+              "thinkingTokens": 360,
+              "cacheCreationEphemeral5mInputTokens": 3272,
+              "cacheCreationEphemeral1hInputTokens": 0,
+              "canonicalModel": "claude-haiku-5-5",
+              "provider": "firstParty",
+              "costBasis": "list"
+            }
+          },
+          "sdk_duration_ms": 5670,
+          "api_duration_ms": 5459,
+          "result_subtype": "success",
+          "sdk_is_error": false,
+          "stop_reason": "tool_use",
+          "num_turns": 5,
+          "terminal_reason": "completed",
+          "api_error_status": null,
+          "sdk_errors": null,
+          "result_text": "{\"assessments\":[{\"document_id\":\"1642727\",\"verdict\":\"SUPPORT\",\"evidence_sentence_ids\":[10,13],\"explanation\":\"This randomized trial of adults aged 50+ with subjective memory impairment (not dementia) tested a 24-week home-based physical activity program. The 6-month intervention group showed a between-group difference of -1.3 points (95% CI -2.38 to -0.22) on ADAS-Cog at the end of the intervention, which favors the intervention. The authors conclude that a 6-month program 'provided a modest improvement in cognition.' The claim is general, but the evidence is limited to older adults at risk and the effect is described as modest. Several cognitive measures did not change significantly, and the 18-month within-group change was not significant, so the claim should not be read as applying to all populations or all cognitive outcomes. Only one abstract was read, so this is not a systematic assessment of the wider literature.\"}]}",
+          "raw_structured_output": {
+            "assessments": [
+              {
+                "document_id": "1642727",
+                "verdict": "SUPPORT",
+                "evidence_sentence_ids": [
+                  10,
+                  13
+                ],
+                "explanation": "This randomized trial of adults aged 50+ with subjective memory impairment (not dementia) tested a 24-week home-based physical activity program. The 6-month intervention group showed a between-group difference of -1.3 points (95% CI -2.38 to -0.22) on ADAS-Cog at the end of the intervention, which favors the intervention. The authors conclude that a 6-month program 'provided a modest improvement in cognition.' The claim is general, but the evidence is limited to older adults at risk and the effect is described as modest. Several cognitive measures did not change significantly, and the 18-month within-group change was not significant, so the claim should not be read as applying to all populations or all cognitive outcomes. Only one abstract was read, so this is not a systematic assessment of the wider literature."
+              }
+            ]
+          },
+          "trace_origin": "Claude-selected MCP tool calls"
+        },
+        "gold_is_nei": false,
+        "nei_outcome": null,
+        "report": {
+          "assessments": [
+            {
+              "document_id": "1642727",
+              "verdict": "SUPPORT",
+              "evidence_sentence_ids": [
+                10,
+                13
+              ],
+              "explanation": "This randomized trial of adults aged 50+ with subjective memory impairment (not dementia) tested a 24-week home-based physical activity program. The 6-month intervention group showed a between-group difference of -1.3 points (95% CI -2.38 to -0.22) on ADAS-Cog at the end of the intervention, which favors the intervention. The authors conclude that a 6-month program 'provided a modest improvement in cognition.' The claim is general, but the evidence is limited to older adults at risk and the effect is described as modest. Several cognitive measures did not change significantly, and the 18-month within-group change was not significant, so the claim should not be read as applying to all populations or all cognitive outcomes. Only one abstract was read, so this is not a systematic assessment of the wider literature."
+            }
+          ]
+        },
+        "score_counts": {
+          "claims": 1,
+          "gold_documents": 1,
+          "predicted_documents": 1,
+          "correct_document_labels": 1,
+          "correct_abstracts_with_evidence": 1,
+          "gold_sentences": 3,
+          "predicted_sentences": 2,
+          "correct_sentences": 2,
+          "nei_claims": 0,
+          "correct_nei": 0
+        },
+        "abstained": false,
+        "finished_at": "2026-11-09T20:18:17.893220+00:00"
+      },
+      "documents": [
+        {
+          "document_id": "1642727",
+          "title": "Effect of physical activity on cognitive function in older adults at risk for Alzheimer disease: a randomized trial.",
+          "sentences": [
+            {
+              "sentence_id": 0,
+              "text": "CONTEXT Many observational studies have shown that physical activity reduces the risk of cognitive decline; however, evidence from randomized trials is lacking.   \n"
+            },
+            {
+              "sentence_id": 1,
+              "text": "OBJECTIVE To determine whether physical activity reduces the rate of cognitive decline among older adults at risk.   \n"
+            },
+            {
+              "sentence_id": 2,
+              "text": "DESIGN AND SETTING Randomized controlled trial of a 24-week physical activity intervention conducted between 2004 and 2007 in metropolitan Perth, Western Australia."
+            },
+            {
+              "sentence_id": 3,
+              "text": "Assessors of cognitive function were blinded to group membership.   \n"
+            },
+            {
+              "sentence_id": 4,
+              "text": "PARTICIPANTS We recruited volunteers who reported memory problems but did not meet criteria for dementia."
+            },
+            {
+              "sentence_id": 5,
+              "text": "Three hundred eleven individuals aged 50 years or older were screened for eligibility, 89 were not eligible, and 52 refused to participate."
+            },
+            {
+              "sentence_id": 6,
+              "text": "A total of 170 participants were randomized and 138 participants completed the 18-month assessment.   \n"
+            },
+            {
+              "sentence_id": 7,
+              "text": "INTERVENTION Participants were randomly allocated to an education and usual care group or to a 24-week home-based program of physical activity.   \n"
+            },
+            {
+              "sentence_id": 8,
+              "text": "MAIN OUTCOME MEASURE Change in Alzheimer Disease Assessment Scale-Cognitive Subscale (ADAS-Cog) scores (possible range, 0-70) over 18 months.   \n"
+            },
+            {
+              "sentence_id": 9,
+              "text": "RESULTS In an intent-to-treat analysis, participants in the intervention group improved 0.26 points (95% confidence interval, -0.89 to 0.54) and those in the usual care group deteriorated 1.04 points (95% confidence interval, 0.32 to 1.82) on the ADAS-Cog at the end of the intervention."
+            },
+            {
+              "sentence_id": 10,
+              "text": "The absolute difference of the outcome measure between the intervention and control groups was -1.3 points (95% confidence interval,-2.38 to -0.22) at the end of the intervention."
+            },
+            {
+              "sentence_id": 11,
+              "text": "At 18 months, participants in the intervention group improved 0.73 points (95% confidence interval, -1.27 to 0.03) on the ADAS-Cog, and those in the usual care group improved 0.04 points (95% confidence interval, -0.46 to 0.88)."
+            },
+            {
+              "sentence_id": 12,
+              "text": "Word list delayed recall and Clinical Dementia Rating sum of boxes improved modestly as well, whereas word list total immediate recall, digit symbol coding, verbal fluency, Beck depression score, and Medical Outcomes 36-Item Short-Form physical and mental component summaries did not change significantly.   \n"
+            },
+            {
+              "sentence_id": 13,
+              "text": "CONCLUSIONS In this study of adults with subjective memory impairment, a 6-month program of physical activity provided a modest improvement in cognition over an 18-month follow-up period.   \n"
+            },
+            {
+              "sentence_id": 14,
+              "text": "TRIAL REGISTRATION anzctr.org.au Identifier: ACTRN12605000136606."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Insufficient evidence · vitamin D",
+      "run": {
+        "claim_id": 623,
+        "repetition": 1,
+        "condition": "current_haiku",
+        "claim": "Individuals with low serum vitamin D concentrations have increased risk of multiple sclerosis.",
+        "gold_evidence": {},
+        "configuration": {
+          "mode": "agent",
+          "model": "claude-haiku-5-5",
+          "retriever": "bm25",
+          "max_turns": 8
+        },
+        "status": "ok",
+        "started_at": "2026-11-09T20:08:54.922802+00:00",
+        "elapsed_seconds": 7.188154,
+        "trace_complete": true,
+        "metadata": {
+          "estimated_cost_usd": 0.001005005,
+          "tool_trace": [
+            {
+              "tool": "search_abstracts",
+              "arguments": {
+                "query": "serum vitamin D concentration and risk of multiple sclerosis"
+              },
+              "status": "ok",
+              "results": [
+                {
+                  "document_id": "25599283",
+                  "title": "Low serum vitamin D is associated with high risk of diabetes in Korean adults.",
+                  "score": 38.345
+                },
+                {
+                  "document_id": "12074066",
+                  "title": "Vitamin D and prevention of colorectal cancer.",
+                  "score": 36.71
+                },
+                {
+                  "document_id": "22843838",
+                  "title": "[Vitamin D and latitude as environmental factors in multiple sclerosis].",
+                  "score": 36.224
+                },
+                {
+                  "document_id": "4462079",
+                  "title": "Estimation of optimal serum concentrations of 25-hydroxyvitamin D for multiple health outcomes.",
+                  "score": 34.034
+                },
+                {
+                  "document_id": "4483571",
+                  "title": "Human serum 25-hydroxycholecalciferol response to extended oral dosing with cholecalciferol.",
+                  "score": 32.729
+                }
+              ]
+            },
+            {
+              "tool": "search_abstracts",
+              "arguments": {
+                "query": "low 25-hydroxyvitamin D multiple sclerosis incidence"
+              },
+              "status": "ok",
+              "results": [
+                {
+                  "document_id": "12074066",
+                  "title": "Vitamin D and prevention of colorectal cancer.",
+                  "score": 29.476
+                },
+                {
+                  "document_id": "16256507",
+                  "title": "Relationship between serum parathyroid hormone levels, vitamin D sufficiency, and calcium intake.",
+                  "score": 25.389
+                },
+                {
+                  "document_id": "4462079",
+                  "title": "Estimation of optimal serum concentrations of 25-hydroxyvitamin D for multiple health outcomes.",
+                  "score": 23.412
+                },
+                {
+                  "document_id": "25599283",
+                  "title": "Low serum vitamin D is associated with high risk of diabetes in Korean adults.",
+                  "score": 23.195
+                },
+                {
+                  "document_id": "3034412",
+                  "title": "Calcium absorption varies within the reference range for serum 25-hydroxyvitamin D.",
+                  "score": 22.867
+                }
+              ]
+            },
+            {
+              "tool": "read_abstract",
+              "arguments": {
+                "document_id": "22843838"
+              },
+              "status": "ok",
+              "document_id": "22843838"
+            },
+            {
+              "tool": "read_abstract",
+              "arguments": {
+                "document_id": "4462079"
+              },
+              "status": "ok",
+              "document_id": "4462079"
+            }
+          ],
+          "opened_document_ids": [
+            "22843838",
+            "4462079"
+          ],
+          "model": "claude-haiku-5-5",
+          "max_turns": 8,
+          "max_abstracts": 3,
+          "api_timeout_ms": 120000,
+          "max_api_retries": 2,
+          "sdk_model": "claude-haiku-5-5",
+          "usage": {
+            "input_tokens": 6,
+            "cache_creation_input_tokens": 3261,
+            "cache_read_input_tokens": 8378,
+            "output_tokens": 1026,
+            "output_tokens_details": {
+              "thinking_tokens": 305
+            },
+            "server_tool_use": {
+              "web_search_requests": 0,
+              "web_fetch_requests": 0
+            },
+            "service_tier": "standard",
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 3261
+            },
+            "inference_geo": "global",
+            "iterations": [
+              {
+                "input_tokens": 2,
+                "output_tokens": 665,
+                "cache_read_input_tokens": 3724,
+                "cache_creation_input_tokens": 1301,
+                "cache_creation": {
+                  "ephemeral_5m_input_tokens": 1301,
+                  "ephemeral_1h_input_tokens": 0
+                },
+                "type": "message"
+              }
+            ],
+            "speed": "standard",
+            "fallback_credit": null
+          },
+          "model_usage": {
+            "claude-haiku-5-5": {
+              "inputTokens": 6,
+              "outputTokens": 1026,
+              "cacheReadInputTokens": 8378,
+              "cacheCreationInputTokens": 3261,
+              "webSearchRequests": 0,
+              "costUSD": 0.001005005,
+              "contextWindow": 1000000,
+              "maxOutputTokens": 128000,
+              "thinkingTokens": 305,
+              "cacheCreationEphemeral5mInputTokens": 3261,
+              "cacheCreationEphemeral1hInputTokens": 0,
+              "canonicalModel": "claude-haiku-5-5",
+              "provider": "firstParty",
+              "costBasis": "list"
+            }
+          },
+          "sdk_duration_ms": 5747,
+          "api_duration_ms": 5457,
+          "result_subtype": "success",
+          "sdk_is_error": false,
+          "stop_reason": "tool_use",
+          "num_turns": 6,
+          "terminal_reason": "completed",
+          "api_error_status": null,
+          "sdk_errors": null,
+          "result_text": "{\"assessments\":[{\"document_id\":\"22843838\",\"verdict\":\"NOT_ENOUGH_INFO\",\"evidence_sentence_ids\":[],\"explanation\":\"The abstract is a review-style discussion of latitude, ultraviolet light, and vitamin D as possible environmental factors in MS. It states that vitamin D has immunomodulatory functions, suppresses an animal model of MS, and that vitamin D-related genes are considered susceptibility genes. It also says an approach is needed to investigate the association between vitamin D and MS. It reports no human serum 25(OH)D measurements and no risk estimate linking low serum vitamin D to MS risk, so it neither supports nor contradicts the claim.\"},{\"document_id\":\"4462079\",\"verdict\":\"NOT_ENOUGH_INFO\",\"evidence_sentence_ids\":[],\"explanation\":\"The abstract concerns optimal serum 25(OH)D thresholds for bone mineral density, lower-extremity function, dental health, falls, fractures, and colorectal cancer. Multiple sclerosis is not an outcome it evaluates, so it does not address the claim about low serum vitamin D and MS risk.\"}]}",
+          "raw_structured_output": {
+            "assessments": [
+              {
+                "document_id": "22843838",
+                "verdict": "NOT_ENOUGH_INFO",
+                "evidence_sentence_ids": [],
+                "explanation": "The abstract is a review-style discussion of latitude, ultraviolet light, and vitamin D as possible environmental factors in MS. It states that vitamin D has immunomodulatory functions, suppresses an animal model of MS, and that vitamin D-related genes are considered susceptibility genes. It also says an approach is needed to investigate the association between vitamin D and MS. It reports no human serum 25(OH)D measurements and no risk estimate linking low serum vitamin D to MS risk, so it neither supports nor contradicts the claim."
+              },
+              {
+                "document_id": "4462079",
+                "verdict": "NOT_ENOUGH_INFO",
+                "evidence_sentence_ids": [],
+                "explanation": "The abstract concerns optimal serum 25(OH)D thresholds for bone mineral density, lower-extremity function, dental health, falls, fractures, and colorectal cancer. Multiple sclerosis is not an outcome it evaluates, so it does not address the claim about low serum vitamin D and MS risk."
+              }
+            ]
+          },
+          "trace_origin": "Claude-selected MCP tool calls"
+        },
+        "gold_is_nei": true,
+        "nei_outcome": "correct_abstention",
+        "report": {
+          "assessments": [
+            {
+              "document_id": "22843838",
+              "verdict": "NOT_ENOUGH_INFO",
+              "evidence_sentence_ids": [],
+              "explanation": "The abstract is a review-style discussion of latitude, ultraviolet light, and vitamin D as possible environmental factors in MS. It states that vitamin D has immunomodulatory functions, suppresses an animal model of MS, and that vitamin D-related genes are considered susceptibility genes. It also says an approach is needed to investigate the association between vitamin D and MS. It reports no human serum 25(OH)D measurements and no risk estimate linking low serum vitamin D to MS risk, so it neither supports nor contradicts the claim."
+            },
+            {
+              "document_id": "4462079",
+              "verdict": "NOT_ENOUGH_INFO",
+              "evidence_sentence_ids": [],
+              "explanation": "The abstract concerns optimal serum 25(OH)D thresholds for bone mineral density, lower-extremity function, dental health, falls, fractures, and colorectal cancer. Multiple sclerosis is not an outcome it evaluates, so it does not address the claim about low serum vitamin D and MS risk."
+            }
+          ]
+        },
+        "score_counts": {
+          "claims": 1,
+          "gold_documents": 0,
+          "predicted_documents": 0,
+          "correct_document_labels": 0,
+          "correct_abstracts_with_evidence": 0,
+          "gold_sentences": 0,
+          "predicted_sentences": 0,
+          "correct_sentences": 0,
+          "nei_claims": 1,
+          "correct_nei": 1
+        },
+        "abstained": true,
+        "finished_at": "2026-11-09T20:09:02.121515+00:00"
+      },
+      "documents": [
+        {
+          "document_id": "22843838",
+          "title": "[Vitamin D and latitude as environmental factors in multiple sclerosis].",
+          "sentences": [
+            {
+              "sentence_id": 0,
+              "text": "Multiple sclerosis (MS) shows a multifold increase in prevalence with an increase in latitudes, both north and south of the equator."
+            },
+            {
+              "sentence_id": 1,
+              "text": "One of the potential factors related to the difference of the prevalence is vitamin D, because the strength of ambient ultraviolet light, which is essential for vitamin D production, decreases with increasing latitude."
+            },
+            {
+              "sentence_id": 2,
+              "text": "It is known that vitamin D has immunomodulatory functions and suppresses an animal model of MS."
+            },
+            {
+              "sentence_id": 3,
+              "text": "It is also considered that vitamin D-related genes are critical susceptible genes for MS."
+            },
+            {
+              "sentence_id": 4,
+              "text": "An approach from environmental and genetic aspects is needed to investigate the association between vitamin D and MS."
+            }
+          ]
+        },
+        {
+          "document_id": "4462079",
+          "title": "Estimation of optimal serum concentrations of 25-hydroxyvitamin D for multiple health outcomes.",
+          "sentences": [
+            {
+              "sentence_id": 0,
+              "text": "Recent evidence suggests that vitamin D intakes above current recommendations may be associated with better health outcomes."
+            },
+            {
+              "sentence_id": 1,
+              "text": "However, optimal serum concentrations of 25-hydroxyvitamin D [25(OH)D] have not been defined."
+            },
+            {
+              "sentence_id": 2,
+              "text": "This review summarizes evidence from studies that evaluated thresholds for serum 25(OH)D concentrations in relation to bone mineral density (BMD), lower-extremity function, dental health, and risk of falls, fractures, and colorectal cancer."
+            },
+            {
+              "sentence_id": 3,
+              "text": "For all endpoints, the most advantageous serum concentrations of 25(OH)D begin at 75 nmol/L (30 ng/mL), and the best are between 90 and 100 nmol/L (36-40 ng/mL)."
+            },
+            {
+              "sentence_id": 4,
+              "text": "In most persons, these concentrations could not be reached with the currently recommended intakes of 200 and 600 IU vitamin D/d for younger and older adults, respectively."
+            },
+            {
+              "sentence_id": 5,
+              "text": "A comparison of vitamin D intakes with achieved serum concentrations of 25(OH)D for the purpose of estimating optimal intakes led us to suggest that, for bone health in younger adults and all studied outcomes in older adults, an increase in the currently recommended intake of vitamin D is warranted."
+            },
+            {
+              "sentence_id": 6,
+              "text": "An intake for all adults of > or =1000 IU (25 microg) [DOSAGE ERROR CORRECTED] vitamin D (cholecalciferol)/d is needed to bring vitamin D concentrations in no less than 50% of the population up to 75 nmol/L. The implications of higher doses for the entire adult population should be addressed in future studies."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Processing failure · no abstracts read",
+      "run": {
+        "claim_id": 660,
+        "repetition": 1,
+        "condition": "improved_haiku",
+        "claim": "Ivermectin is used to treat onchocerciasis.",
+        "gold_evidence": {},
+        "configuration": {
+          "mode": "agent",
+          "model": "claude-haiku-5-5",
+          "retriever": "hybrid",
+          "dense_weight": 0.5,
+          "max_turns": 8
+        },
+        "status": "error",
+        "started_at": "2026-11-09T20:01:43.781926+00:00",
+        "elapsed_seconds": 4.952267,
+        "trace_complete": true,
+        "metadata": {
+          "estimated_cost_usd": 0.000510605,
+          "tool_trace": [
+            {
+              "tool": "search_abstracts",
+              "arguments": {
+                "query": "ivermectin onchocerciasis treatment"
+              },
+              "status": "ok",
+              "results": [
+                {
+                  "document_id": "9745001",
+                  "title": "Radioiodine treatment of multinodular non-toxic goitre.",
+                  "score": 0.012361286697569883
+                },
+                {
+                  "document_id": "25691541",
+                  "title": "Preterm patent ductus arteriosus: A continuing conundrum for the neonatologist?",
+                  "score": 0.012207602339181285
+                },
+                {
+                  "document_id": "27264454",
+                  "title": "Imiquimod 5% cream for the treatment of superficial basal cell carcinoma: results from a randomized vehicle-controlled phase III study in Europe.",
+                  "score": 0.01095192990764859
+                },
+                {
+                  "document_id": "35301079",
+                  "title": "Hepatic intra-arterial versus intravenous fotemustine in patients with liver metastases from uveal melanoma (EORTC 18021): a multicentric randomized trial.",
+                  "score": 0.010801564027370479
+                },
+                {
+                  "document_id": "12409683",
+                  "title": "Reduction of transmission from malaria patients by artemisinin combination therapies: a pooled analysis of six randomized trials",
+                  "score": 0.010796019900497512
+                }
+              ]
+            },
+            {
+              "tool": "search_abstracts",
+              "arguments": {
+                "query": "ivermectin river blindness Onchocerca volvulus"
+              },
+              "status": "ok",
+              "results": [
+                {
+                  "document_id": "76776022",
+                  "title": "Behçet's disease associated with a lymphoproliferative disorder, mixed cryoglobulinemia, and an immune complex mediated vasculitis.",
+                  "score": 0.015384615384615385
+                },
+                {
+                  "document_id": "13619127",
+                  "title": "Diabetes treatments and risk of amputation, blindness, severe kidney failure, hyperglycaemia, and hypoglycaemia: open cohort study in primary care",
+                  "score": 0.01510676965015902
+                },
+                {
+                  "document_id": "8298120",
+                  "title": "Global prevalence of glaucoma and projections of glaucoma burden through 2040: a systematic review and meta-analysis.",
+                  "score": 0.011997226074895978
+                },
+                {
+                  "document_id": "10536636",
+                  "title": "Prevalence and Causes of Blindness and Low Vision in Southern Sudan ",
+                  "score": 0.00819672131147541
+                },
+                {
+                  "document_id": "35301079",
+                  "title": "Hepatic intra-arterial versus intravenous fotemustine in patients with liver metastases from uveal melanoma (EORTC 18021): a multicentric randomized trial.",
+                  "score": 0.00819672131147541
+                }
+              ]
+            },
+            {
+              "tool": "search_abstracts",
+              "arguments": {
+                "query": "ivermectin"
+              },
+              "status": "ok",
+              "results": [
+                {
+                  "document_id": "13779605",
+                  "title": "Identification of vitronectin as an extrinsic inducer of cancer stem cell differentiation and tumor formation.",
+                  "score": 0.00819672131147541
+                },
+                {
+                  "document_id": "3308636",
+                  "title": "Interferons: Success in anti-viral immunotherapy.",
+                  "score": 0.008064516129032258
+                },
+                {
+                  "document_id": "4435369",
+                  "title": "Extracellular vesicles for drug delivery.",
+                  "score": 0.007936507936507936
+                },
+                {
+                  "document_id": "43378932",
+                  "title": "Intravaginal ring eluting tenofovir disoproxil fumarate completely protects macaques from multiple vaginal simian-HIV challenges.",
+                  "score": 0.0078125
+                },
+                {
+                  "document_id": "12640810",
+                  "title": "Cortactin regulates cofilin and N-WASp activities to control the stages of invadopodium assembly and maturation",
+                  "score": 0.007692307692307693
+                }
+              ]
+            }
+          ],
+          "opened_document_ids": [],
+          "model": "claude-haiku-5-5",
+          "max_turns": 8,
+          "max_abstracts": 3,
+          "api_timeout_ms": 120000,
+          "max_api_retries": 2,
+          "sdk_model": "claude-haiku-5-5",
+          "usage": {
+            "input_tokens": 6,
+            "cache_creation_input_tokens": 1461,
+            "cache_read_input_tokens": 9588,
+            "output_tokens": 463,
+            "output_tokens_details": {
+              "thinking_tokens": 163
+            },
+            "server_tool_use": {
+              "web_search_requests": 0,
+              "web_fetch_requests": 0
+            },
+            "service_tier": "standard",
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 1461
+            },
+            "inference_geo": "global",
+            "iterations": [
+              {
+                "input_tokens": 2,
+                "output_tokens": 192,
+                "cache_read_input_tokens": 3860,
+                "cache_creation_input_tokens": 465,
+                "cache_creation": {
+                  "ephemeral_5m_input_tokens": 465,
+                  "ephemeral_1h_input_tokens": 0
+                },
+                "type": "message"
+              }
+            ],
+            "speed": "standard",
+            "fallback_credit": null
+          },
+          "model_usage": {
+            "claude-haiku-5-5": {
+              "inputTokens": 6,
+              "outputTokens": 463,
+              "cacheReadInputTokens": 9588,
+              "cacheCreationInputTokens": 1461,
+              "webSearchRequests": 0,
+              "costUSD": 0.000510605,
+              "contextWindow": 1000000,
+              "maxOutputTokens": 128000,
+              "thinkingTokens": 163,
+              "cacheCreationEphemeral5mInputTokens": 1461,
+              "cacheCreationEphemeral1hInputTokens": 0,
+              "canonicalModel": "claude-haiku-5-5",
+              "provider": "firstParty",
+              "costBasis": "list"
+            }
+          },
+          "sdk_duration_ms": 4328,
+          "api_duration_ms": 3803,
+          "result_subtype": "success",
+          "sdk_is_error": false,
+          "stop_reason": "tool_use",
+          "num_turns": 5,
+          "terminal_reason": "completed",
+          "api_error_status": null,
+          "sdk_errors": null,
+          "result_text": "{\"assessments\":[]}",
+          "raw_structured_output": {
+            "assessments": []
+          },
+          "trace_origin": "Claude-selected MCP tool calls"
+        },
+        "gold_is_nei": true,
+        "nei_outcome": "processing_failure",
+        "score_counts": {
+          "claims": 1,
+          "gold_documents": 0,
+          "predicted_documents": 0,
+          "correct_document_labels": 0,
+          "correct_abstracts_with_evidence": 0,
+          "gold_sentences": 0,
+          "predicted_sentences": 0,
+          "correct_sentences": 0,
+          "nei_claims": 1,
+          "correct_nei": 0
+        },
+        "abstained": false,
+        "error": "ValueError: The agent did not read any abstracts.",
+        "finished_at": "2026-11-09T20:01:48.739143+00:00"
+      },
+      "documents": []
+    }
+  ]
+}
