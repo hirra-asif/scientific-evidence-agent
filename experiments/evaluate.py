@@ -6,7 +6,7 @@ from pathlib import Path
 
 from agent import main as check_claim
 
-PROJECT_DIR = Path(__file__).resolve().parent
+PROJECT_DIR = Path(__file__).resolve().parents[1]
 LABELS = ("SUPPORT", "CONTRADICT", "NOT_ENOUGH_INFO")
 PRACTICE_CLAIM = "1 in 5 million in UK have abnormal PrP positivity."
 

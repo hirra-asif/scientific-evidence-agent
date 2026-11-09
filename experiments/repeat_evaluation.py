@@ -5,7 +5,7 @@ import json
 from importlib.metadata import version
 from pathlib import Path
 
-PROJECT_DIR = Path(__file__).resolve().parent
+PROJECT_DIR = Path(__file__).resolve().parents[1]
 
 
 def verify_setup(baseline, manifest):
@@ -53,7 +53,7 @@ async def main(baseline_path, repeats):
         (PROJECT_DIR / baseline_path).read_text(encoding="utf-8")
     )
     manifest = json.loads(
-        (PROJECT_DIR / "evaluation_claims.json").read_text(
+        (PROJECT_DIR / "experiments/evaluation_claims.json").read_text(
             encoding="utf-8"
         )
     )
@@ -61,7 +61,7 @@ async def main(baseline_path, repeats):
     verify_setup(baseline, manifest)
 
     # Import the existing evaluator after the setup checks.
-    from compare_skills import main as run_comparison
+    from experiments.compare_skills import main as run_comparison
 
     for index in range(repeats):
         verify_setup(baseline, manifest)

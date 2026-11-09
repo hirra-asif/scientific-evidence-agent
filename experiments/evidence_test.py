@@ -11,10 +11,10 @@ from dotenv import load_dotenv
 from pydantic import BaseModel
 
 from agent import AgentReport, validate_report
-from compare_skills import save_results
+from experiments.compare_skills import save_results
 from corpus_tools import read_abstract
 
-PROJECT_DIR = Path(__file__).resolve().parent
+PROJECT_DIR = Path(__file__).resolve().parents[1]
 MODEL = "claude-haiku-5-5"
 
 SYSTEM_PROMPT = (
@@ -227,9 +227,9 @@ def main(repeats=3):
         "source_sha256": {
             name: sha256((PROJECT_DIR / name).read_bytes()).hexdigest()
             for name in (
-                "evidence_test.py",
+                "experiments/evidence_test.py",
                 "agent.py",
-                "compare_skills.py",
+                "experiments/compare_skills.py",
                 "corpus_tools.py",
                 "data/corpus.jsonl",
                 ".claude/skills/scientific-evidence/SKILL.md",

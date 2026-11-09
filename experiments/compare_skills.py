@@ -10,7 +10,7 @@ from pathlib import Path
 from agent import main as run_agent
 from scoring import score_claim, summarize_scores
 
-PROJECT_DIR = Path(__file__).resolve().parent
+PROJECT_DIR = Path(__file__).resolve().parents[1]
 
 
 def load_claims(split, claim_ids):
@@ -106,7 +106,7 @@ async def main(split, claim_ids):
         "agent.py",
         "corpus_tools.py",
         "scoring.py",
-        "compare_skills.py",
+        "experiments/compare_skills.py",
         ".claude/skills/scientific-evidence/SKILL.md",
     ]
 

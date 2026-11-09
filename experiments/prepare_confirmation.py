@@ -4,23 +4,23 @@ import random
 from collections import Counter
 from pathlib import Path
 
-from prepare_evaluation import claim_label
+from experiments.prepare_evaluation import claim_label
 
-PROJECT_DIR = Path(__file__).resolve().parent
+PROJECT_DIR = Path(__file__).resolve().parents[1]
 SEED = 43
 PER_LABEL = 10
 LABELS = ("SUPPORT", "CONTRADICT", "NOT_ENOUGH_INFO")
 
 
 def main():
-    output = PROJECT_DIR / "confirmation_claims.json"
+    output = PROJECT_DIR / "experiments/confirmation_claims.json"
     if output.exists():
         raise FileExistsError(
             "confirmation_claims.json already exists. Keep the frozen sample."
         )
 
     baseline = json.loads(
-        (PROJECT_DIR / "evaluation_claims.json").read_text(encoding="utf-8")
+        (PROJECT_DIR / "experiments/evaluation_claims.json").read_text(encoding="utf-8")
     )
     raw = (PROJECT_DIR / "data/claims_dev.jsonl").read_bytes()
     dataset_hash = hashlib.sha256(raw).hexdigest()

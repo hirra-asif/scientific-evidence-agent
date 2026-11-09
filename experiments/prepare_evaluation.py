@@ -4,7 +4,7 @@ import random
 from collections import Counter
 from pathlib import Path
 
-PROJECT_DIR = Path(__file__).resolve().parent
+PROJECT_DIR = Path(__file__).resolve().parents[1]
 SEED = 42
 PER_LABEL = 10
 LABELS = ("SUPPORT", "CONTRADICT", "NOT_ENOUGH_INFO")
@@ -27,7 +27,7 @@ def claim_label(claim):
 
 
 def main():
-    output_path = PROJECT_DIR / "evaluation_claims.json"
+    output_path = PROJECT_DIR / "experiments/evaluation_claims.json"
 
     if output_path.exists():
         raise FileExistsError(

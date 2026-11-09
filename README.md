@@ -119,15 +119,15 @@ This tests the model's judgement of supplied text using the adopted guidelines. 
 
 The 12 scoring tests cover alternative evidence sets, incomplete evidence, extra citations, wrong documents or labels, duplicate references and the reference evaluator's worked example.
 
-The current evidence-removal test can be run with:
+Run experiment modules from the repository root. For the current evidence-removal test:
 
 ~~~bash
-python evidence_test.py --repeats 3
+python -m experiments.evidence_test --repeats 3
 ~~~
 
 This makes 27 API requests before any retries.
 
-Historical comparisons require their original code and Skill versions. Use a separate checkout and the same dependency/data setup:
+Historical comparisons require their original code and Skill versions. Their commands below use the file layout at those commits. Use a separate checkout and the same dependency/data setup:
 
 | Experiment | Git revision | Command |
 |---|---|---|
@@ -155,11 +155,12 @@ The main comparison and evidence-removal results record package versions and sou
 | [corpus_tools.py](corpus_tools.py) | Abstract search and reading |
 | [Skill instructions](.claude/skills/scientific-evidence/SKILL.md) | Scientific evidence guidelines |
 | [scoring.py](scoring.py) and [tests](tests/) | Evaluation rules and scoring tests |
-| [confirm_evidence_rules.py](confirm_evidence_rules.py) | Original-versus-revised Skill comparison |
-| [evidence_test.py](evidence_test.py) | Controlled evidence-removal checks |
+| [experiments/](experiments/) | Evaluation runners and frozen claim-selection files |
+| [confirm_evidence_rules.py](experiments/confirm_evidence_rules.py) | Original-versus-revised Skill comparison |
+| [evidence_test.py](experiments/evidence_test.py) | Controlled evidence-removal checks |
 | [results](results/) | Saved experimental outputs |
 
-`check_claim.py` and `evaluate.py` are early demonstrations kept for development history. The former checks one supplied abstract; the latter runs a small training-set check. The results reported above come from the later comparison and evidence-removal scripts.
+`experiments/check_claim.py` and `experiments/evaluate.py` are early demonstrations kept for development history. The former checks one supplied abstract; the latter runs a small training-set check. The results reported above come from the later comparison and evidence-removal scripts.
 
 ## References
 

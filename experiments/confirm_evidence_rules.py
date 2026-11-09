@@ -8,10 +8,10 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 
 from agent import main as run_agent
-from compare_skills import load_claims, save_results
+from experiments.compare_skills import load_claims, save_results
 from scoring import score_claim, summarize_scores
 
-PROJECT_DIR = Path(__file__).resolve().parent
+PROJECT_DIR = Path(__file__).resolve().parents[1]
 CONDITIONS = ("current", "minimal")
 
 
@@ -86,7 +86,7 @@ def summarize(runs, requested_pairs):
 
 
 async def main():
-    manifest_path = PROJECT_DIR / "confirmation_claims.json"
+    manifest_path = PROJECT_DIR / "experiments/confirmation_claims.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
 
     if manifest["split"] != "dev":
@@ -115,8 +115,8 @@ async def main():
 
     source_files = [
         "agent.py", "corpus_tools.py", "scoring.py",
-        "compare_skills.py", "confirm_evidence_rules.py",
-        "confirmation_claims.json",
+        "experiments/compare_skills.py", "experiments/confirm_evidence_rules.py",
+        "experiments/confirmation_claims.json",
     ]
     fingerprints = {name: sha256(PROJECT_DIR / name) for name in source_files}
 

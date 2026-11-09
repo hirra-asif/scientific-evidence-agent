@@ -9,12 +9,12 @@ from pathlib import Path
 from anthropic import Anthropic
 
 from agent import AgentReport, validate_report
-from compare_skills import load_claims, save_results
+from experiments.compare_skills import load_claims, save_results
 from corpus_tools import read_abstract
-from evidence_test import ClaimCheck, MODEL, SYSTEM_PROMPT
+from experiments.evidence_test import ClaimCheck, MODEL, SYSTEM_PROMPT
 from scoring import score_claim, summarize_scores
 
-PROJECT_DIR = Path(__file__).resolve().parent
+PROJECT_DIR = Path(__file__).resolve().parents[1]
 
 # Previously inspected development cases: two per verdict class.
 # One fixed abstract per claim; this is a diagnostic, not a fresh benchmark.
@@ -134,8 +134,8 @@ def main(repeats):
     )
     output.parent.mkdir(exist_ok=True)
     source_files = [
-        "compare_fixed_evidence.py", "agent.py", "compare_skills.py",
-        "scoring.py", "corpus_tools.py", "evidence_test.py",
+        "experiments/compare_fixed_evidence.py", "agent.py", "experiments/compare_skills.py",
+        "scoring.py", "corpus_tools.py", "experiments/evidence_test.py",
         ".claude/skills/scientific-evidence/SKILL.md",
     ]
 
