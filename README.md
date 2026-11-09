@@ -1,6 +1,6 @@
 # Scientific Evidence Agent
 
-A Python agent that checks scientific claims against **5,183 research abstracts from SciFact**. Built with the Claude Agent SDK, it searches for relevant papers, reads up to three abstracts and returns a verdict for each, with evidence quoted directly from the source.
+An agent that checks scientific claims against **5,183 research abstracts from SciFact**. Built with the Claude Agent SDK, it searches for relevant papers, reads up to three abstracts and returns a verdict for each, with evidence quoted directly from the source.
 
 **Results:** On a 30-claim development sample, 29 claims completed successfully with both guideline versions. The minimal-evidence rule increased evidence precision from **0.288 to 0.425**, with recall unchanged at **0.548**. One run failed with the original guidelines; none failed with the revision. In a separate supplied-text test, the model returned `NOT_ENOUGH_INFO` after findings were removed in all nine runs: three examples, each repeated three times. These are small development experiments, not a full SciFact benchmark evaluation. [Full results and methods](docs/evaluation.md).
 
