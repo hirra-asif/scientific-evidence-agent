@@ -1,0 +1,1052 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-11-09T21:19:02.912198+00:00",
+  "split": "dev",
+  "plan_sha256": "1d125bc99931f66b2580772d365a953832791467f1b34bd71dd2cd0ad42ef42a",
+  "result_sha256": "33b6fce85a5034f369d67363fd64fd155e83799885969d5cdfe5a8faedef4ff9",
+  "analysis_policy": {
+    "primary_metrics": [
+      "evidence_f1",
+      "document_verdict_f1"
+    ],
+    "planned_comparisons": [
+      {
+        "name": "improvements",
+        "candidate": "improved_haiku",
+        "reference": "current_haiku"
+      },
+      {
+        "name": "pipeline_vs_agent",
+        "candidate": "fixed_pipeline",
+        "reference": "improved_haiku"
+      },
+      {
+        "name": "sonnet_vs_haiku",
+        "candidate": "improved_sonnet",
+        "reference": "improved_haiku"
+      }
+    ],
+    "point_estimate": "Micro F1 from pooled counts over all attempts, including failures",
+    "bootstrap": {
+      "method": "Paired percentile bootstrap, stratified by gold claim class",
+      "unit": "Whole claim; both repetitions and all four conditions travel together",
+      "draws": 50000,
+      "seed": 47,
+      "batch_size": 500,
+      "descriptive_confidence_level": 0.95,
+      "family_alpha": 0.05,
+      "multiplicity": "Bonferroni across 3 planned comparisons x 2 primary metrics",
+      "family_size": 6,
+      "adjusted_confidence_level": 0.9916666666666667
+    },
+    "decision_rule": "Evidence of higher F1 on both primary metrics requires both adjusted difference intervals strictly above zero; both below zero favors the reference; otherwise inconclusive or mixed",
+    "other_metrics": "Descriptive: precision, recall, NEI outcomes, failures, searches, abstracts, latency and SDK-estimated cost",
+    "no_automatic_winner": "The primary-metric conclusion does not replace review of NEI false flags and processing failures",
+    "limitations": [
+      "Balanced subset of 60 unused dev claims, not a full SciFact benchmark result",
+      "Unused refers to recorded project history; papers/topics can overlap development data",
+      "Bootstrap clusters repetitions by claim; dependence between different claims about the same paper is not modeled",
+      "Intervals are approximate; an interval containing zero does not establish equivalence"
+    ]
+  },
+  "summary": {
+    "completed_runs": 480,
+    "planned_runs": 480,
+    "conditions": {
+      "current_haiku": {
+        "attempts": 120,
+        "metrics_all_attempts": {
+          "document_labels": {
+            "precision": 0.6219512195121951,
+            "recall": 0.5543478260869565,
+            "f1": 0.5862068965517241
+          },
+          "abstract_with_evidence": {
+            "precision": 0.5975609756097561,
+            "recall": 0.532608695652174,
+            "f1": 0.5632183908045977
+          },
+          "evidence_sentences": {
+            "precision": 0.49044585987261147,
+            "recall": 0.42777777777777776,
+            "f1": 0.456973293768546
+          },
+          "nei_abstention_rate": 0.875,
+          "counts": {
+            "claims": 120,
+            "gold_documents": 92,
+            "predicted_documents": 82,
+            "correct_document_labels": 51,
+            "correct_abstracts_with_evidence": 49,
+            "gold_sentences": 180,
+            "predicted_sentences": 157,
+            "correct_sentences": 77,
+            "nei_claims": 40,
+            "correct_nei": 35
+          }
+        },
+        "failures": 0,
+        "nei_attempts": 40,
+        "nei_false_flags": 5,
+        "nei_correct_abstentions": 35,
+        "nei_processing_failures": 0,
+        "mean_abstracts_read": 2.1,
+        "mean_searches": 2.1666666666666665,
+        "mean_elapsed_seconds": 8.838884808333333,
+        "reported_cost_usd": 0.133341525,
+        "runs_without_elapsed_time": 0,
+        "runs_without_cost": 0,
+        "runs_without_complete_trace": 0
+      },
+      "improved_haiku": {
+        "attempts": 120,
+        "metrics_all_attempts": {
+          "document_labels": {
+            "precision": 0.5408163265306123,
+            "recall": 0.5760869565217391,
+            "f1": 0.5578947368421052
+          },
+          "abstract_with_evidence": {
+            "precision": 0.5,
+            "recall": 0.532608695652174,
+            "f1": 0.5157894736842106
+          },
+          "evidence_sentences": {
+            "precision": 0.391304347826087,
+            "recall": 0.4,
+            "f1": 0.3956043956043956
+          },
+          "nei_abstention_rate": 0.775,
+          "counts": {
+            "claims": 120,
+            "gold_documents": 92,
+            "predicted_documents": 98,
+            "correct_document_labels": 53,
+            "correct_abstracts_with_evidence": 49,
+            "gold_sentences": 180,
+            "predicted_sentences": 184,
+            "correct_sentences": 72,
+            "nei_claims": 40,
+            "correct_nei": 31
+          }
+        },
+        "failures": 1,
+        "nei_attempts": 40,
+        "nei_false_flags": 8,
+        "nei_correct_abstentions": 31,
+        "nei_processing_failures": 1,
+        "mean_abstracts_read": 2.066666666666667,
+        "mean_searches": 2.2083333333333335,
+        "mean_elapsed_seconds": 9.574733716666668,
+        "reported_cost_usd": 0.13707795,
+        "runs_without_elapsed_time": 0,
+        "runs_without_cost": 0,
+        "runs_without_complete_trace": 0
+      },
+      "improved_sonnet": {
+        "attempts": 120,
+        "metrics_all_attempts": {
+          "document_labels": {
+            "precision": 0.6666666666666666,
+            "recall": 0.7391304347826086,
+            "f1": 0.7010309278350515
+          },
+          "abstract_with_evidence": {
+            "precision": 0.6470588235294118,
+            "recall": 0.717391304347826,
+            "f1": 0.6804123711340206
+          },
+          "evidence_sentences": {
+            "precision": 0.4789473684210526,
+            "recall": 0.5055555555555555,
+            "f1": 0.4918918918918919
+          },
+          "nei_abstention_rate": 0.825,
+          "counts": {
+            "claims": 120,
+            "gold_documents": 92,
+            "predicted_documents": 102,
+            "correct_document_labels": 68,
+            "correct_abstracts_with_evidence": 66,
+            "gold_sentences": 180,
+            "predicted_sentences": 190,
+            "correct_sentences": 91,
+            "nei_claims": 40,
+            "correct_nei": 33
+          }
+        },
+        "failures": 0,
+        "nei_attempts": 40,
+        "nei_false_flags": 7,
+        "nei_correct_abstentions": 33,
+        "nei_processing_failures": 0,
+        "mean_abstracts_read": 1.625,
+        "mean_searches": 1.1916666666666667,
+        "mean_elapsed_seconds": 8.006743608333334,
+        "reported_cost_usd": 1.585184,
+        "runs_without_elapsed_time": 0,
+        "runs_without_cost": 0,
+        "runs_without_complete_trace": 0
+      },
+      "fixed_pipeline": {
+        "attempts": 120,
+        "metrics_all_attempts": {
+          "document_labels": {
+            "precision": 0.6705882352941176,
+            "recall": 0.6195652173913043,
+            "f1": 0.6440677966101694
+          },
+          "abstract_with_evidence": {
+            "precision": 0.6352941176470588,
+            "recall": 0.5869565217391305,
+            "f1": 0.6101694915254238
+          },
+          "evidence_sentences": {
+            "precision": 0.474025974025974,
+            "recall": 0.40555555555555556,
+            "f1": 0.437125748502994
+          },
+          "nei_abstention_rate": 0.825,
+          "counts": {
+            "claims": 120,
+            "gold_documents": 92,
+            "predicted_documents": 85,
+            "correct_document_labels": 57,
+            "correct_abstracts_with_evidence": 54,
+            "gold_sentences": 180,
+            "predicted_sentences": 154,
+            "correct_sentences": 73,
+            "nei_claims": 40,
+            "correct_nei": 33
+          }
+        },
+        "failures": 0,
+        "nei_attempts": 40,
+        "nei_false_flags": 7,
+        "nei_correct_abstentions": 33,
+        "nei_processing_failures": 0,
+        "mean_abstracts_read": 3,
+        "mean_searches": 1,
+        "mean_elapsed_seconds": 7.947917475,
+        "reported_cost_usd": 0.180073485,
+        "runs_without_elapsed_time": 0,
+        "runs_without_cost": 0,
+        "runs_without_complete_trace": 0
+      }
+    },
+    "complete": true
+  },
+  "descriptive_details": {
+    "current_haiku": {
+      "failure_rate": 0.0,
+      "failure_breakdown": {},
+      "nei_false_flag_rate_all_attempts": 0.125,
+      "nei_false_flag_rate_successful_attempts": 0.125,
+      "correct_nei_abstention_rate_all_attempts": 0.875,
+      "median_elapsed_seconds_all_attempts": 8.4397485,
+      "p95_elapsed_seconds_all_attempts": 13.53062045,
+      "mean_elapsed_seconds_successful_attempts": 8.838884808333333,
+      "cost_note": "Sum of available SDK estimates; inspect runs_without_cost before interpreting the total"
+    },
+    "improved_haiku": {
+      "failure_rate": 0.008333333333333333,
+      "failure_breakdown": {
+        "error / tool_use": 1
+      },
+      "nei_false_flag_rate_all_attempts": 0.2,
+      "nei_false_flag_rate_successful_attempts": 0.20512820512820512,
+      "correct_nei_abstention_rate_all_attempts": 0.775,
+      "median_elapsed_seconds_all_attempts": 9.1647365,
+      "p95_elapsed_seconds_all_attempts": 14.7304931,
+      "mean_elapsed_seconds_successful_attempts": 9.613577974789916,
+      "cost_note": "Sum of available SDK estimates; inspect runs_without_cost before interpreting the total"
+    },
+    "improved_sonnet": {
+      "failure_rate": 0.0,
+      "failure_breakdown": {},
+      "nei_false_flag_rate_all_attempts": 0.175,
+      "nei_false_flag_rate_successful_attempts": 0.175,
+      "correct_nei_abstention_rate_all_attempts": 0.825,
+      "median_elapsed_seconds_all_attempts": 7.8109269999999995,
+      "p95_elapsed_seconds_all_attempts": 10.517824249999999,
+      "mean_elapsed_seconds_successful_attempts": 8.006743608333334,
+      "cost_note": "Sum of available SDK estimates; inspect runs_without_cost before interpreting the total"
+    },
+    "fixed_pipeline": {
+      "failure_rate": 0.0,
+      "failure_breakdown": {},
+      "nei_false_flag_rate_all_attempts": 0.175,
+      "nei_false_flag_rate_successful_attempts": 0.175,
+      "correct_nei_abstention_rate_all_attempts": 0.825,
+      "median_elapsed_seconds_all_attempts": 7.4477515,
+      "p95_elapsed_seconds_all_attempts": 11.519188699999999,
+      "mean_elapsed_seconds_successful_attempts": 7.947917475,
+      "cost_note": "Sum of available SDK estimates; inspect runs_without_cost before interpreting the total"
+    }
+  },
+  "per_repetition": {
+    "1": {
+      "completed_runs": 240,
+      "planned_runs": 240,
+      "conditions": {
+        "current_haiku": {
+          "attempts": 60,
+          "metrics_all_attempts": {
+            "document_labels": {
+              "precision": 0.6341463414634146,
+              "recall": 0.5652173913043478,
+              "f1": 0.5977011494252874
+            },
+            "abstract_with_evidence": {
+              "precision": 0.6097560975609756,
+              "recall": 0.5434782608695652,
+              "f1": 0.5747126436781609
+            },
+            "evidence_sentences": {
+              "precision": 0.5256410256410257,
+              "recall": 0.45555555555555555,
+              "f1": 0.4880952380952381
+            },
+            "nei_abstention_rate": 0.9,
+            "counts": {
+              "claims": 60,
+              "gold_documents": 46,
+              "predicted_documents": 41,
+              "correct_document_labels": 26,
+              "correct_abstracts_with_evidence": 25,
+              "gold_sentences": 90,
+              "predicted_sentences": 78,
+              "correct_sentences": 41,
+              "nei_claims": 20,
+              "correct_nei": 18
+            }
+          },
+          "failures": 0,
+          "nei_attempts": 20,
+          "nei_false_flags": 2,
+          "nei_correct_abstentions": 18,
+          "nei_processing_failures": 0,
+          "mean_abstracts_read": 2.0833333333333335,
+          "mean_searches": 2.183333333333333,
+          "mean_elapsed_seconds": 8.653019683333333,
+          "reported_cost_usd": 0.06887483,
+          "runs_without_elapsed_time": 0,
+          "runs_without_cost": 0,
+          "runs_without_complete_trace": 0
+        },
+        "improved_haiku": {
+          "attempts": 60,
+          "metrics_all_attempts": {
+            "document_labels": {
+              "precision": 0.5,
+              "recall": 0.5217391304347826,
+              "f1": 0.5106382978723404
+            },
+            "abstract_with_evidence": {
+              "precision": 0.4583333333333333,
+              "recall": 0.4782608695652174,
+              "f1": 0.46808510638297873
+            },
+            "evidence_sentences": {
+              "precision": 0.358695652173913,
+              "recall": 0.36666666666666664,
+              "f1": 0.3626373626373626
+            },
+            "nei_abstention_rate": 0.8,
+            "counts": {
+              "claims": 60,
+              "gold_documents": 46,
+              "predicted_documents": 48,
+              "correct_document_labels": 24,
+              "correct_abstracts_with_evidence": 22,
+              "gold_sentences": 90,
+              "predicted_sentences": 92,
+              "correct_sentences": 33,
+              "nei_claims": 20,
+              "correct_nei": 16
+            }
+          },
+          "failures": 1,
+          "nei_attempts": 20,
+          "nei_false_flags": 3,
+          "nei_correct_abstentions": 16,
+          "nei_processing_failures": 1,
+          "mean_abstracts_read": 2.066666666666667,
+          "mean_searches": 2.2,
+          "mean_elapsed_seconds": 9.360006383333333,
+          "reported_cost_usd": 0.06590305,
+          "runs_without_elapsed_time": 0,
+          "runs_without_cost": 0,
+          "runs_without_complete_trace": 0
+        },
+        "improved_sonnet": {
+          "attempts": 60,
+          "metrics_all_attempts": {
+            "document_labels": {
+              "precision": 0.6730769230769231,
+              "recall": 0.7608695652173914,
+              "f1": 0.7142857142857143
+            },
+            "abstract_with_evidence": {
+              "precision": 0.6538461538461539,
+              "recall": 0.7391304347826086,
+              "f1": 0.6938775510204082
+            },
+            "evidence_sentences": {
+              "precision": 0.4895833333333333,
+              "recall": 0.5222222222222223,
+              "f1": 0.5053763440860215
+            },
+            "nei_abstention_rate": 0.85,
+            "counts": {
+              "claims": 60,
+              "gold_documents": 46,
+              "predicted_documents": 52,
+              "correct_document_labels": 35,
+              "correct_abstracts_with_evidence": 34,
+              "gold_sentences": 90,
+              "predicted_sentences": 96,
+              "correct_sentences": 47,
+              "nei_claims": 20,
+              "correct_nei": 17
+            }
+          },
+          "failures": 0,
+          "nei_attempts": 20,
+          "nei_false_flags": 3,
+          "nei_correct_abstentions": 17,
+          "nei_processing_failures": 0,
+          "mean_abstracts_read": 1.6166666666666667,
+          "mean_searches": 1.15,
+          "mean_elapsed_seconds": 8.022717016666666,
+          "reported_cost_usd": 0.7902345000000001,
+          "runs_without_elapsed_time": 0,
+          "runs_without_cost": 0,
+          "runs_without_complete_trace": 0
+        },
+        "fixed_pipeline": {
+          "attempts": 60,
+          "metrics_all_attempts": {
+            "document_labels": {
+              "precision": 0.6829268292682927,
+              "recall": 0.6086956521739131,
+              "f1": 0.6436781609195402
+            },
+            "abstract_with_evidence": {
+              "precision": 0.6585365853658537,
+              "recall": 0.5869565217391305,
+              "f1": 0.6206896551724138
+            },
+            "evidence_sentences": {
+              "precision": 0.48,
+              "recall": 0.4,
+              "f1": 0.43636363636363634
+            },
+            "nei_abstention_rate": 0.85,
+            "counts": {
+              "claims": 60,
+              "gold_documents": 46,
+              "predicted_documents": 41,
+              "correct_document_labels": 28,
+              "correct_abstracts_with_evidence": 27,
+              "gold_sentences": 90,
+              "predicted_sentences": 75,
+              "correct_sentences": 36,
+              "nei_claims": 20,
+              "correct_nei": 17
+            }
+          },
+          "failures": 0,
+          "nei_attempts": 20,
+          "nei_false_flags": 3,
+          "nei_correct_abstentions": 17,
+          "nei_processing_failures": 0,
+          "mean_abstracts_read": 3,
+          "mean_searches": 1,
+          "mean_elapsed_seconds": 7.955032766666666,
+          "reported_cost_usd": 0.09048666,
+          "runs_without_elapsed_time": 0,
+          "runs_without_cost": 0,
+          "runs_without_complete_trace": 0
+        }
+      },
+      "complete": true
+    },
+    "2": {
+      "completed_runs": 240,
+      "planned_runs": 240,
+      "conditions": {
+        "current_haiku": {
+          "attempts": 60,
+          "metrics_all_attempts": {
+            "document_labels": {
+              "precision": 0.6097560975609756,
+              "recall": 0.5434782608695652,
+              "f1": 0.5747126436781609
+            },
+            "abstract_with_evidence": {
+              "precision": 0.5853658536585366,
+              "recall": 0.5217391304347826,
+              "f1": 0.5517241379310345
+            },
+            "evidence_sentences": {
+              "precision": 0.45569620253164556,
+              "recall": 0.4,
+              "f1": 0.4260355029585799
+            },
+            "nei_abstention_rate": 0.85,
+            "counts": {
+              "claims": 60,
+              "gold_documents": 46,
+              "predicted_documents": 41,
+              "correct_document_labels": 25,
+              "correct_abstracts_with_evidence": 24,
+              "gold_sentences": 90,
+              "predicted_sentences": 79,
+              "correct_sentences": 36,
+              "nei_claims": 20,
+              "correct_nei": 17
+            }
+          },
+          "failures": 0,
+          "nei_attempts": 20,
+          "nei_false_flags": 3,
+          "nei_correct_abstentions": 17,
+          "nei_processing_failures": 0,
+          "mean_abstracts_read": 2.1166666666666667,
+          "mean_searches": 2.15,
+          "mean_elapsed_seconds": 9.024749933333334,
+          "reported_cost_usd": 0.064466695,
+          "runs_without_elapsed_time": 0,
+          "runs_without_cost": 0,
+          "runs_without_complete_trace": 0
+        },
+        "improved_haiku": {
+          "attempts": 60,
+          "metrics_all_attempts": {
+            "document_labels": {
+              "precision": 0.58,
+              "recall": 0.6304347826086957,
+              "f1": 0.6041666666666666
+            },
+            "abstract_with_evidence": {
+              "precision": 0.54,
+              "recall": 0.5869565217391305,
+              "f1": 0.5625
+            },
+            "evidence_sentences": {
+              "precision": 0.42391304347826086,
+              "recall": 0.43333333333333335,
+              "f1": 0.42857142857142855
+            },
+            "nei_abstention_rate": 0.75,
+            "counts": {
+              "claims": 60,
+              "gold_documents": 46,
+              "predicted_documents": 50,
+              "correct_document_labels": 29,
+              "correct_abstracts_with_evidence": 27,
+              "gold_sentences": 90,
+              "predicted_sentences": 92,
+              "correct_sentences": 39,
+              "nei_claims": 20,
+              "correct_nei": 15
+            }
+          },
+          "failures": 0,
+          "nei_attempts": 20,
+          "nei_false_flags": 5,
+          "nei_correct_abstentions": 15,
+          "nei_processing_failures": 0,
+          "mean_abstracts_read": 2.066666666666667,
+          "mean_searches": 2.216666666666667,
+          "mean_elapsed_seconds": 9.78946105,
+          "reported_cost_usd": 0.0711749,
+          "runs_without_elapsed_time": 0,
+          "runs_without_cost": 0,
+          "runs_without_complete_trace": 0
+        },
+        "improved_sonnet": {
+          "attempts": 60,
+          "metrics_all_attempts": {
+            "document_labels": {
+              "precision": 0.66,
+              "recall": 0.717391304347826,
+              "f1": 0.6875
+            },
+            "abstract_with_evidence": {
+              "precision": 0.64,
+              "recall": 0.6956521739130435,
+              "f1": 0.6666666666666666
+            },
+            "evidence_sentences": {
+              "precision": 0.46808510638297873,
+              "recall": 0.4888888888888889,
+              "f1": 0.4782608695652174
+            },
+            "nei_abstention_rate": 0.8,
+            "counts": {
+              "claims": 60,
+              "gold_documents": 46,
+              "predicted_documents": 50,
+              "correct_document_labels": 33,
+              "correct_abstracts_with_evidence": 32,
+              "gold_sentences": 90,
+              "predicted_sentences": 94,
+              "correct_sentences": 44,
+              "nei_claims": 20,
+              "correct_nei": 16
+            }
+          },
+          "failures": 0,
+          "nei_attempts": 20,
+          "nei_false_flags": 4,
+          "nei_correct_abstentions": 16,
+          "nei_processing_failures": 0,
+          "mean_abstracts_read": 1.6333333333333333,
+          "mean_searches": 1.2333333333333334,
+          "mean_elapsed_seconds": 7.9907702,
+          "reported_cost_usd": 0.7949495,
+          "runs_without_elapsed_time": 0,
+          "runs_without_cost": 0,
+          "runs_without_complete_trace": 0
+        },
+        "fixed_pipeline": {
+          "attempts": 60,
+          "metrics_all_attempts": {
+            "document_labels": {
+              "precision": 0.6590909090909091,
+              "recall": 0.6304347826086957,
+              "f1": 0.6444444444444445
+            },
+            "abstract_with_evidence": {
+              "precision": 0.6136363636363636,
+              "recall": 0.5869565217391305,
+              "f1": 0.6
+            },
+            "evidence_sentences": {
+              "precision": 0.46835443037974683,
+              "recall": 0.4111111111111111,
+              "f1": 0.4378698224852071
+            },
+            "nei_abstention_rate": 0.8,
+            "counts": {
+              "claims": 60,
+              "gold_documents": 46,
+              "predicted_documents": 44,
+              "correct_document_labels": 29,
+              "correct_abstracts_with_evidence": 27,
+              "gold_sentences": 90,
+              "predicted_sentences": 79,
+              "correct_sentences": 37,
+              "nei_claims": 20,
+              "correct_nei": 16
+            }
+          },
+          "failures": 0,
+          "nei_attempts": 20,
+          "nei_false_flags": 4,
+          "nei_correct_abstentions": 16,
+          "nei_processing_failures": 0,
+          "mean_abstracts_read": 3,
+          "mean_searches": 1,
+          "mean_elapsed_seconds": 7.940802183333333,
+          "reported_cost_usd": 0.089586825,
+          "runs_without_elapsed_time": 0,
+          "runs_without_cost": 0,
+          "runs_without_complete_trace": 0
+        }
+      },
+      "complete": true
+    }
+  },
+  "matched_successful_pairs": {
+    "improvements": {
+      "successful_pairs": 119,
+      "conditions": {
+        "improved_haiku": {
+          "document_labels": {
+            "precision": 0.5408163265306123,
+            "recall": 0.5760869565217391,
+            "f1": 0.5578947368421052
+          },
+          "abstract_with_evidence": {
+            "precision": 0.5,
+            "recall": 0.532608695652174,
+            "f1": 0.5157894736842106
+          },
+          "evidence_sentences": {
+            "precision": 0.391304347826087,
+            "recall": 0.4,
+            "f1": 0.3956043956043956
+          },
+          "nei_abstention_rate": 0.7948717948717948,
+          "counts": {
+            "claims": 119,
+            "gold_documents": 92,
+            "predicted_documents": 98,
+            "correct_document_labels": 53,
+            "correct_abstracts_with_evidence": 49,
+            "gold_sentences": 180,
+            "predicted_sentences": 184,
+            "correct_sentences": 72,
+            "nei_claims": 39,
+            "correct_nei": 31
+          }
+        },
+        "current_haiku": {
+          "document_labels": {
+            "precision": 0.6219512195121951,
+            "recall": 0.5543478260869565,
+            "f1": 0.5862068965517241
+          },
+          "abstract_with_evidence": {
+            "precision": 0.5975609756097561,
+            "recall": 0.532608695652174,
+            "f1": 0.5632183908045977
+          },
+          "evidence_sentences": {
+            "precision": 0.49044585987261147,
+            "recall": 0.42777777777777776,
+            "f1": 0.456973293768546
+          },
+          "nei_abstention_rate": 0.8717948717948718,
+          "counts": {
+            "claims": 119,
+            "gold_documents": 92,
+            "predicted_documents": 82,
+            "correct_document_labels": 51,
+            "correct_abstracts_with_evidence": 49,
+            "gold_sentences": 180,
+            "predicted_sentences": 157,
+            "correct_sentences": 77,
+            "nei_claims": 39,
+            "correct_nei": 34
+          }
+        }
+      }
+    },
+    "pipeline_vs_agent": {
+      "successful_pairs": 119,
+      "conditions": {
+        "fixed_pipeline": {
+          "document_labels": {
+            "precision": 0.6705882352941176,
+            "recall": 0.6195652173913043,
+            "f1": 0.6440677966101694
+          },
+          "abstract_with_evidence": {
+            "precision": 0.6352941176470588,
+            "recall": 0.5869565217391305,
+            "f1": 0.6101694915254238
+          },
+          "evidence_sentences": {
+            "precision": 0.474025974025974,
+            "recall": 0.40555555555555556,
+            "f1": 0.437125748502994
+          },
+          "nei_abstention_rate": 0.8205128205128205,
+          "counts": {
+            "claims": 119,
+            "gold_documents": 92,
+            "predicted_documents": 85,
+            "correct_document_labels": 57,
+            "correct_abstracts_with_evidence": 54,
+            "gold_sentences": 180,
+            "predicted_sentences": 154,
+            "correct_sentences": 73,
+            "nei_claims": 39,
+            "correct_nei": 32
+          }
+        },
+        "improved_haiku": {
+          "document_labels": {
+            "precision": 0.5408163265306123,
+            "recall": 0.5760869565217391,
+            "f1": 0.5578947368421052
+          },
+          "abstract_with_evidence": {
+            "precision": 0.5,
+            "recall": 0.532608695652174,
+            "f1": 0.5157894736842106
+          },
+          "evidence_sentences": {
+            "precision": 0.391304347826087,
+            "recall": 0.4,
+            "f1": 0.3956043956043956
+          },
+          "nei_abstention_rate": 0.7948717948717948,
+          "counts": {
+            "claims": 119,
+            "gold_documents": 92,
+            "predicted_documents": 98,
+            "correct_document_labels": 53,
+            "correct_abstracts_with_evidence": 49,
+            "gold_sentences": 180,
+            "predicted_sentences": 184,
+            "correct_sentences": 72,
+            "nei_claims": 39,
+            "correct_nei": 31
+          }
+        }
+      }
+    },
+    "sonnet_vs_haiku": {
+      "successful_pairs": 119,
+      "conditions": {
+        "improved_sonnet": {
+          "document_labels": {
+            "precision": 0.6666666666666666,
+            "recall": 0.7391304347826086,
+            "f1": 0.7010309278350515
+          },
+          "abstract_with_evidence": {
+            "precision": 0.6470588235294118,
+            "recall": 0.717391304347826,
+            "f1": 0.6804123711340206
+          },
+          "evidence_sentences": {
+            "precision": 0.4789473684210526,
+            "recall": 0.5055555555555555,
+            "f1": 0.4918918918918919
+          },
+          "nei_abstention_rate": 0.8205128205128205,
+          "counts": {
+            "claims": 119,
+            "gold_documents": 92,
+            "predicted_documents": 102,
+            "correct_document_labels": 68,
+            "correct_abstracts_with_evidence": 66,
+            "gold_sentences": 180,
+            "predicted_sentences": 190,
+            "correct_sentences": 91,
+            "nei_claims": 39,
+            "correct_nei": 32
+          }
+        },
+        "improved_haiku": {
+          "document_labels": {
+            "precision": 0.5408163265306123,
+            "recall": 0.5760869565217391,
+            "f1": 0.5578947368421052
+          },
+          "abstract_with_evidence": {
+            "precision": 0.5,
+            "recall": 0.532608695652174,
+            "f1": 0.5157894736842106
+          },
+          "evidence_sentences": {
+            "precision": 0.391304347826087,
+            "recall": 0.4,
+            "f1": 0.3956043956043956
+          },
+          "nei_abstention_rate": 0.7948717948717948,
+          "counts": {
+            "claims": 119,
+            "gold_documents": 92,
+            "predicted_documents": 98,
+            "correct_document_labels": 53,
+            "correct_abstracts_with_evidence": 49,
+            "gold_sentences": 180,
+            "predicted_sentences": 184,
+            "correct_sentences": 72,
+            "nei_claims": 39,
+            "correct_nei": 31
+          }
+        }
+      }
+    }
+  },
+  "bootstrap": {
+    "settings": {
+      "method": "Paired percentile bootstrap, stratified by gold claim class",
+      "unit": "Whole claim; both repetitions and all four conditions travel together",
+      "draws": 50000,
+      "seed": 47,
+      "batch_size": 500,
+      "descriptive_confidence_level": 0.95,
+      "family_alpha": 0.05,
+      "multiplicity": "Bonferroni across 3 planned comparisons x 2 primary metrics",
+      "family_size": 6,
+      "adjusted_confidence_level": 0.9916666666666667
+    },
+    "conditions": {
+      "current_haiku": {
+        "evidence_f1": {
+          "point": 0.456973293768546,
+          "ci95": {
+            "low": 0.33444816053511706,
+            "high": 0.5755830043765555,
+            "confidence_level": 0.95
+          }
+        },
+        "document_verdict_f1": {
+          "point": 0.5862068965517241,
+          "ci95": {
+            "low": 0.44155844155844154,
+            "high": 0.7272727272727273,
+            "confidence_level": 0.95
+          }
+        }
+      },
+      "improved_haiku": {
+        "evidence_f1": {
+          "point": 0.3956043956043956,
+          "ci95": {
+            "low": 0.2877673203902632,
+            "high": 0.5015105740181269,
+            "confidence_level": 0.95
+          }
+        },
+        "document_verdict_f1": {
+          "point": 0.5578947368421052,
+          "ci95": {
+            "low": 0.41836734693877553,
+            "high": 0.6947368421052632,
+            "confidence_level": 0.95
+          }
+        }
+      },
+      "improved_sonnet": {
+        "evidence_f1": {
+          "point": 0.4918918918918919,
+          "ci95": {
+            "low": 0.4019138755980861,
+            "high": 0.5833385286783046,
+            "confidence_level": 0.95
+          }
+        },
+        "document_verdict_f1": {
+          "point": 0.7010309278350515,
+          "ci95": {
+            "low": 0.5966850828729282,
+            "high": 0.8043478260869565,
+            "confidence_level": 0.95
+          }
+        }
+      },
+      "fixed_pipeline": {
+        "evidence_f1": {
+          "point": 0.437125748502994,
+          "ci95": {
+            "low": 0.33436532507739936,
+            "high": 0.5373159711645854,
+            "confidence_level": 0.95
+          }
+        },
+        "document_verdict_f1": {
+          "point": 0.6440677966101694,
+          "ci95": {
+            "low": 0.5133689839572193,
+            "high": 0.768361581920904,
+            "confidence_level": 0.95
+          }
+        }
+      }
+    },
+    "comparisons": {
+      "improvements": {
+        "name": "improvements",
+        "candidate": "improved_haiku",
+        "reference": "current_haiku",
+        "metrics": {
+          "evidence_f1": {
+            "difference": -0.06136889816415042,
+            "ci95": {
+              "low": -0.1020874511362627,
+              "high": -0.02291712276665326,
+              "confidence_level": 0.95
+            },
+            "adjusted_ci": {
+              "low": -0.11696049130506059,
+              "high": -0.011398545709236934,
+              "confidence_level": 0.9916666666666667
+            }
+          },
+          "document_verdict_f1": {
+            "difference": -0.028312159709618867,
+            "ci95": {
+              "low": -0.07459214671467149,
+              "high": 0.014909462183936413,
+              "confidence_level": 0.95
+            },
+            "adjusted_ci": {
+              "low": -0.0934823829662745,
+              "high": 0.029134988747010985,
+              "confidence_level": 0.9916666666666667
+            }
+          }
+        },
+        "conclusion": "inconclusive_or_mixed"
+      },
+      "pipeline_vs_agent": {
+        "name": "pipeline_vs_agent",
+        "candidate": "fixed_pipeline",
+        "reference": "improved_haiku",
+        "metrics": {
+          "evidence_f1": {
+            "difference": 0.04152135289859843,
+            "ci95": {
+              "low": -0.03254516506427677,
+              "high": 0.11248003300427531,
+              "confidence_level": 0.95
+            },
+            "adjusted_ci": {
+              "low": -0.058214351246065624,
+              "high": 0.13788138055664695,
+              "confidence_level": 0.9916666666666667
+            }
+          },
+          "document_verdict_f1": {
+            "difference": 0.08617305976806422,
+            "ci95": {
+              "low": -0.027182605767305027,
+              "high": 0.19970835087283234,
+              "confidence_level": 0.95
+            },
+            "adjusted_ci": {
+              "low": -0.0651376771110182,
+              "high": 0.24056996484004947,
+              "confidence_level": 0.9916666666666667
+            }
+          }
+        },
+        "conclusion": "inconclusive_or_mixed"
+      },
+      "sonnet_vs_haiku": {
+        "name": "sonnet_vs_haiku",
+        "candidate": "improved_sonnet",
+        "reference": "improved_haiku",
+        "metrics": {
+          "evidence_f1": {
+            "difference": 0.09628749628749633,
+            "ci95": {
+              "low": 0.024629185104572505,
+              "high": 0.1673323434422821,
+              "confidence_level": 0.95
+            },
+            "adjusted_ci": {
+              "low": 0.0008157100730294759,
+              "high": 0.19241981014119192,
+              "confidence_level": 0.9916666666666667
+            }
+          },
+          "document_verdict_f1": {
+            "difference": 0.14313619099294628,
+            "ci95": {
+              "low": 0.03227721262719451,
+              "high": 0.2589455747339428,
+              "confidence_level": 0.95
+            },
+            "adjusted_ci": {
+              "low": -0.003509847215877355,
+              "high": 0.29958480819888705,
+              "confidence_level": 0.9916666666666667
+            }
+          }
+        },
+        "conclusion": "inconclusive_or_mixed"
+      }
+    }
+  }
+}
