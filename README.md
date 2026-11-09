@@ -2,7 +2,7 @@
 
 An agent that checks scientific claims against **5,183 research abstracts from SciFact**. Built with the Claude Agent SDK, it searches for relevant papers, reads up to three abstracts and returns a verdict for each, with evidence quoted directly from the source.
 
-**Evaluation:** Compared four configurations on 60 previously unused SciFact dev claims, with two repetitions each. Sonnet with hybrid retrieval had the highest observed F1 scores; hybrid retrieval did not improve Haiku. [Results and methods](docs/final_evaluation.md).
+**Evaluation:** Compared four configurations on 60 previously unused SciFact dev claims, with two repetitions each. Sonnet with hybrid retrieval had the highest observed F1 scores; hybrid retrieval lowered Haiku's evidence F1 on this sample. [Results and methods](docs/final_evaluation.md).
 
 ## Why I built this
 
@@ -45,7 +45,7 @@ Exact evidence from the corpus:
 
 > [4] We found that CX3CR1 signaling promoted T(H)2 survival in the inflamed lungs, and injection of B cell leukemia/lymphoma-2 protein (BCl-2)-transduced CX3CR1-deficient T(H)2 cells into CX3CR1-deficient mice restored asthma.
 
-The agent recovered the annotated paper and verdict. Its explanation explicitly limited the finding to the mouse experiments rather than extending it to humans.
+The agent recovered the annotated paper and verdict. Its explanation noted that this is a mouse study, not a human study.
 
 ### Failure: missing the annotated paper
 
@@ -124,27 +124,32 @@ report = asyncio.run(
     main(claim="CX3CR1 on the Th2 cells promotes airway inflammation.")
 )
 ~~~
+
 ## Evaluation
 
 60 previously unused dev claims, balanced across three classes, with two
 repetitions per configuration: 480 attempts in total.
 
-| Configuration | Evidence F1 | Document/verdict F1 | NEI false flags |
-| --- | ---: | ---: | ---: |
-| Haiku · BM25 | 0.457 | 0.586 | 5/40 |
-| Haiku · hybrid | 0.396 | 0.558 | 8/40 |
-| Sonnet · hybrid | 0.492 | 0.701 | 7/40 |
-| Fixed pipeline · hybrid | 0.437 | 0.644 | 7/40 |
+| Configuration | Evidence F1 | Document/verdict F1 | NEI false flags | SDK-estimated cost (USD) |
+| --- | ---: | ---: | ---: | ---: |
+| Haiku · BM25 | 0.457 | 0.586 | 5/40 | $0.13 |
+| Haiku · hybrid | 0.396 | 0.558 | 8/40 | $0.14 |
+| Sonnet · hybrid | 0.492 | 0.701 | 7/40 | $1.59 |
+| Fixed pipeline · hybrid | 0.437 | 0.644 | 7/40 | $0.18 |
+
+Costs are totals for 120 attempts per configuration. Sonnet cost about
+12 times as much as BM25 Haiku, based on the unrounded SDK estimates.
 
 Hybrid combines BM25 with E5 embeddings. The pipeline supplies its top
 three abstracts to Haiku through the same SDK and assessment guidelines.
 A false flag means at least one `SUPPORT` or `CONTRADICT` assessment on a
 gold `NOT_ENOUGH_INFO` claim.
 
-Sonnet had the highest observed F1 scores. No planned comparison met the
-frozen rule for improvement on both F1 metrics after adjustment for
-multiple comparisons. Hybrid's training gains did not carry over to this
-dev sample. The default remains BM25 Haiku.
+Hybrid lowered Haiku's evidence F1 by 0.061 (adjusted interval
+[-0.117, -0.011]); its training gains did not carry over to this dev sample.
+Sonnet had the highest observed F1 scores, but no planned comparison met
+the frozen rule for improvement on both F1 metrics after adjustment for
+multiple comparisons. The default remains BM25 Haiku.
 
 [Final analysis and confidence intervals](docs/final_evaluation.md)
 · [Training results](results/agent_retrieval_training.json)
@@ -163,6 +168,7 @@ dev sample. The default remains BM25 Haiku.
 |---|---|
 | [agent.py](agent.py) | Agent loop, tool wrappers and output validation |
 | [corpus_tools.py](corpus_tools.py) | Abstract search and reading |
+| [hybrid_retrieval.py](hybrid_retrieval.py) | BM25 and E5 hybrid retrieval |
 | [Skill instructions](.claude/skills/scientific-evidence/SKILL.md) | Scientific evidence guidelines |
 | [scoring.py](scoring.py) and [tests](tests/) | Evaluation rules and scoring tests |
 | [experiments](experiments/) | Evaluation runners and frozen claim-selection files |
