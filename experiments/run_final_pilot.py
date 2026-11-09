@@ -43,20 +43,22 @@ def print_summary(results, output):
     print(f"Saved: {output}")
 
 
-async def run(max_new_runs=None):
-    plan_path = PROJECT_DIR / PLAN
+async def run(max_new_runs=None, *, plan_path=None, output_path=None,
+              plan_verifier=None, claims_loader=None, summary_printer=None,
+              progress_label="PILOT"):
+    plan_path = PROJECT_DIR / PLAN if plan_path is None else Path(plan_path)
     plan = comparison.read_json(plan_path)
-    verify_plan(plan)
+    (verify_plan if plan_verifier is None else plan_verifier)(plan)
     plan_hash = comparison.sha256(plan_path)
-    _, claims = load_claims(plan["sample"])
-    output = PROJECT_DIR / OUTPUT
+    _, claims = (load_claims if claims_loader is None else claims_loader)(plan["sample"])
+    output = PROJECT_DIR / OUTPUT if output_path is None else Path(output_path)
     if output.exists():
         results = comparison.read_json(output)
         if results["plan_sha256"] != plan_hash or results["plan"] != plan:
             raise ValueError("Checkpoint belongs to a different pilot plan.")
     else:
         results = {"schema_version": 1, "status": "running", "started_at": now(),
-                   "split": "train", "role": plan["role"], "plan": plan, "plan_sha256": plan_hash,
+                   "split": plan.get("split", "train"), "role": plan["role"], "plan": plan, "plan_sha256": plan_hash,
                    "sessions": [], "runs": []}
     comparison.validate_checkpoint(results["runs"], plan["schedule"])
     comparison.recover_interrupted(results["runs"], claims)
@@ -64,7 +66,7 @@ async def run(max_new_runs=None):
     if results["summary"]["complete"]:
         results["status"] = "finished"
         comparison.save_json(output, results)
-        print_summary(results, output)
+        (print_summary if summary_printer is None else summary_printer)(results, output)
         return
     comparison.save_json(output, results)
     from dotenv import load_dotenv
@@ -118,7 +120,7 @@ async def run(max_new_runs=None):
                    "metadata": {"estimated_cost_usd": None, "tool_trace": [], "opened_document_ids": []}}
             results["runs"].append(row)
             comparison.save_json(output, results)
-            print(f"\nPILOT {len(results['runs'])}/{len(plan['schedule'])} | claim {job['claim_id']}"
+            print(f"\n{progress_label} {len(results['runs'])}/{len(plan['schedule'])} | claim {job['claim_id']}"
                   f" | {job['condition']} | {config['model']}", flush=True)
             start = time.perf_counter()
             try:
@@ -158,7 +160,7 @@ async def run(max_new_runs=None):
             new_runs += 1
             consecutive_failures = consecutive_failures + 1 if row["status"] != "ok" else 0
             if row["status"] != "ok":
-                print(f"PILOT FAILED: {row['error']}", flush=True)
+                print(f"{progress_label} FAILED: {row['error']}", flush=True)
             verify_files(plan["source_sha256"])
             if comparison.sha256(plan_path) != plan_hash:
                 raise RuntimeError("Pilot plan changed during the run.")
@@ -171,7 +173,7 @@ async def run(max_new_runs=None):
     else:
         results["status"] = "paused"
     comparison.save_json(output, results)
-    print_summary(results, output)
+    (print_summary if summary_printer is None else summary_printer)(results, output)
 
 
 def main():
