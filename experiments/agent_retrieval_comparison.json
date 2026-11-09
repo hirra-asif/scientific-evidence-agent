@@ -1,0 +1,1468 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-11-09T17:09:51.004160+00:00",
+  "sample": {
+    "schema_version": 1,
+    "experiment": "Bounded agent development on a fixed training sample",
+    "created_at": "2026-11-09T16:44:28.647186+00:00",
+    "split": "train",
+    "sample_role": "Development, not a held-out performance estimate",
+    "seed": 45,
+    "claims_per_label": 20,
+    "dataset_sha256": "f4c8fa82d8bd0653a9cc8d61a6ea48c25eacea64e90af5dbf390ebb1b74372f0",
+    "corpus_sha256": "b8d6c89624cb2ed74dee8938effc4f5d8bd2086887880af8110d64be4ceade62",
+    "retrieval_split_sha256": "48d8f03f91ec97c6826968ca3139a79991e38d5eed07df98c5f427a0e7c1ce96",
+    "retrieval_config_sha256": "0e7a2f458bbbfe4a33738e43405753a6face57f20047784a8c3cf3c7ca9d7dc0",
+    "retrieval_validation_sha256": "67b2b5be782a08b8f2682529c90c27feba08d0f35cd4e4a27aca88a12483d6bf",
+    "selection_policy": {
+      "annotated": "Seeded sample from the retrieval-tuning half",
+      "nei": "Training NEI without known cited-paper links to retrieval-validation evidence",
+      "previous_training_use": "Not excluded; this is a development sample"
+    },
+    "claim_ids": [
+      523,
+      1037,
+      169,
+      602,
+      91,
+      610,
+      1244,
+      256,
+      717,
+      106,
+      615,
+      336,
+      1072,
+      1105,
+      358,
+      1053,
+      156,
+      916,
+      164,
+      481,
+      78,
+      1284,
+      825,
+      157,
+      203,
+      1350,
+      41,
+      159,
+      969,
+      686,
+      760,
+      939,
+      1386,
+      1126,
+      876,
+      803,
+      306,
+      1257,
+      296,
+      665,
+      243,
+      30,
+      562,
+      1294,
+      367,
+      1323,
+      753,
+      1342,
+      612,
+      19,
+      951,
+      632,
+      647,
+      643,
+      802,
+      949,
+      751,
+      242,
+      341,
+      69
+    ],
+    "labels": {
+      "523": "CONTRADICT",
+      "1037": "NOT_ENOUGH_INFO",
+      "169": "CONTRADICT",
+      "602": "NOT_ENOUGH_INFO",
+      "91": "NOT_ENOUGH_INFO",
+      "610": "NOT_ENOUGH_INFO",
+      "1244": "NOT_ENOUGH_INFO",
+      "256": "SUPPORT",
+      "717": "SUPPORT",
+      "106": "CONTRADICT",
+      "615": "CONTRADICT",
+      "336": "NOT_ENOUGH_INFO",
+      "1072": "SUPPORT",
+      "1105": "SUPPORT",
+      "358": "NOT_ENOUGH_INFO",
+      "1053": "NOT_ENOUGH_INFO",
+      "156": "CONTRADICT",
+      "916": "NOT_ENOUGH_INFO",
+      "164": "SUPPORT",
+      "481": "NOT_ENOUGH_INFO",
+      "78": "SUPPORT",
+      "1284": "CONTRADICT",
+      "825": "CONTRADICT",
+      "157": "SUPPORT",
+      "203": "CONTRADICT",
+      "1350": "NOT_ENOUGH_INFO",
+      "41": "SUPPORT",
+      "159": "SUPPORT",
+      "969": "NOT_ENOUGH_INFO",
+      "686": "NOT_ENOUGH_INFO",
+      "760": "SUPPORT",
+      "939": "NOT_ENOUGH_INFO",
+      "1386": "CONTRADICT",
+      "1126": "CONTRADICT",
+      "876": "NOT_ENOUGH_INFO",
+      "803": "SUPPORT",
+      "306": "CONTRADICT",
+      "1257": "NOT_ENOUGH_INFO",
+      "296": "SUPPORT",
+      "665": "SUPPORT",
+      "243": "SUPPORT",
+      "30": "SUPPORT",
+      "562": "SUPPORT",
+      "1294": "CONTRADICT",
+      "367": "SUPPORT",
+      "1323": "CONTRADICT",
+      "753": "NOT_ENOUGH_INFO",
+      "1342": "NOT_ENOUGH_INFO",
+      "612": "CONTRADICT",
+      "19": "NOT_ENOUGH_INFO",
+      "951": "SUPPORT",
+      "632": "CONTRADICT",
+      "647": "CONTRADICT",
+      "643": "SUPPORT",
+      "802": "CONTRADICT",
+      "949": "NOT_ENOUGH_INFO",
+      "751": "SUPPORT",
+      "242": "CONTRADICT",
+      "341": "CONTRADICT",
+      "69": "CONTRADICT"
+    },
+    "summary": {
+      "eligible_pool_counts": {
+        "SUPPORT": 155,
+        "CONTRADICT": 97,
+        "NOT_ENOUGH_INFO": 287
+      },
+      "selected_counts": {
+        "CONTRADICT": 20,
+        "NOT_ENOUGH_INFO": 20,
+        "SUPPORT": 20
+      },
+      "selected_claims": 60,
+      "nei_excluded_for_validation_paper_links": 17,
+      "eligible_nei_without_citation_metadata": 0,
+      "retrieval_validation_claim_overlap": 0
+    },
+    "repetitions_per_condition": 2,
+    "first_comparison": {
+      "current_haiku": {
+        "retriever": "bm25"
+      },
+      "hybrid_only_haiku": {
+        "retriever": "hybrid",
+        "dense_weight": 0.5
+      }
+    },
+    "shared_agent_options": {
+      "model": "claude-haiku-5-5",
+      "max_turns": 8,
+      "max_abstracts": 3,
+      "use_skill": true,
+      "search_results_per_call": 5
+    },
+    "skill_name": "scientific-evidence",
+    "skill_text": "---\nname: scientific-evidence\ndescription: Assess scientific claims against research abstracts, checking population, study context, numerical findings and evidence sufficiency.\n---\n\nUse the corpus search and abstract-reading tools to assess the claim.\n\nFor each abstract:\n\n1. Compare the exact population, intervention or exposure, outcome,\n   direction of effect and qualifiers in the claim and abstract.\n\n2. Distinguish human, animal and cell studies. Evidence from one\n   population does not automatically establish a claim about another.\n\n3. Preserve the study's wording about association and causation.\n   Do not strengthen an association into a causal conclusion.\n\n4. Use CONTRADICT only when the abstract provides findings incompatible\n   with the claim. Missing information alone is NOT_ENOUGH_INFO.\n\n5. Preserve reported numerical values and units. Avoid unnecessary\n   derived ratios or conversions unless verified by calculation.\n\n6. Cite the smallest set of sentences that together justify the verdict.\n   Include a qualifying sentence only if leaving it out would change\n   or overstate the verdict.\n   Cite only sentences from abstracts you actually read.\n\n7. Return the required structured report. For NOT_ENOUGH_INFO,\n   use an empty evidence sentence list.\n\nClaim to assess:\n$ARGUMENTS",
+    "skill_sha256": "ea7606e0e5b682dc85960d763224e179369c2145e2f68097126c449c084bfd8f",
+    "baseline_source_sha256": {
+      "agent.py": "505eff54a335ae0cb98bcde6fc4d121fdde161282d29ce375a2cd65ed1dec34c",
+      "corpus_tools.py": "1352e12f38a9baacd4f8d6434901e5684d170d359637a44232de863958a8bb5f",
+      "scoring.py": "0b7d77edf3b354ae38ea4b498cbc27eefe4d8d166ee631bd300d65688dacc630",
+      "hybrid_retrieval.py": "3a1a4c8174c2020d0f7cee260bcf25bbf2985f517487d4f90cd4eb5293a6b033",
+      ".claude/skills/scientific-evidence/SKILL.md": "ea7606e0e5b682dc85960d763224e179369c2145e2f68097126c449c084bfd8f",
+      "experiments/prepare_evaluation.py": "5b534049ced9e913f3df66ef5549516b64b249f5d6096d37b6f63b3049d04969",
+      "experiments/prepare_agent_training.py": "143c4192304661fe89e0d71cf047418c0468d7d2c50591d96ee280f9e2cde134"
+    },
+    "planned_candidates": [
+      "hybrid_retrieval",
+      "claim_text_first",
+      "read_when_unsure"
+    ],
+    "scope_limit": "Test these candidates individually, then at most one retained combination",
+    "metrics": [
+      "evidence_precision_recall_f1",
+      "document_verdict_precision_recall_f1",
+      "nei_false_flags",
+      "correct_nei_abstentions",
+      "processing_failures",
+      "searches",
+      "abstracts_read",
+      "latency",
+      "cost"
+    ],
+    "interpretation": "Training comparisons guide development; final claims use frozen dev evaluation"
+  },
+  "baseline_agent_sha256": "505eff54a335ae0cb98bcde6fc4d121fdde161282d29ce375a2cd65ed1dec34c",
+  "source_sha256": {
+    ".claude/skills/scientific-evidence/SKILL.md": "ea7606e0e5b682dc85960d763224e179369c2145e2f68097126c449c084bfd8f",
+    "agent.py": "20ece3343dbf58d875b597ddea274c78f490b7d5ab6581d210b0c02cfb8a696d",
+    "corpus_tools.py": "1352e12f38a9baacd4f8d6434901e5684d170d359637a44232de863958a8bb5f",
+    "data/claims_train.jsonl": "f4c8fa82d8bd0653a9cc8d61a6ea48c25eacea64e90af5dbf390ebb1b74372f0",
+    "data/corpus.jsonl": "b8d6c89624cb2ed74dee8938effc4f5d8bd2086887880af8110d64be4ceade62",
+    "experiments/agent_comparison.py": "a3a021560a8c62b6c8b0568f360c7ace719e22f419131356ab1840fd61698e00",
+    "experiments/agent_training_claims.json": "2b8cb36dd35def8cfe968b8d4fb9dab7a0ed5c42b21973bf401bc286c5f78aca",
+    "experiments/compare_agent_retrieval.py": "2076be871118a1f664f156aaf297e2694b84beb2c0fab4e6eead564b1adb9246",
+    "experiments/prepare_agent_training.py": "143c4192304661fe89e0d71cf047418c0468d7d2c50591d96ee280f9e2cde134",
+    "experiments/prepare_evaluation.py": "5b534049ced9e913f3df66ef5549516b64b249f5d6096d37b6f63b3049d04969",
+    "experiments/retrieval_config.json": "0e7a2f458bbbfe4a33738e43405753a6face57f20047784a8c3cf3c7ca9d7dc0",
+    "experiments/retrieval_split.json": "48d8f03f91ec97c6826968ca3139a79991e38d5eed07df98c5f427a0e7c1ce96",
+    "hybrid_retrieval.py": "3a1a4c8174c2020d0f7cee260bcf25bbf2985f517487d4f90cd4eb5293a6b033",
+    "requirements.txt": "70be7385d206f454f432cb99fc9797d27249d80a2fb2483783ebb6a9cf52b753",
+    "results/retrieval_hybrid_validation.json": "67b2b5be782a08b8f2682529c90c27feba08d0f35cd4e4a27aca88a12483d6bf",
+    "scoring.py": "0b7d77edf3b354ae38ea4b498cbc27eefe4d8d166ee631bd300d65688dacc630"
+  },
+  "package_versions": {
+    "claude-agent-sdk": "0.2.179",
+    "anthropic": "2.6.0",
+    "pydantic": "2.14.3",
+    "python-dotenv": "1.2.4",
+    "rank-bm25": "0.2.2",
+    "numpy": "2.4.3",
+    "sentence-transformers": "6.2.0",
+    "torch": "2.15.0",
+    "transformers": "5.22.2",
+    "huggingface-hub": "2.4.0"
+  },
+  "python_version": "3.13.2",
+  "platform_at_preparation": "macOS-27.2-arm64-arm-64bit-Mach-O",
+  "schedule": [
+    {
+      "claim_id": 523,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 523,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 1037,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 1037,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 169,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 169,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 602,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 602,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 91,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 91,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 610,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 610,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 1244,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 1244,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 256,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 256,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 717,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 717,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 106,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 106,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 615,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 615,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 336,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 336,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 1072,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 1072,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 1105,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 1105,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 358,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 358,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 1053,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 1053,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 156,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 156,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 916,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 916,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 164,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 164,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 481,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 481,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 78,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 78,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 1284,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 1284,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 825,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 825,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 157,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 157,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 203,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 203,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 1350,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 1350,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 41,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 41,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 159,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 159,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 969,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 969,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 686,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 686,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 760,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 760,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 939,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 939,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 1386,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 1386,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 1126,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 1126,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 876,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 876,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 803,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 803,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 306,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 306,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 1257,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 1257,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 296,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 296,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 665,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 665,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 243,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 243,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 30,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 30,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 562,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 562,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 1294,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 1294,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 367,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 367,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 1323,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 1323,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 753,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 753,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 1342,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 1342,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 612,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 612,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 19,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 19,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 951,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 951,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 632,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 632,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 647,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 647,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 643,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 643,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 802,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 802,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 949,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 949,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 751,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 751,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 242,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 242,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 341,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 341,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 69,
+      "repetition": 1,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 69,
+      "repetition": 1,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 523,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 523,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 1037,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 1037,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 169,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 169,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 602,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 602,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 91,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 91,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 610,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 610,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 1244,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 1244,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 256,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 256,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 717,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 717,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 106,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 106,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 615,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 615,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 336,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 336,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 1072,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 1072,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 1105,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 1105,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 358,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 358,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 1053,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 1053,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 156,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 156,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 916,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 916,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 164,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 164,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 481,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 481,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 78,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 78,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 1284,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 1284,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 825,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 825,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 157,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 157,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 203,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 203,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 1350,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 1350,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 41,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 41,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 159,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 159,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 969,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 969,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 686,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 686,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 760,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 760,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 939,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 939,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 1386,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 1386,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 1126,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 1126,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 876,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 876,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 803,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 803,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 306,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 306,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 1257,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 1257,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 296,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 296,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 665,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 665,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 243,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 243,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 30,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 30,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 562,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 562,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 1294,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 1294,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 367,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 367,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 1323,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 1323,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 753,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 753,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 1342,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 1342,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 612,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 612,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 19,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 19,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 951,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 951,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 632,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 632,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 647,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 647,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 643,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 643,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 802,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 802,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 949,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 949,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 751,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 751,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 242,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 242,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 341,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    },
+    {
+      "claim_id": 341,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 69,
+      "repetition": 2,
+      "condition": "current_haiku"
+    },
+    {
+      "claim_id": 69,
+      "repetition": 2,
+      "condition": "hybrid_only_haiku"
+    }
+  ],
+  "execution": {
+    "sdk_timeout_seconds_per_run": 300,
+    "concurrency": 1,
+    "pause_after_consecutive_failures": 3,
+    "condition_order": "Alternate within claim; reverse which condition goes first on repeat 2",
+    "workspace": "Temporary project containing only the frozen Skill",
+    "latency_scope": "Complete SDK call including tools; retriever setup reported separately",
+    "failure_policy": "Keep errors, timeouts and interrupted attempts; no full-run retries",
+    "resume_policy": "Skip every saved terminal attempt; unfinished attempt becomes an interruption"
+  },
+  "scoring_policy": {
+    "primary_population": "All scheduled attempts, pooling counts over both repetitions",
+    "failed_output": "No positive predictions, gold retained, zero correct-NEI credit",
+    "secondary_population": "Same claim/repetition pairs successful in both conditions",
+    "false_flag": "Any positive verdict in a successful report for a gold NEI claim"
+  },
+  "training_keep_rule": [
+    "Strictly higher evidence F1 on all attempts",
+    "No lower document/verdict F1 on all attempts",
+    "No more NEI false flags",
+    "No more processing failures"
+  ],
+  "interpretation": "Exploratory training selection; final performance claims need the frozen dev experiment"
+}

@@ -45,7 +45,8 @@ def tool_result(data, is_error=False):
 class RunState:
     """Documents and tool activity belonging to one agent run."""
 
-    def __init__(self):
+    def __init__(self, search_fn=None):
+        self.search_fn = search_abstracts if search_fn is None else search_fn
         self.opened_documents = {}
         self.tool_trace = []
 
@@ -55,7 +56,7 @@ class RunState:
 
         try:
             print(f"\nSEARCH: {args['query']}", flush=True)
-            results = search_abstracts(args["query"])
+            results = self.search_fn(args["query"])
             event.update(status="ok", results=results)
             return tool_result(results)
         except Exception as error:
@@ -163,8 +164,9 @@ async def main(
     use_skill=True,
     run_metadata=None,
     skill_workspace=None,
+    search_fn=None,
 ):
-    state = RunState()
+    state = RunState(search_fn=search_fn)
     opened_documents = state.opened_documents
     tool_trace = state.tool_trace
 
