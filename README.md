@@ -20,6 +20,53 @@ The tools run through an **in-process MCP server**, which lets the agent call Py
 
 Verdicts apply to individual abstracts; the agent does not produce a consensus judgement across the literature.
 
+## Example runs
+
+These examples show a successful evidence lookup and a retrieval failure from the [saved guideline comparison](results/confirmation_20261108_235629_639604.json), using the `minimal` condition.
+
+### Success: finding evidence and preserving study context
+
+**Claim 218:** “CX3CR1 on the Th2 cells promotes airway inflammation.”
+
+Claude chose two searches:
+
+1. `CX3CR1 Th2 cells airway inflammation`
+2. `CX3CR1 T helper 2 asthma allergic airway`
+
+It read one abstract: **21366394**, *CX3CR1 is required for airway inflammation by promoting T helper cell survival and maintenance in inflamed lung*.
+
+**Verdict:** `SUPPORT`, citing sentences 3 and 4.
+
+Exact evidence from the corpus:
+
+> [3] Transfer of WT CD4(+) T cells into CX3CR1-deficient mice restored the cardinal features of asthma, and CX3CR1-blocking reagents prevented airway inflammation in CX3CR1-deficient recipients injected with WT T(H)2 cells.
+
+> [4] We found that CX3CR1 signaling promoted T(H)2 survival in the inflamed lungs, and injection of B cell leukemia/lymphoma-2 protein (BCl-2)-transduced CX3CR1-deficient T(H)2 cells into CX3CR1-deficient mice restored asthma.
+
+The agent recovered the annotated paper and verdict. Its explanation explicitly limited the finding to the mouse experiments rather than extending it to humans.
+
+### Failure: missing the annotated paper
+
+**Claim 1110:** “Suboptimal nutrition is not predictive of chronic disease”
+
+Claude tried three searches:
+
+1. `suboptimal nutrition predictive of chronic disease`
+2. `poor diet quality associated with risk of chronic disease`
+3. `diet nutrition risk of cardiovascular disease cancer cohort`
+
+It read three abstracts:
+
+| Document | Topic | Agent verdict |
+|---|---|---|
+| 12810152 | Folate, vitamin B6 and coronary heart disease | `CONTRADICT` |
+| 44624045 | Vegetarian diets and ischemic heart disease | `NOT_ENOUGH_INFO` |
+| 10010651 | Nutrition guidelines for cancer survivors | `NOT_ENOUGH_INFO` |
+
+The SciFact-annotated paper, **13770184**, never appeared in the returned search results. The agent therefore missed the annotated source despite reformulating its query.
+
+This demonstrates a retrieval failure against the benchmark. Vocabulary mismatch is a possible explanation, but the trace alone does not establish the cause. Finding other relevant papers also does not establish that they justify the full claim.
+
 ## Setup
 
 Tested on macOS with **Python 3.13.2**. The recorded experiments used `claude-haiku-5-5`. Running the agent requires an Anthropic API key with access to that model and incurs API charges.
