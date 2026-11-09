@@ -22,8 +22,6 @@ PROJECT_DIR = Path(__file__).resolve().parent
 load_dotenv(PROJECT_DIR / ".env")
 
 MAX_ABSTRACTS = 3
-opened_documents = {}
-tool_trace = []
 
 
 class Assessment(BaseModel):
@@ -44,74 +42,79 @@ def tool_result(data, is_error=False):
     return result
 
 
-@tool(
-    "search_abstracts",
-    "Search research abstracts by keywords. Returns the top five papers.",
-    {"query": str},
-)
-async def search_tool(args):
-    event = {"tool": "search_abstracts", "arguments": dict(args)}
-    tool_trace.append(event)
+class RunState:
+    """Documents and tool activity belonging to one agent run."""
 
-    try:
-        print(f"\nSEARCH: {args['query']}", flush=True)
-        results = search_abstracts(args["query"])
-        event.update(status="ok", results=results)
-        return tool_result(results)
+    def __init__(self):
+        self.opened_documents = {}
+        self.tool_trace = []
 
-    except Exception as error:
-        event.update(
-            status="error",
-            error=f"{type(error).__name__}: {error}",
-        )
-        raise
+    async def search(self, args):
+        event = {"tool": "search_abstracts", "arguments": dict(args)}
+        self.tool_trace.append(event)
 
-
-@tool(
-    "read_abstract",
-    "Read a research abstract using its document ID.",
-    {"document_id": str},
-)
-async def read_tool(args):
-    event = {"tool": "read_abstract", "arguments": dict(args)}
-    tool_trace.append(event)
-
-    try:
-        document_id = str(args["document_id"])
-
-        if document_id in opened_documents:
-            event["status"] = "cached"
-            return tool_result(opened_documents[document_id])
-
-        if len(opened_documents) >= MAX_ABSTRACTS:
-            event["status"] = "limit_reached"
-            return tool_result(
-                {
-                    "error": (
-                        f"You have already read {MAX_ABSTRACTS} abstracts. "
-                        "Finish using the abstracts already read."
-                    )
-                },
-                is_error=True,
+        try:
+            print(f"\nSEARCH: {args['query']}", flush=True)
+            results = search_abstracts(args["query"])
+            event.update(status="ok", results=results)
+            return tool_result(results)
+        except Exception as error:
+            event.update(
+                status="error",
+                error=f"{type(error).__name__}: {error}",
             )
+            raise
 
-        document = read_abstract(document_id)
-        opened_documents[document["document_id"]] = document
+    async def read(self, args):
+        event = {"tool": "read_abstract", "arguments": dict(args)}
+        self.tool_trace.append(event)
 
-        event.update(
-            status="ok",
-            document_id=document["document_id"],
-        )
+        try:
+            document_id = str(args["document_id"])
 
-        print(f"READ: {document_id}", flush=True)
-        return tool_result(document)
+            if document_id in self.opened_documents:
+                event["status"] = "cached"
+                return tool_result(self.opened_documents[document_id])
 
-    except Exception as error:
-        event.update(
-            status="error",
-            error=f"{type(error).__name__}: {error}",
-        )
-        raise
+            if len(self.opened_documents) >= MAX_ABSTRACTS:
+                event["status"] = "limit_reached"
+                return tool_result(
+                    {
+                        "error": (
+                            f"You have already read {MAX_ABSTRACTS} abstracts. "
+                            "Finish using the abstracts already read."
+                        )
+                    },
+                    is_error=True,
+                )
+
+            document = read_abstract(document_id)
+            self.opened_documents[document["document_id"]] = document
+            event.update(status="ok", document_id=document["document_id"])
+
+            print(f"READ: {document_id}", flush=True)
+            return tool_result(document)
+        except Exception as error:
+            event.update(
+                status="error",
+                error=f"{type(error).__name__}: {error}",
+            )
+            raise
+
+    def sdk_tools(self):
+        """Bind the SDK tools to this run's state."""
+        return [
+            tool(
+                "search_abstracts",
+                "Search research abstracts by keywords. Returns the top five papers.",
+                {"query": str},
+            )(self.search),
+            tool(
+                "read_abstract",
+                "Read a research abstract using its document ID.",
+                {"document_id": str},
+            )(self.read),
+        ]
 
 
 def validate_report(report, documents):
@@ -161,13 +164,13 @@ async def main(
     run_metadata=None,
     skill_workspace=None,
 ):
-    global tool_trace
+    state = RunState()
+    opened_documents = state.opened_documents
+    tool_trace = state.tool_trace
 
     if run_metadata is None:
         run_metadata = {}
 
-    # A new list preserves traces already saved by previous runs.
-    tool_trace = []
     run_metadata.clear()
     run_metadata.update({
         "estimated_cost_usd": None,
@@ -175,13 +178,12 @@ async def main(
         "opened_document_ids": [],
     })
 
-    opened_documents.clear()
     report = None
     skill_discovered = False
 
     server = create_sdk_mcp_server(
         name="scifact",
-        tools=[search_tool, read_tool],
+        tools=state.sdk_tools(),
     )
 
     options = ClaudeAgentOptions(
