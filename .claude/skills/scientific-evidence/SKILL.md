@@ -22,7 +22,9 @@ For each abstract:
 5. Preserve reported numerical values and units. Avoid unnecessary
    derived ratios or conversions unless verified by calculation.
 
-6. Select sufficient evidence sentences, including relevant qualifications.
+6. Cite the smallest set of sentences that together justify the verdict.
+   Include a qualifying sentence only if leaving it out would change
+   or overstate the verdict.
    Cite only sentences from abstracts you actually read.
 
 7. Return the required structured report. For NOT_ENOUGH_INFO,
