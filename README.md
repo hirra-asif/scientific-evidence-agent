@@ -4,7 +4,7 @@ An agent that checks scientific claims against **5,183 research abstracts from S
 
 **Evaluation:** Compared four configurations on 60 previously unused SciFact dev claims, with two repetitions each. Sonnet with hybrid retrieval had the highest observed F1 scores; hybrid retrieval lowered Haiku's evidence F1 on this sample. [Results and methods](docs/final_evaluation.md).
 
-![Recorded example showing evidence and the agent explanation](docs/demo.gif)
+<img src="docs/demo.gif" alt="Scientific evidence agent demo" width="700">
 
 *Recorded evaluation run; playback edited for readability.*
 
