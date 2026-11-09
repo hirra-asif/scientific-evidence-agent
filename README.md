@@ -88,7 +88,7 @@ report = asyncio.run(
 | [corpus_tools.py](corpus_tools.py) | Abstract search and reading |
 | [Skill instructions](.claude/skills/scientific-evidence/SKILL.md) | Scientific evidence guidelines |
 | [scoring.py](scoring.py) and [tests](tests/) | Evaluation rules and scoring tests |
-| [experiments/](experiments/) | Evaluation runners and frozen claim-selection files |
+| [experiments](experiments/) | Evaluation runners and frozen claim-selection files |
 | [results](results/) | Saved experimental outputs |
 
 ## References
