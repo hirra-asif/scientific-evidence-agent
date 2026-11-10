@@ -1,5 +1,10 @@
 # Scientific Evidence Agent
 
+[![Python 3.13](https://img.shields.io/badge/Python-3.13-3776AB?logo=python&logoColor=white)](https://www.python.org/downloads/)
+[![Claude Agent SDK](https://img.shields.io/badge/Claude-Agent%20SDK-D97757)](https://code.claude.com/docs/en/agent-sdk/overview)
+[![Streamlit](https://img.shields.io/badge/Streamlit-Demo-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
+
+
 An agent that checks scientific claims against **5,183 research abstracts from SciFact**. Built with the Claude Agent SDK, it chooses searches, reads up to three abstracts and returns a verdict for each. Python validates document and sentence references, then copies evidence quotes directly from the corpus.
 
 **What I learned:**
@@ -127,13 +132,8 @@ python agent.py --skill on
 The output includes search/read activity, a structured report, exact evidence quotations and an estimated API cost. To disable the guidelines, use `--skill off`.
 
 Optional report repair: `python agent.py --skill on --report-repair on`.
-A `PreToolUse` hook reserves the three-abstract read budget, and `submit_report`
-returns validation errors for up to two corrections. Only a Python-validated
-submission is returned; failed or missing submissions remain failures. This mode
-allows up to 12 turns instead of 8 and logs submissions in `run_metadata`.
-It checks references and report consistency, not scientific correctness.
-The published evaluation and interactive demo use the original mode; repair
-mode has not been benchmarked.
+Adds read-budget hooks and up to two corrections of invalid reports.
+This mode is not included in the published evaluation.
 
 To check another claim:
 
