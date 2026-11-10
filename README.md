@@ -4,7 +4,7 @@ An agent that checks scientific claims against **5,183 research abstracts from S
 
 **Evaluation:** Compared four configurations on 60 previously unused SciFact dev claims, with two repetitions each. Sonnet with hybrid retrieval had the highest observed F1 scores; hybrid retrieval lowered Haiku's evidence F1 on this sample. [Results and methods](docs/final_evaluation.md).
 
-<img src="docs/demo.gif" alt="Scientific evidence agent demo" width="700">
+<img src="docs/demo.gif" alt="Scientific evidence agent demo" width="720">
 
 *Recorded evaluation run*
 
@@ -163,7 +163,8 @@ A false flag means at least one `SUPPORT` or `CONTRADICT` assessment on a
 gold `NOT_ENOUGH_INFO` claim.
 
 Hybrid lowered Haiku's evidence F1 by 0.061 (adjusted interval
-[-0.117, -0.011]); its training gains did not carry over to this dev sample.
+[-0.117, -0.011]). The document/verdict F1 difference was inconclusive,
+so the overall comparison was inconclusive or mixed under the frozen rule.
 Sonnet had the highest observed F1 scores, but no planned comparison met
 the frozen rule for improvement on both F1 metrics after adjustment for
 multiple comparisons. The default remains BM25 Haiku.
