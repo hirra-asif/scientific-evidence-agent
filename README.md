@@ -6,7 +6,7 @@ An agent that checks scientific claims against **5,183 research abstracts from S
 
 <img src="docs/demo.gif" alt="Scientific evidence agent demo" width="700">
 
-*Recorded evaluation run; playback edited for readability.*
+*Recorded evaluation run*
 
 ## Why I built this
 
