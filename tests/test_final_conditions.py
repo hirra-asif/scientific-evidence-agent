@@ -30,14 +30,42 @@ def report(ids):
 
 class TestFinalConfiguration(unittest.TestCase):
     def test_model_adapter_preserves_defaults_is_idempotent_and_rejects_other_edits(self):
-        source = (PROJECT_DIR / "agent.py").read_text(encoding="utf-8")
-        expected = "20ece3343dbf58d875b597ddea274c78f490b7d5ab6581d210b0c02cfb8a696d"
+        # Test the historical adapter on a fixed, minimal source fixture.
+        # Current agent.py can evolve; the production frozen-hash guard cannot.
+        source = '''MAX_ABSTRACTS = 3
+
+async def main(
+    search_fn=None,
+):
+    state = RunState(search_fn=search_fn)
+    options = ClaudeAgentOptions(
+        model="claude-haiku-5-5",
+        max_turns=8,
+    )
+    async for message in query(options=options):
+        if isinstance(message, SystemMessage):
+            if message.subtype == "init":
+                skill_discovered = (
+                    "scientific-evidence" in message.data.get("skills", [])
+                )
+        if isinstance(message, ResultMessage):
+            run_metadata.update({
+                "estimated_cost_usd": message.total_cost_usd,
+            })
+'''
+        expected = conditions.digest(source)
         adapted = conditions.adapt_agent(source, expected)
         self.assertEqual(conditions.adapt_agent(adapted, expected), adapted)
         self.assertEqual(baseline_options(adapted), {
             "model": conditions.HAIKU, "max_turns": 8, "max_abstracts": 3})
         with self.assertRaises(ValueError):
             conditions.adapt_agent(adapted.replace("max_turns=8", "max_turns=9"), expected)
+
+    def test_repair_agent_is_rejected_by_historical_source_guard(self):
+        source = (PROJECT_DIR / "agent.py").read_text(encoding="utf-8")
+        frozen_hash = "20ece3343dbf58d875b597ddea274c78f490b7d5ab6581d210b0c02cfb8a696d"
+        with self.assertRaises(ValueError):
+            conditions.adapt_agent(source, frozen_hash)
 
     def test_pipeline_has_exact_assessment_rules_and_only_execution_contract_changes(self):
         guidelines = conditions.assessment_guidelines(SKILL)

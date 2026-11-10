@@ -120,6 +120,15 @@ python agent.py --skill on
 
 The output includes search/read activity, a structured report, exact evidence quotations and an estimated API cost. To disable the guidelines, use `--skill off`.
 
+Optional report repair: `python agent.py --skill on --report-repair on`.
+A `PreToolUse` hook reserves the three-abstract read budget, and `submit_report`
+returns validation errors for up to two corrections. Only a Python-validated
+submission is returned; failed or missing submissions remain failures. This mode
+allows up to 12 turns instead of 8 and logs submissions in `run_metadata`.
+It checks references and report consistency, not scientific correctness.
+The published evaluation and interactive demo use the original mode; repair
+mode has not been benchmarked.
+
 To check another claim:
 
 ~~~python
