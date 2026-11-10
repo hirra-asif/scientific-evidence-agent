@@ -7,23 +7,23 @@ Counts are pooled before calculating precision, recall and F1. Failed attempts r
 
 | Condition | Document/verdict P | R | F1 | Evidence P | R | F1 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| current_haiku | 0.622 | 0.554 | 0.586 | 0.490 | 0.428 | 0.457 |
-| improved_haiku | 0.541 | 0.576 | 0.558 | 0.391 | 0.400 | 0.396 |
-| improved_sonnet | 0.667 | 0.739 | 0.701 | 0.479 | 0.506 | 0.492 |
-| fixed_pipeline | 0.671 | 0.620 | 0.644 | 0.474 | 0.406 | 0.437 |
+| Haiku · BM25 | 0.622 | 0.554 | 0.586 | 0.490 | 0.428 | 0.457 |
+| Haiku · hybrid | 0.541 | 0.576 | 0.558 | 0.391 | 0.400 | 0.396 |
+| Sonnet · hybrid | 0.667 | 0.739 | 0.701 | 0.479 | 0.506 | 0.492 |
+| Fixed pipeline · hybrid | 0.671 | 0.620 | 0.644 | 0.474 | 0.406 | 0.437 |
 
 ## Reliability and resource use
 
 | Condition | NEI false flags | Correct NEI abstentions | NEI failures | All failures | Mean searches | Mean abstracts | Mean seconds | Reported USD |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| current_haiku | 5/40 | 35/40 | 0 | 0/120 | 2.17 | 2.10 | 8.84 | 0.1333 |
-| improved_haiku | 8/40 | 31/40 | 1 | 1/120 | 2.21 | 2.07 | 9.57 | 0.1371 |
-| improved_sonnet | 7/40 | 33/40 | 0 | 0/120 | 1.19 | 1.62 | 8.01 | 1.5852 |
-| fixed_pipeline | 7/40 | 33/40 | 0 | 0/120 | 1.00 | 3.00 | 7.95 | 0.1801 |
+| Haiku · BM25 | 5/40 | 35/40 | 0 | 0/120 | 2.17 | 2.10 | 8.84 | 0.1333 |
+| Haiku · hybrid | 8/40 | 31/40 | 1 | 1/120 | 2.21 | 2.07 | 9.57 | 0.1371 |
+| Sonnet · hybrid | 7/40 | 33/40 | 0 | 0/120 | 1.19 | 1.62 | 8.01 | 1.5852 |
+| Fixed pipeline · hybrid | 7/40 | 33/40 | 0 | 0/120 | 1.00 | 3.00 | 7.95 | 0.1801 |
 
 A false flag is any SUPPORT or CONTRADICT assessment on a gold NEI claim. Failed NEI attempts are counted separately. Latency includes retrieval and the SDK call; shared retriever setup is separate.
 
-Attempts without SDK cost estimates: current_haiku: 0, improved_haiku: 0, improved_sonnet: 0, fixed_pipeline: 0.
+Attempts without SDK cost estimates: Haiku · BM25: 0, Haiku · hybrid: 0, Sonnet · hybrid: 0, Fixed pipeline · hybrid: 0.
 
 ## Planned paired comparisons
 
@@ -31,18 +31,18 @@ Differences are candidate minus reference. Both repetitions and all four conditi
 
 | Comparison | Metric | Difference | 95% interval | Adjusted interval |
 | --- | --- | ---: | --- | --- |
-| improved_haiku − current_haiku | evidence_f1 | -0.061 | [-0.102, -0.023] | [-0.117, -0.011] |
-| improved_haiku − current_haiku | document_verdict_f1 | -0.028 | [-0.075, 0.015] | [-0.093, 0.029] |
-| fixed_pipeline − improved_haiku | evidence_f1 | +0.042 | [-0.033, 0.112] | [-0.058, 0.138] |
-| fixed_pipeline − improved_haiku | document_verdict_f1 | +0.086 | [-0.027, 0.200] | [-0.065, 0.241] |
-| improved_sonnet − improved_haiku | evidence_f1 | +0.096 | [0.025, 0.167] | [0.001, 0.192] |
-| improved_sonnet − improved_haiku | document_verdict_f1 | +0.143 | [0.032, 0.259] | [-0.004, 0.300] |
+| Haiku · hybrid − Haiku · BM25 | evidence_f1 | -0.061 | [-0.102, -0.023] | [-0.117, -0.011] |
+| Haiku · hybrid − Haiku · BM25 | document_verdict_f1 | -0.028 | [-0.075, 0.015] | [-0.093, 0.029] |
+| Fixed pipeline · hybrid − Haiku · hybrid | evidence_f1 | +0.042 | [-0.033, 0.112] | [-0.058, 0.138] |
+| Fixed pipeline · hybrid − Haiku · hybrid | document_verdict_f1 | +0.086 | [-0.027, 0.200] | [-0.065, 0.241] |
+| Sonnet · hybrid − Haiku · hybrid | evidence_f1 | +0.096 | [0.025, 0.167] | [0.001, 0.192] |
+| Sonnet · hybrid − Haiku · hybrid | document_verdict_f1 | +0.143 | [0.032, 0.259] | [-0.004, 0.300] |
 
 The adjusted intervals use 99.167% confidence per endpoint (Bonferroni across three comparisons and two primary metrics). The frozen rule requires both adjusted intervals above zero to claim higher F1 on both primary metrics. Both below zero favors the reference; other outcomes are inconclusive or mixed.
 
-- **improvements:** inconclusive or mixed.
-- **pipeline_vs_agent:** inconclusive or mixed.
-- **sonnet_vs_haiku:** inconclusive or mixed.
+- **Haiku · hybrid vs Haiku · BM25:** inconclusive or mixed.
+- **Fixed pipeline · hybrid vs Haiku · hybrid:** inconclusive or mixed.
+- **Sonnet · hybrid vs Haiku · hybrid:** inconclusive or mixed.
 
 These conclusions concern the primary F1 metrics. NEI outcomes, failures and resource use remain descriptive and must also inform any deployment choice.
 

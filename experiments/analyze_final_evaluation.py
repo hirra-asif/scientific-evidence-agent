@@ -9,6 +9,7 @@ from pathlib import Path
 
 import numpy as np
 
+from display_labels import condition_label
 from experiments import agent_comparison as comparison
 from experiments.compare_agent_retrieval import now
 from experiments.final_conditions import (
@@ -120,7 +121,7 @@ def markdown_report(analysis):
         metrics = data["metrics_all_attempts"]
         document, evidence = metrics["document_labels"], metrics["evidence_sentences"]
         values = [document[k] for k in ("precision", "recall", "f1")] + [evidence[k] for k in ("precision", "recall", "f1")]
-        lines.append("| " + name + " | " + " | ".join(number(v) for v in values) + " |")
+        lines.append("| " + condition_label(name) + " | " + " | ".join(number(v) for v in values) + " |")
     lines += ["", "## Reliability and resource use", "",
               "| Condition | NEI false flags | Correct NEI abstentions | NEI failures | All failures | Mean searches | Mean abstracts | Mean seconds | Reported USD |",
               "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |"]
@@ -130,22 +131,23 @@ def markdown_report(analysis):
                   f"{data['failures']}/{data['attempts']}", number(data["mean_searches"], 2),
                   number(data["mean_abstracts_read"], 2), number(data["mean_elapsed_seconds"], 2),
                   number(data["reported_cost_usd"], 4)]
-        lines.append("| " + name + " | " + " | ".join(values) + " |")
+        lines.append("| " + condition_label(name) + " | " + " | ".join(values) + " |")
     missing = {name: data["runs_without_cost"] for name, data in analysis["summary"]["conditions"].items()}
     lines += ["", "A false flag is any SUPPORT or CONTRADICT assessment on a gold NEI claim. Failed NEI attempts are counted separately. Latency includes retrieval and the SDK call; shared retriever setup is separate.",
-              "", "Attempts without SDK cost estimates: " + ", ".join(f"{name}: {count}" for name, count in missing.items()) + ".",
+              "", "Attempts without SDK cost estimates: " + ", ".join(f"{condition_label(name)}: {count}" for name, count in missing.items()) + ".",
               "", "## Planned paired comparisons", "",
               "Differences are candidate minus reference. Both repetitions and all four conditions stay together when resampling a claim. The bootstrap resamples within each gold class (50,000 draws; seed 47).",
               "", "| Comparison | Metric | Difference | 95% interval | Adjusted interval |",
               "| --- | --- | ---: | --- | --- |"]
     for contrast in analysis["bootstrap"]["comparisons"].values():
-        label = f"{contrast['candidate']} − {contrast['reference']}"
+        label = f"{condition_label(contrast['candidate'])} − {condition_label(contrast['reference'])}"
         for metric, values in contrast["metrics"].items():
             intervals = [f"[{number(values[key]['low'])}, {number(values[key]['high'])}]" for key in ("ci95", "adjusted_ci")]
             lines.append(f"| {label} | {metric} | {values['difference']:+.3f} | {intervals[0]} | {intervals[1]} |")
     lines += ["", "The adjusted intervals use 99.167% confidence per endpoint (Bonferroni across three comparisons and two primary metrics). The frozen rule requires both adjusted intervals above zero to claim higher F1 on both primary metrics. Both below zero favors the reference; other outcomes are inconclusive or mixed.", ""]
     for contrast in analysis["bootstrap"]["comparisons"].values():
-        lines.append(f"- **{contrast['name']}:** {contrast['conclusion'].replace('_', ' ')}.")
+        label = f"{condition_label(contrast['candidate'])} vs {condition_label(contrast['reference'])}"
+        lines.append(f"- **{label}:** {contrast['conclusion'].replace('_', ' ')}.")
     lines += ["", "These conclusions concern the primary F1 metrics. NEI outcomes, failures and resource use remain descriptive and must also inform any deployment choice.",
               "", "## Limits and reproducibility", ""]
     lines += ["- " + item + "." for item in analysis["analysis_policy"]["limitations"]]

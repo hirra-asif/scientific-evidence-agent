@@ -7,6 +7,7 @@ from pathlib import Path
 import streamlit as st
 
 from demo import live_requirements, load_examples, recorded_example, run_live
+from display_labels import condition_label
 
 st.set_page_config(page_title="Scientific Evidence Agent", layout="wide")
 stylesheet = Path(__file__).resolve().parent / ".streamlit/style.css"
@@ -121,7 +122,7 @@ def show_result(result):
             source = result["source"]
             with st.expander("Run provenance"):
                 st.caption(f"Source: {source['path']}")
-                st.caption(f"Claim {source['claim_id']} · {source['condition']} · repetition {source['repetition']}")
+                st.caption(f"Claim {source['claim_id']} · {condition_label(source['condition'])} · repetition {source['repetition']}")
                 st.caption("Timing and cost describe the original run, not this replay.")
         st.download_button("Download report (JSON)", json.dumps(result, indent=2, ensure_ascii=False),
                            file_name="evidence-report.json", mime="application/json", width="stretch")

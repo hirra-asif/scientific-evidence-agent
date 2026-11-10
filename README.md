@@ -2,7 +2,13 @@
 
 An agent that checks scientific claims against **5,183 research abstracts from SciFact**. Built with the Claude Agent SDK, it chooses searches, reads up to three abstracts and returns a verdict for each. Python validates document and sentence references, then copies evidence quotes directly from the corpus.
 
-**Evaluation:** Compared four configurations on 60 previously unused SciFact dev claims, with two repetitions each. Sonnet with hybrid retrieval had the highest observed F1 scores; hybrid retrieval lowered Haiku's evidence F1 on this sample. [Results and methods](docs/final_evaluation.md).
+**What I learned:**
+
+- **Minimal citations improved precision.** In the guideline comparison, evidence precision rose from 0.288 to 0.425 versus the original guidelines, with recall unchanged. [Guideline results](docs/evaluation.md).
+- **Better retrieval did not guarantee better answers.** Hybrid improved offline retrieval recall but lowered Haiku's evidence F1 by 0.061 on fresh dev claims.
+- **Sonnet scored highest at about 12× the cost of Haiku with the same retriever**, but did not meet the predefined improvement rule across both F1 metrics.
+
+The final comparison used 60 previously unused dev claims, with two repetitions per configuration. [Results and methods](docs/final_evaluation.md).
 
 <img src="docs/demo.gif" alt="Scientific evidence agent demo" width="720">
 
